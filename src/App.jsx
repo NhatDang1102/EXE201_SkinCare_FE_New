@@ -69,9 +69,6 @@ function AppRoutes() {
         <Route path="/sign-in" element={<LoginPage accountAction={true} />} />
         <Route element={user ? <ProtectedRoutes user={user} /> : <ProtectedRoutes user={userAuth} />}>
           <Route path='/profile' element={ <ThemeProvider> <Navbar selected={"profile"}/> <ProfilePage /><Footer/></ThemeProvider> } />
-        </Route>
-        
-         <Route element={user ? <ProtectedRoutes user={user} /> : <ProtectedRoutes user={userAuth} />}>
           <Route path='/editprofile' element={ <ThemeProvider> <Navbar selected={"profile"}/> <EditProfilePage /><Footer/></ThemeProvider> } />
         </Route>
         <Route path="/VIP-purchase" element={<ThemeProvider> <Navbar selected={""}/> <VIPPurchasePage /> <Footer /> </ThemeProvider> } />
