@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import './Chatbox.css';
+import './ChatBox.css';
 import chatIcon from '../../assets/images/icons/robo-idle-transparent.gif';
 import headerImage from '../../assets/images/logo.png';
 import { FiberManualRecord, Send } from '@mui/icons-material';
