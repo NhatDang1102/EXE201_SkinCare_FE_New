@@ -77,7 +77,7 @@ function AppRoutes() {
           <Route path='/editprofile' element={ <ThemeProvider> <Navbar selected={"profile"}/> <EditProfilePage /><Footer/></ThemeProvider> } />
         </Route>
         <Route path="/VIP-purchase" element={<ThemeProvider> <Navbar selected={""}/> <VIPPurchasePage /> <Footer /> </ThemeProvider> } />
-      </Routes>
+      </Route>
     </>
   );
 }
