@@ -49,7 +49,10 @@ export const AuthProvider = ({ children }) => {
         sessionStorage.setItem("role", response.data.role);
         sessionStorage.setItem("email", email);
         sessionStorage.setItem("LoggedInAs", "AccountIndex");
-        
+           const profileRes = await axios.get("https://skincareapp.somee.com/SkinCare/Profile", {
+        withCredentials: true
+      });
+      sessionStorage.setItem("profilePicture", profileRes.data.profilePicture || "");
         window.dispatchEvent(new Event("storage"));
 
         return response.data;
