@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const signUp = async ({ email, password, name }) => {
   try {
-    const response = await axios.post("http://skincareapp.somee.com/SkinCare/Auth/register", {
+    const response = await axios.post("https://skincareapp.somee.com/SkinCare/Auth/register", {
       email,
       password,
       name

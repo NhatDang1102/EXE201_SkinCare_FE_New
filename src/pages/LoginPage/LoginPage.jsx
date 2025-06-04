@@ -33,9 +33,9 @@ const LoginPage = ({accountAction}) => {
   const handleGoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      console.log(result);
 
       if (result) { 
+        console.log(result.user.accessToken);
         const response = await googleLogin(result.user.email, result.user.accessToken); 
       
         if(response) navigate("/profile");
@@ -57,11 +57,9 @@ const LoginPage = ({accountAction}) => {
           navigate(response.role === "Admin" ? "/AdminPage/" : "/profile");
         }, 100);
       }
-      if (response.message == "Network Error") {
-        setError("Network Error. Please try again later.");
-      }
+      else setError("Network Error. Please try again later.");
+      // if (response.message == "Network Error") 
     } catch (error) {
-      console.error("Login Failed:", error);
       setError("Failed to login. Please try again.");
     }
   };

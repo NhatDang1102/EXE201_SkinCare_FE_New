@@ -7,7 +7,7 @@ export default function OtpModal({ email, onClose, onSuccess }) {
 
   const handleVerify = async () => {
     try {
-      const response = await fetch("http://skincareapp.somee.com/SkinCare/Auth/verify-otp", {
+      const response = await fetch("https://skincareapp.somee.com/SkinCare/Auth/verify-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, otp }),

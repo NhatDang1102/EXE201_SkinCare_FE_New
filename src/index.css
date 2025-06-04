@@ -37,6 +37,18 @@
   --boxShadow : 0px 19px 60px rgb(0 0 0 / 8%);
   --orangeCard: rgba(252, 166, 31, 0.45);
   --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
+
+  /*Chat box*/
+  --primaryGradient: linear-gradient(93.12deg, #E8A689 0.52%, #de8764 100%);
+  --secondaryGradient: linear-gradient(268.91deg, #E8A689 -2.14%, #de8764 99.69%);
+  --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
+  --light: 300;
+  --regular: 400;
+  --semiBold: 600;
+  --extraLight: 300;
+  --italic: 300;
+  --primary: #581B98;
 }
 
 a {

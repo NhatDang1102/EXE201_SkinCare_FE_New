@@ -13,12 +13,18 @@ const navbar = ({selected}) => {
     const [email, setEmail] = useState(null);
 
     useEffect(() => {
-        const savedEmail = sessionStorage.getItem("email");
-    
-        if (savedEmail) {
-          setEmail({ email: savedEmail });
-        }
+        const updateEmail = () => {
+            const savedEmail = sessionStorage.getItem("email");
+            setEmail(savedEmail ? { email: savedEmail } : null);
+        };
+
+        updateEmail();
+
+        window.addEventListener("storage", updateEmail);
+
+        return () => window.removeEventListener("storage", updateEmail);
     }, []);
+
 
     useMotionValueEvent(scrollYProgress, "change",
     );

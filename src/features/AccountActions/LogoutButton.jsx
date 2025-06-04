@@ -26,7 +26,9 @@ export default function LogoutButton() {
         await logout();
 
         window.dispatchEvent(new Event("storage"));
-        navigate("/");
+        setTimeout(() => {
+          navigate("/");
+        }, 100);
       }
       else {
         await logout();
@@ -34,7 +36,9 @@ export default function LogoutButton() {
 
         window.dispatchEvent(new Event("storage"));
 
-        navigate("/");
+        setTimeout(() => {
+          navigate("/");
+        }, 100);
       }
     } catch (error) {
       console.error("Logout Failed:", error);

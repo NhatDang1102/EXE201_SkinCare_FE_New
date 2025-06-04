@@ -1,12 +1,81 @@
-.bgImg {
+body:has(.purchasePage) .bgImg {
     position: absolute;
     left: 0;
     filter: blur(4px);
     width: 100%;
-    height: 100vh;
+    height: 160vh;
     overflow: hidden;
-    margin-top: 140px;
+    margin-top: 20px;
 }
-.bgImg img {
-    width: 140%;
+body:has(.purchasePage) .bgImg img {
+    width: 120%;
+}
+
+.purchasePage {
+    width: 100vw;
+    min-height: 160vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
+}
+
+.purchaseContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.purchaseContainer .content {
+    width: 40%;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+}
+
+.purchaseContainer .content .title {
+    margin: 30px 10px 0 10px;
+    font-size: 38px;
+    font-weight: 600;
+}
+.purchaseContainer .content .pricing {
+    font-size: 30px;
+    font-weight: 600;
+}
+.purchaseContainer .content .benefits {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.purchaseContainer .content .block {
+    width: 64%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.purchaseContainer .content .block div {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    font-size: 20px;
+}
+.purchaseContainer .content .block div svg { margin: 0 5px; }
+.joinServiceBtn {
+    width: 65%;
+    height: 60px;
+    font-size: 26px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
