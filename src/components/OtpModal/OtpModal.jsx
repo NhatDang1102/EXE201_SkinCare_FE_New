@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import { useState } from 'react';
 import './OtpModal.css';
 
@@ -25,7 +26,7 @@ export default function OtpModal({ email, onClose, onSuccess }) {
     }
   };
 
-  return (
+  const modalContent = (
     <div className="otp-modal-overlay">
       <div className="otp-modal">
         <h3>Verify OTP</h3>
@@ -44,4 +45,6 @@ export default function OtpModal({ email, onClose, onSuccess }) {
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.getElementById("modal-root"));
 }

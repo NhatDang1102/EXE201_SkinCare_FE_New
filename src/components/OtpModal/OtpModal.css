@@ -1,11 +1,43 @@
 .otp-modal-overlay {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    left: 0;
-    background-color: #33333360;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #33333360;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.otp-modal {
+  background-color: var(--bg-color);
+  color: var(--primary-text-color);
+  padding: 2rem;
+  border-radius: 8px;
+  width: 60%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.otp-modal input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: var(--secondary-bg-color);
+}
+
+.otp-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.cancel {
+  background-color: #ccc;
 }

@@ -27,7 +27,9 @@ function App() {
 function AppRoutes() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { userAuth } = useAuth();
+  
+  const authen = useAuth();
+  const userAuth = authen ? authen.userAuth : null;
 
   window.addEventListener('scroll', () => {
     document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
