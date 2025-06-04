@@ -12,7 +12,7 @@ import AboutPage from "./pages/AboutPage/AboutPage";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-
+import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
 import ProtectedRoutes from "./utils/ProtectedRoute";
 import VIPPurchasePage from "./pages/VIPPurchasePage/VIPPurchasePage";
 
@@ -68,9 +68,12 @@ function AppRoutes() {
         <Route path="/login" element={<LoginPage accountAction={false} />} />
         <Route path="/sign-in" element={<LoginPage accountAction={true} />} />
         <Route element={user ? <ProtectedRoutes user={user} /> : <ProtectedRoutes user={userAuth} />}>
-          <Route path='/profile' element={ <ThemeProvider> <Navbar selected={"profile"}/> <ProfilePage /> </ThemeProvider> } />
+          <Route path='/profile' element={ <ThemeProvider> <Navbar selected={"profile"}/> <ProfilePage /><Footer/></ThemeProvider> } />
         </Route>
         
+         <Route element={user ? <ProtectedRoutes user={user} /> : <ProtectedRoutes user={userAuth} />}>
+          <Route path='/editprofile' element={ <ThemeProvider> <Navbar selected={"profile"}/> <EditProfilePage /><Footer/></ThemeProvider> } />
+        </Route>
         <Route path="/VIP-purchase" element={<ThemeProvider> <Navbar selected={""}/> <VIPPurchasePage /> <Footer /> </ThemeProvider> } />
         
       </Routes>
