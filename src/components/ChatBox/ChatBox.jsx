@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import './ChatBox.css';
 import chatIcon from '../../assets/images/icons/robo-idle-transparent.gif';
-import headerImage from '../../assets/images/logo.png';
+import headerImage from '../../assets/images/Logo.png';
 import { FiberManualRecord, Send } from '@mui/icons-material';
 
 const ChatBox = () => {
