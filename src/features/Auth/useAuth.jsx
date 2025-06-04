@@ -53,7 +53,10 @@ export const AuthProvider = ({ children }) => {
         withCredentials: true
       });
       sessionStorage.setItem("profilePicture", profileRes.data.profilePicture || "");
-
+           const profileRes = await axios.get("https://skincareapp.somee.com/SkinCare/Profile", {
+        withCredentials: true
+      });
+      sessionStorage.setItem("profilePicture", profileRes.data.profilePicture || "");
         window.dispatchEvent(new Event("storage"));
 
         return response.data;
