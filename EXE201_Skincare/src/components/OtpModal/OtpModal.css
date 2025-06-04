@@ -1,0 +1,11 @@
+.otp-modal-overlay {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: #33333360;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

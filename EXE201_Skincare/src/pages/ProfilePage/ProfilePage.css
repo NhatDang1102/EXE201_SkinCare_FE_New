@@ -1,0 +1,17 @@
+.profilePage {
+    width: 100vw;
+    min-height: 120vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
+}
+
+.profilePage svg {
+    position: relative;
+    z-index: 1;
+    border-radius: 8px;
+    width: 86px;
+    height: 86px;
+    color: var(--primary-text-color);
+}

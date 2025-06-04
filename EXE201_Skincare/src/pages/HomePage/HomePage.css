@@ -1,0 +1,15 @@
+.homePageApp{
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);    
+}
+
+  @media screen and (max-width: 480px) {
+    .homePageApp {
+      padding: 0.5rem 1rem;
+
+    }
+  }

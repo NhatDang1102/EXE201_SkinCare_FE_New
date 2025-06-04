@@ -1,0 +1,12 @@
+.bgImg {
+    position: absolute;
+    left: 0;
+    filter: blur(4px);
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: 140px;
+}
+.bgImg img {
+    width: 140%;
+}
