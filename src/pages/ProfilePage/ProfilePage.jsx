@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { User, Mail, Shield, UserCheck } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
 import "./ProfilePage.css";
 import BGImage from "../../components/BGImage/BGImage";
 
@@ -10,20 +10,28 @@ export default function ProfilePage() {
     email: "",
     role: "",
   });
-
-  useEffect(() => {
+const navigate = useNavigate();
+   const loadUserProfile = () => {
     const storedName = sessionStorage.getItem("username");
     const storedEmail = sessionStorage.getItem("email");
     const storedRole = sessionStorage.getItem("role");
-
-    const profile = {
+    setUserProfile({
       username: storedName || "Test2",
       email: storedEmail || "pageco9516@endelite.com",
       role: storedRole || "User",
-    };
+    });
+  };
 
-    setUserProfile(profile);
-    console.log("User profile loaded: ", profile);
+  useEffect(() => {
+    loadUserProfile();
+
+    // Khi tab chuyển focus hoặc có sự kiện storage
+    window.addEventListener("focus", loadUserProfile);
+    window.addEventListener("storage", loadUserProfile);
+    return () => {
+      window.removeEventListener("focus", loadUserProfile);
+      window.removeEventListener("storage", loadUserProfile);
+    };
   }, []);
 
   return (
@@ -72,7 +80,9 @@ export default function ProfilePage() {
           </div>
 
           <div className="actionButtons">
-            <button className="actionButton primaryButton">Edit Profile</button>
+           <button className="actionButton primaryButton" onClick={() => navigate("/editprofile")}>
+  Edit Profile
+</button>
             <button className="actionButton secondaryButton">Settings</button>
           </div>
         </div>
