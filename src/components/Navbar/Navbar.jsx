@@ -14,7 +14,7 @@ const navbar = ({selected}) => {
 
     useEffect(() => {
         const updateEmail = () => {
-            const savedEmail = sessionStorage.getItem("email");
+            const savedEmail = sessionStorage.getItem("email") || localStorage.getItem("email");
             setEmail(savedEmail ? { email: savedEmail } : null);
         };
 

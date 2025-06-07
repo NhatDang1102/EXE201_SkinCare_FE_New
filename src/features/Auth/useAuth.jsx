@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState, useContext, createContext, useEffect } from "react";
-import LoginPage from "../../pages/LoginPage/LoginPage";
 
 const AuthContext = createContext(null);
 
@@ -13,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedEmail = sessionStorage.getItem("email");
+    const savedEmail = sessionStorage.getItem("email") || localStorage.getItem("email");
 
     if (savedEmail) {
       setUserAuth({ email: savedEmail });
@@ -23,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const handleStorageChange = () => {
-      const updatedEmail = sessionStorage.getItem("email");
+      const updatedEmail = sessionStorage.getItem("email") || localStorage.getItem("email");
 
       if (updatedEmail) {
         setUserAuth({ email: updatedEmail });
@@ -36,36 +35,45 @@ export const AuthProvider = ({ children }) => {
     return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
-  const login = async (email, password) => {
+  const login = async (email, password, rememberMe) => {
     try {
-      console.log("email: " + email + " pass: " + password);
+      if(rememberMe) {console.log("email: " + email + " pass: " + password);}
       const response = await axios.post("https://skincareapp.somee.com/SkinCare/Auth/login", 
         { email, password },
         { withCredentials: true } 
       );
 
       if (response) {
-        sessionStorage.setItem("username", response.data.name);
-        sessionStorage.setItem("role", response.data.role);
-        sessionStorage.setItem("email", email);
-        sessionStorage.setItem("LoggedInAs", "AccountIndex");
-           const profileRes = await axios.get("https://skincareapp.somee.com/SkinCare/Profile", {
-        withCredentials: true
-      });
-      sessionStorage.setItem("profilePicture", profileRes.data.profilePicture || "");
+        if (rememberMe) {
+          localStorage.setItem("username", response.data.name);
+          localStorage.setItem("role", response.data.role);
+          localStorage.setItem("email", email);
+          localStorage.setItem("LoggedInAs", "AccountIndex");
+        }
+        else {
+          sessionStorage.setItem("username", response.data.name);
+          sessionStorage.setItem("role", response.data.role);
+          sessionStorage.setItem("email", email);
+          sessionStorage.setItem("LoggedInAs", "AccountIndex");
+        }
+        
+        const profileRes = await axios.get("https://skincareapp.somee.com/SkinCare/Profile", {
+          withCredentials: true
+        });
+        if (profileRes) { 
+          if(rememberMe) { localStorage.setItem("profilePicture", profileRes.data.profilePicture || ""); }
+          else { sessionStorage.setItem("profilePicture", profileRes.data.profilePicture || ""); }
+        }
         window.dispatchEvent(new Event("storage"));
 
         return response.data;
-      } else {
-        throw new Error("Invalid email or password");
-      }
+      } 
     } catch (error) {
-      console.error("Login error:", error);
-      return null;
+      return error;
     }
   };
 
-  const googleLogin = async (email, idToken) => {
+  const googleLogin = async (email, idToken, rememberMe) => {
     try {
       const response = await axios.post("https://skincareapp.somee.com/SkinCare/Auth/login-google", 
         { idToken },
@@ -73,10 +81,18 @@ export const AuthProvider = ({ children }) => {
       );
 
       if (response) {
-        sessionStorage.setItem("username", response.data.name);
-        sessionStorage.setItem("role", response.data.role);
-        sessionStorage.setItem("email", email);
-        sessionStorage.setItem("LoggedInAs", "Google");
+        if (rememberMe) {
+          localStorage.setItem("username", response.data.name);
+          localStorage.setItem("role", response.data.role);
+          localStorage.setItem("email", email);
+          localStorage.setItem("LoggedInAs", "Google");
+        }
+        else {
+          sessionStorage.setItem("username", response.data.name);
+          sessionStorage.setItem("role", response.data.role);
+          sessionStorage.setItem("email", email);
+          sessionStorage.setItem("LoggedInAs", "Google");
+      }
         
         window.dispatchEvent(new Event("storage"));
 
@@ -86,7 +102,7 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       console.error("Login error:", error);
-      return null;
+      return error;
     }
   };
 
@@ -97,6 +113,7 @@ export const AuthProvider = ({ children }) => {
       { withCredentials: true }
     ).finally(() => {
       sessionStorage.clear();
+      localStorage.clear();
       window.dispatchEvent(new Event("storage"));
     });
   };

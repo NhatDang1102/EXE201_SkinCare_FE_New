@@ -12,13 +12,13 @@ export default function ProfilePage() {
   });
 const navigate = useNavigate();
    const loadUserProfile = () => {
-    const storedName = sessionStorage.getItem("username");
-    const storedEmail = sessionStorage.getItem("email");
-    const storedRole = sessionStorage.getItem("role");
+    const storedName = sessionStorage.getItem("username") || localStorage.getItem("username");
+    const storedEmail = sessionStorage.getItem("email") || localStorage.getItem("email");
+    const storedRole = sessionStorage.getItem("role") || localStorage.getItem("role");
     setUserProfile({
-      username: storedName || "Test2",
-      email: storedEmail || "pageco9516@endelite.com",
-      role: storedRole || "User",
+      username: storedName || "Unknown",
+      email: storedEmail || "Not Found",
+      role: storedRole || "Undeserving",
     });
   };
 
@@ -80,9 +80,9 @@ const navigate = useNavigate();
           </div>
 
           <div className="actionButtons">
-           <button className="actionButton primaryButton" onClick={() => navigate("/editprofile")}>
-  Edit Profile
-</button>
+            <button className="actionButton primaryButton" onClick={() => navigate("/editprofile")}>
+              Edit Profile
+            </button>
             <button className="actionButton secondaryButton">Settings</button>
           </div>
         </div>

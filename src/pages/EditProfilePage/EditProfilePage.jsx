@@ -23,10 +23,10 @@ export default function EditProfilePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedName = sessionStorage.getItem("username");
-    const storedEmail = sessionStorage.getItem("email");
-    const storedRole = sessionStorage.getItem("role");
-    const storedAvatar = sessionStorage.getItem("profilePicture");
+    const storedName = sessionStorage.getItem("username") || localStorage.getItem("username");
+    const storedEmail = sessionStorage.getItem("email") || localStorage.getItem("email");
+    const storedRole = sessionStorage.getItem("role") || localStorage.getItem("role");
+    const storedAvatar = sessionStorage.getItem("profilePicture") || localStorage.getItem("profilePicture");
     setUserProfile({
       username: storedName || "Test2",
       email: storedEmail || "pageco9516@endelite.com",
@@ -75,26 +75,25 @@ export default function EditProfilePage() {
         sessionStorage.setItem("username", name);
         setUserProfile((prev) => ({ ...prev, username: name }));
       }
-if (avatarFile) {
-  const formData = new FormData();
-  // ĐÚNG field name phải là 'ImageFile'
-  formData.append("ImageFile", avatarFile);
+      if (avatarFile) {
+        const formData = new FormData();
+        // ĐÚNG field name phải là 'ImageFile'
+        formData.append("ImageFile", avatarFile);
 
-  const resAvatar = await axios.post(
-    "https://skincareapp.somee.com/SkinCare/Profile/avatar",
-    formData,
-    {
-      headers: { "Content-Type": "multipart/form-data" },
-      withCredentials: true,
-    }
-  );
-  // Backend trả về { url: ... }
-  if (resAvatar.data?.url) {
-    sessionStorage.setItem("profilePicture", resAvatar.data.url);
-    setAvatarPreview(resAvatar.data.url);
-  }
-}
-
+        const resAvatar = await axios.post(
+          "https://skincareapp.somee.com/SkinCare/Profile/avatar",
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+            withCredentials: true,
+          }
+        );
+        // Backend trả về { url: ... }
+        if (resAvatar.data?.url) {
+          localStorage.setItem("profilePicture", resAvatar.data.url);
+          setAvatarPreview(resAvatar.data.url);
+        }
+      }
 
       navigate("/profile");
     } catch (error) {

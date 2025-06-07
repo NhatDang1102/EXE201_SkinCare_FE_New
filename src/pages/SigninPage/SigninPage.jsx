@@ -20,7 +20,6 @@ export default function SigninPage() {
   const [showOtpModal, setShowOtpModal] = useState(false);
 
   const navigate = useNavigate();
-  const { login } = useAuth();
 
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
   const togglePasswordConfirmVisibility = () => setShowPasswordConfirm((prev) => !prev);
@@ -45,7 +44,7 @@ export default function SigninPage() {
         setError("Network Error. Please try again later.");
       }
       else if (result.message == "Email đã tồn tại hoặc chưa xác thực OTP.") {
-        setError("Email already existed or haven't verify OTP.");
+        setError(result.message);
       }
 
       // Show OTP popup
@@ -103,13 +102,14 @@ export default function SigninPage() {
       {showOtpModal && (
         <OtpModal
             email={email}
+            forgotPass={false}
             onClose={() => setShowOtpModal(false)}
             onSuccess={() => {
             setShowOtpModal(false);
             navigate("/login");
             }}
         />
-        )}
+      )}
     </>
   );
 }

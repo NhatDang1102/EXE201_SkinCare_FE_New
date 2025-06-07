@@ -83,6 +83,12 @@
 
 .usernamePassLoginBox .input-field label { display: flex; gap: 5px; font-size: 16px; color: #686868; font-weight: 400;}
 
+.forgot-password {
+    cursor: pointer; 
+    color: #E3611B; 
+    font-size: 14px;
+}
+
 .signinBox .signinLable {
     display: flex;
     gap: 10px;

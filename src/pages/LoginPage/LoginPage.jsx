@@ -3,7 +3,7 @@ import { auth, provider } from "../../firebase";
 import { signInWithPopup } from 'firebase/auth';
 import { useAuth } from '../../features/Auth/useAuth';
 
-import { Box } from '@mui/material';
+import { Box, Checkbox, FormControlLabel } from '@mui/material';
 import { Visibility, VisibilityOff, ArrowBack, ArrowForward, Mail, Lock } from '@mui/icons-material';
 
 import "./LoginPage.css";
@@ -11,6 +11,7 @@ import GoogleIcon from '../../assets/24px.svg';
 import FaceIcon from '../../assets/F-32px.svg';
 import { useNavigate } from 'react-router-dom';
 import SigninPage from '../SigninPage/SigninPage';
+import OtpModal from '../../components/OtpModal/OtpModal';
 
 const LoginPage = ({accountAction}) => {
   const [email, setEmail] = useState("");
@@ -21,6 +22,9 @@ const LoginPage = ({accountAction}) => {
   const [switched, setSwitched] = useState(accountAction);
   const navigate = useNavigate();
   const { login, googleLogin } = useAuth();
+
+  const [rememberMe, setRememberMe] = useState(false);
+  const [showForgotOtpModal, setShowForgotOtpModal] = useState(false);
 
   const handleClick = () => {
     setSwitched(!switched);
@@ -35,10 +39,10 @@ const LoginPage = ({accountAction}) => {
       const result = await signInWithPopup(auth, provider);
 
       if (result) { 
-        console.log(result.user.accessToken);
-        const response = await googleLogin(result.user.email, result.user.accessToken); 
+        const response = await googleLogin(result.user.email, result.user.accessToken, rememberMe); 
       
-        if(response) navigate("/profile");
+        if(response.role) navigate("/profile");
+
       }
     } catch (error) {
       console.error("Google Login Failed:", error);
@@ -50,21 +54,27 @@ const LoginPage = ({accountAction}) => {
     e.preventDefault();
     try {
       setError("");
-      const response = await login(email, password);
-      if (response) {
-        console.log(`Logged in as ${response.role} role`);
+      const response = await login(email, password, rememberMe);
+      if (response.role) {
+        console.log("Logged in: ", response);
         setTimeout(() => {
           navigate(response.role === "Admin" ? "/AdminPage/" : "/profile");
         }, 100);
       }
-      else setError("Network Error. Please try again later.");
-      // if (response.message == "Network Error") 
+
+      else if(response.code === "ERR_BAD_REQUEST") {
+        console.log("Bad Login:", response)
+        setError(response.response.data.message);
+      }
+
     } catch (error) {
+      console.error("Login error:", error);
       setError("Failed to login. Please try again.");
     }
   };
 
   return (
+    <>
     <div className='loginContainer'>
       <Box className={switched ? "signinBox" : "signinBox away"}>
         <SigninPage />
@@ -103,6 +113,15 @@ const LoginPage = ({accountAction}) => {
             </div>
           </div>
           {error && <p className="error-message">{error}</p>}
+          <Box width="100%" height="20px" padding="0" display="flex" flexDirection="row" justifyContent="center" gap="220px" alignItems="center">
+            <FormControlLabel
+              control={<Checkbox size="small" color="primary" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />}
+              label="Remember me"
+            />
+            <span className="forgot-password" onClick={() => setShowForgotOtpModal(true)}>
+              Forgot password?
+            </span>
+          </Box>
           <button className='loginButton' type="submit">
             Continue <ArrowForward />
           </button>
@@ -133,6 +152,19 @@ const LoginPage = ({accountAction}) => {
         <ArrowBack />
       </button>
     </div>
+
+    {showForgotOtpModal && (
+      <OtpModal
+        email={""}
+        forgotPass={true}
+        onClose={() => setShowForgotOtpModal(false)}
+        onSuccess={() => {
+          setShowForgotOtpModal(false);
+          navigate("/login");
+        }}
+      />
+    )}
+    </>
   );
 }
 

@@ -49,6 +49,10 @@
   --extraLight: 300;
   --italic: 300;
   --primary: #581B98;
+
+  --accent-color: #3498db;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --gradient-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 a {

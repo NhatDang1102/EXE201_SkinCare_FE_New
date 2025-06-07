@@ -13,7 +13,7 @@ export default function LogoutButton() {
   const { logout } = useAuth();
 
   useEffect(() => {
-      const loginForm = sessionStorage.getItem("LoggedInAs");
+      const loginForm = sessionStorage.getItem("LoggedInAs") || localStorage.getItem("LoggedInAs");
   
       if (loginForm) {
         setUserType(loginForm);
@@ -28,7 +28,7 @@ export default function LogoutButton() {
         window.dispatchEvent(new Event("storage"));
         setTimeout(() => {
           navigate("/");
-        }, 100);
+        }, 20);
       }
       else {
         await logout();
