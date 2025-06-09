@@ -1,0 +1,24 @@
+.dashBoardPage {
+    width: 100vw;
+    min-height: 120vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);   
+}
+
+body:has(.dashBoardPage) .mask {
+    height: 100px;
+    box-shadow: 0 20px 10px black;
+}
+
+body:has(.dashBoardPage) .bgImg {
+    position: absolute;
+    left: -100px;
+    filter: blur(4px);
+    width: 100%;
+    height: 100vh;
+}
+body:has(.dashBoardPage) .bgImg img {
+    width: 150%;
+}

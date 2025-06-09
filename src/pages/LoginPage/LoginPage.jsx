@@ -41,7 +41,11 @@ const LoginPage = ({accountAction}) => {
       if (result) { 
         const response = await googleLogin(result.user.email, result.user.accessToken, rememberMe); 
       
-        if(response.role) navigate("/profile");
+        if(response.role) {
+          setTimeout(() => {
+            navigate(response.role === "Admin" ? "/AdminPage/Dashboard" : "/profile");
+          }, 100);
+        }
 
       }
     } catch (error) {
@@ -56,9 +60,8 @@ const LoginPage = ({accountAction}) => {
       setError("");
       const response = await login(email, password, rememberMe);
       if (response.role) {
-        console.log("Logged in: ", response);
         setTimeout(() => {
-          navigate(response.role === "Admin" ? "/AdminPage/" : "/profile");
+          navigate(response.role === "Admin" ? "/AdminPage/Dashboard" : "/profile");
         }, 100);
       }
 

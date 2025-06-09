@@ -17,11 +17,12 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  margin-top: 20px;
+  margin-top: 40px;
   position: absolute; /* Thay đổi từ relative thành absolute */
   top: 0; /* Đặt ở vị trí đầu trang */
   left: 0; /* Đặt ở vị trí đầu trang */
   z-index: 2; /* Tăng z-index để hiển thị trên background */
+  animation: profileShow 0.6s ease forwards;
 }
 
 .profileCard {
@@ -207,6 +208,29 @@ body:has(.profilePage) .bgImg img {
     width: 150%;
 }
 
+.dashBoardNav {
+  cursor: pointer;
+  padding: 0;
+  border-radius: 8px;
+  color: #667eea;
+  background: var(--bg-color);
+  transition: all 0.2s ease;
+}
+.dashBoardNav:hover {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+@keyframes profileShow {
+  to {
+    margin-top: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .profileContainer {
     padding: 20px 16px;
@@ -235,4 +259,19 @@ body:has(.profilePage) .bgImg img {
     flex-direction: column;
     gap: 8px;
   }
+}
+
+body:has(.s-wrapper) .mask {
+    height: 100px;
+}
+
+body:has(.s-wrapper) .bgImg {
+    position: absolute;
+    left: -100px;
+    filter: blur(8px);
+    width: 100%;
+    height: 100vh;
+}
+body:has(.s-wrapper) .bgImg img {
+    width: 150%;
 }
