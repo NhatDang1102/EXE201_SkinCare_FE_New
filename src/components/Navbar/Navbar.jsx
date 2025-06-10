@@ -85,10 +85,11 @@ const navbar = ({selected}) => {
                                 AI Consultation
                             </a>
                         </li>
-                        <li>
-                            <a>
+                         <li>
+                            <Link to="top" spy={true} smooth={true} className={selected === "blog" ? 'selected' : ''}
+                               onClick={() => navigate('/blog')} style={{ cursor: 'pointer' }} >
                                 Blog
-                            </a>
+                            </Link>
                         </li>
                         <li>
                             <Link to="top" spy={true} smooth={true} className={selected === "profile" ? 'selected' : ''}
@@ -102,6 +103,7 @@ const navbar = ({selected}) => {
                                 About
                             </Link>
                         </li>
+                       
                     </ul>
                 </div>
                 {email ? (<LogoutButton onClick={() => setEmail(null)} />) : 

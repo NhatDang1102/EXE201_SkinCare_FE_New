@@ -15,7 +15,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
 import ProtectedRoutes from "./utils/ProtectedRoute";
 import VIPPurchasePage from "./pages/VIPPurchasePage/VIPPurchasePage";
-
+import BlogPage from "./pages/BlogPage/BlogPage";
 function App() {
   return (
     <AuthProvider>
@@ -72,6 +72,7 @@ function AppRoutes() {
           <Route path='/editprofile' element={ <ThemeProvider> <Navbar selected={"profile"}/> <EditProfilePage /><Footer/></ThemeProvider> } />
         </Route>
         <Route path="/VIP-purchase" element={<ThemeProvider> <Navbar selected={""}/> <VIPPurchasePage /> <Footer /> </ThemeProvider> } />
+        <Route path="/blog" element={<ThemeProvider> <Navbar selected={"blog"}/> <BlogPage /> <Footer /> </ThemeProvider> } />
         
       </Routes>
     </>
