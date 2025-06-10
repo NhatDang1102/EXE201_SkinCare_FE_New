@@ -29,13 +29,15 @@ export default function BlogPage() {
                   className="skinBlog-img"
                 />
               </div>
-              
               <div className="skinBlog-content">
                 <a className="skinBlog-postTitle" href={`/blog/${blog.id}`}>
                   {blog.title}
                 </a>
+                  <div className="skinBlog-desc">
+    {blog.content}
+  </div>
                 <div className="skinBlog-meta">
-                  {new Date(blog.createdAt).toLocaleDateString("vi-VN")} | BY Team 202
+                  {new Date(blog.createdAt).toLocaleDateString("vi-VN")} | By Team 202
                 </div>
                 <a
                   className="skinBlog-link"
