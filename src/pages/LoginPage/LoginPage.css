@@ -317,6 +317,20 @@
 }
 
 .error-message {
-    color: red;
-    margin-bottom: -20px;
+    position: absolute;
+    z-index: 2;
+    width: 70%;
+    border-radius: 8px;
+    background-color: red;
+    color: white;
+    transform: translateY(100px);
+    opacity: 0;
+    animation: 0.3s errorPop forwards;
+}
+
+@keyframes errorPop {
+    to{
+        transform: translateY(90px);
+        opacity: 1;
+    }
 }

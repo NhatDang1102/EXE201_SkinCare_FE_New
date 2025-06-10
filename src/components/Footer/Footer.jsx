@@ -18,8 +18,13 @@ const Footer = () => {
             <div> <span>Features</span> <span>Community</span> <span>AI Consultation</span> <span>Product Hub</span> </div>
             <div> <span>Company</span> <span>About Us</span> <span>Blog</span> <span>Contact</span> </div>
             <div> <span>Follow Us</span>  
-                <span className="f-icons"> <Facebook style={{color: "gray", size: "3rem"}} /> <LinkedIn style={{color: "gray", size: "3rem"}} />
-                       <YouTube style={{color: "gray", size: "3rem"}} /> <Instagram style={{color: "gray", size: "3rem"}} />
+                <span className="f-icons"> 
+                  <a href='https://www.facebook.com/profile.php?id=61576623442340'>
+                    <Facebook style={{color: "gray", size: "3rem"}} />
+                  </a> 
+                  <LinkedIn style={{color: "gray", size: "3rem"}} />
+                  <YouTube style={{color: "gray", size: "3rem"}} /> 
+                  <Instagram style={{color: "gray", size: "3rem"}} />
                 </span>
             </div>
       </div>

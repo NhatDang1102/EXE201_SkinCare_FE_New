@@ -1,0 +1,223 @@
+.dashBoardPage {
+    width: 100vw;
+    height: 100vmax;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: end;
+    color: var(--primary-text-color);
+    overflow: hidden;
+}
+
+.dashBoardContainer {
+    z-index: 10;
+    width: 80%;
+    margin: 20px 50px 0 0;
+    background-color: #edededc6;
+    color: var(--primary-text-color);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+}
+
+.dashBoardContainer .headerContainer {
+    width: 100%;
+    padding: 40px;
+}
+
+.dashBoardContainer .counterContainer {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.counterContainer .trackerBox {
+    width: 240px;
+    height: 80px;
+    background-color: #171821;
+    border: 0.5px solid #ccc;
+}
+
+.statistaContainer {
+    width: 95%;
+    padding: 0 0 30px 0;
+    margin: 20px 10px 20px 10px;
+    background-color: #21222D;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.statistaContainer .statTitle {
+    max-width: 200px;
+    text-align: left;
+    margin: 10px 0 0 40px;
+    font-size: 20px; font-weight: 600;
+    color: white;
+}
+
+.statistaContainer .statSubTitle {
+    max-width: 200px;
+    text-align: left;
+    margin: 0 0 20px 40px;
+    font-size: 12px;
+    color: gray;
+}
+
+.statistaContainer .trackerContainer {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.statistaContainer .trackerContainer .salesTrackerBox {
+    width: 200px;
+    height: 200px;
+    background-color: #171821;
+    display: flex;
+    padding: 0 0 40px 0;
+    scale: 1;
+    border: 2px solid transparent;
+    transition: all 0.5s ease;
+}
+.statistaContainer .trackerContainer .salesTrackerBox:hover {
+    scale: 1.1;
+    border: 2px solid aqua;
+    transition: all 0.3s ease;
+}
+
+.statistaContainer .trackerContainer .salesTrackerBox:first-child svg {
+    margin: 30px 0 50px 20px;
+    color: #FEB95A;
+    align-self: baseline;
+    scale: 1.5;
+}
+.statistaContainer .trackerContainer .salesTrackerBox:nth-child(2) svg {
+    margin: 30px 0 50px 20px;
+    color: #A9DFD8;
+    align-self: baseline;
+    scale: 1.5;
+}
+.statistaContainer .trackerContainer .salesTrackerBox:nth-child(3) svg {
+    margin: 30px 0 50px 20px;
+    color: #F2C8ED;
+    align-self: baseline;
+    scale: 1.5;
+}
+.statistaContainer .trackerContainer .salesTrackerBox:last-child svg {
+    margin: 30px 0 50px 20px;
+    color: #20AEF3;
+    align-self: baseline;
+    scale: 1.5;
+}
+
+.statistaContainer .trackerContainer .salesTrackerBox:first-child p:last-child {
+    margin-top: -15px;
+    color: #FEB95A;
+}
+.statistaContainer .trackerContainer .salesTrackerBox:nth-child(2) p:last-child {
+    margin-top: -15px;
+    color: #A9DFD8;
+}
+.statistaContainer .trackerContainer .salesTrackerBox:nth-child(3) p:last-child {
+    margin-top: -15px;
+    color: #F2C8ED;
+}
+.statistaContainer .trackerContainer .salesTrackerBox:last-child p:last-child {
+    margin-top: -15px;
+    color: #20AEF3;
+}
+
+.chartContainer {
+    width: 30%;
+    padding: 0 0 30px 0;
+    margin: 20px 10px 20px 20px;
+    background-color: #21222D;
+    border-radius: 12px;
+    align-self: baseline;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.chartContainer .chartTitle {
+    max-width: 200px;
+    text-align: left;
+    margin: 10px 0 0 40px;
+    font-size: 20px; font-weight: 600;
+    color: white;
+}
+.chartContainer .chartSubTitle {
+    max-width: 200px;
+    text-align: left;
+    margin: 0 0 0 40px;
+    font-size: 12px; font-weight: 200;
+    color: white;
+}
+
+.progressGaugeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progressGaugeContainer > * {
+    position: absolute;
+}
+
+.progressGaugeContainer .valuePercentage {
+    color: white;
+    font-size: 38px;
+    font-weight: 700;
+    padding-top: 40px;
+}
+
+.dashBoardContainer .progressGaugeContainer .sc-kAFUCS.cWJcMT .MuiGauge-referenceArc-etyMIK {
+    fill: #A9DFD8;
+}
+
+.dashBoardContainer .progressGaugeContainer .sc-kAFUCS.cWJcMT path:first-child {
+    fill: #2B2B36;
+}
+
+.lineChartContainer {
+    width: 60%;
+    padding: 0 0 30px 0;
+    margin: 20px 10px 20px 20px;
+    background-color: #21222D;
+    border-radius: 12px;
+    align-self: baseline;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.lineChartContainer .chartTitle {
+    max-width: 200px;
+    text-align: left;
+    margin: 10px 0 0 40px;
+    font-size: 20px; font-weight: 600;
+    color: white;
+}
+.lineChartContainer .chartSubTitle {
+    max-width: 200px;
+    text-align: left;
+    margin: 0 0 0 40px;
+    font-size: 12px; font-weight: 200;
+    color: white;
+}
+
+.dashBoardContainer:has(.lineChartContainer) {
+    flex-direction: row;
+}
