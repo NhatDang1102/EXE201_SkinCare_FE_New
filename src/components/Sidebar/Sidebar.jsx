@@ -33,7 +33,7 @@ const Sidebar = ({selected}) => {
     const position = useTransform(
         scrollYProgress,
         [0, 0.02],
-        ["5%", "0%"]
+        ["0%", "-5%"]
     )
     const borderColor = useTransform(
         scrollYProgress,
@@ -63,7 +63,6 @@ const Sidebar = ({selected}) => {
                 x: position,
                 boxShadow: showShadow,
                 backgroundColor: bgColor,
-                backdropFilter: blurFilter,
             }}
         >
             {/* top */}
