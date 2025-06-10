@@ -104,8 +104,17 @@ export default function DashboardPage() {
                     <div className='valuePercentage'>30%</div>
                 </div>
             </div>
-          
+
+            <div className="lineChartContainer">
+                <div className="chartTitle">Earnings</div>
+                <span className="chartSubTitle">Total Expense</span>
+                
+                <div className="lineChartContainer" >
+                    
+                </div>
+            </div>
         </motion.div >
+
     </div>
   )
 }

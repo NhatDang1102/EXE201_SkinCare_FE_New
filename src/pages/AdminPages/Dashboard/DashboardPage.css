@@ -190,3 +190,34 @@
 .dashBoardContainer .progressGaugeContainer .sc-kAFUCS.cWJcMT path:first-child {
     fill: #2B2B36;
 }
+
+.lineChartContainer {
+    width: 60%;
+    padding: 0 0 30px 0;
+    margin: 20px 10px 20px 20px;
+    background-color: #21222D;
+    border-radius: 12px;
+    align-self: baseline;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.lineChartContainer .chartTitle {
+    max-width: 200px;
+    text-align: left;
+    margin: 10px 0 0 40px;
+    font-size: 20px; font-weight: 600;
+    color: white;
+}
+.lineChartContainer .chartSubTitle {
+    max-width: 200px;
+    text-align: left;
+    margin: 0 0 0 40px;
+    font-size: 12px; font-weight: 200;
+    color: white;
+}
+
+.dashBoardContainer:has(.lineChartContainer) {
+    flex-direction: row;
+}
