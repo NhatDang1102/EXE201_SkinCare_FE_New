@@ -214,3 +214,164 @@ span.messages__dot {
 .chatbox__send--footer {
     color: white;
 }
+
+/* Main Animations */
+@keyframes fadeIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes disappear {
+  0%, 99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+@keyframes appear {
+  0%, 99% {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+  100% {
+    opacity: 1;
+    width: auto;
+    height: auto;
+  }
+}
+
+.chatbox__support:has(.container.login-required) {
+    transform: translate(-20px, -180px);
+    height: 0;
+    width: 350px;
+    display: flex;
+    justify-content: right;
+    animation: disappear 1s ease-in-out 8s forwards;
+}
+.container.login-required {
+  display: flex;
+  height: 300px;
+  justify-content: right;
+}
+
+.card {
+  width: 20vw;
+}
+
+/* Chat Thread */
+.chat-thread > .message {
+  transform: translateY(10px);
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+.chat-thread > .message:nth-child(1) {
+  animation-delay: 0s;
+}
+.chat-thread > .message:nth-child(2) {
+  animation-delay: 1.5s;
+}
+
+/* Chat Bubble */
+.message {
+  display: flex;
+  justify-content: right;
+  margin: 40px 0 0 0;
+  width: 100%;
+  position: relative;
+}
+
+.message + .message {
+  margin-top: 10px;
+}
+
+.message-content {
+  display: flex;
+  align-items: center;
+  padding: 0.75em 1.5em;
+  background: #ECF0F1;
+  border-radius: 20px;
+  position: relative;
+}
+
+.message-content:first-child p {
+  opacity: 0;
+  margin: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  animation: appear 0s ease-in-out forwards;
+  animation-delay: 0.5s;
+}
+
+.message-content:last-child p {
+  opacity: 0;
+  margin: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  animation: appear 0s ease-in-out forwards;
+  animation-delay: 1.5s;
+}
+
+/* Chat Tail */
+.message::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  bottom: -20px;
+  border-left: 25px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 25px solid #ECF0F1;
+}
+
+/* Typing Indicator */
+.message:first-child .message-content .typing-indicator {
+  display: flex;
+  justify-content: right;
+  animation: disappear 0s ease-in-out 1s forwards;
+}
+
+.message:last-child .message-content .typing-indicator {
+  display: flex;
+  justify-content: right;
+  animation: disappear 0s ease-in-out 1.8s forwards;
+}
+
+.typing-indicator span {
+  height: 10px;
+  width: 10px;
+  margin: 0 1px;
+  background-color: #9E9EA1;
+  display: block;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation: blink 1s infinite 0.3s;
+}
+.typing-indicator span:nth-child(2) {
+  animation: blink 1s infinite 0.6s;
+}
+.typing-indicator span:nth-child(3) {
+  animation: blink 1s infinite 0.9s;
+}
