@@ -226,8 +226,6 @@
 .GoogleLoginButton .GGIcon{
     scale: 0.8;
 }
-.GoogleLoginButton:hover .GGIcon{
-}
 
 .FaceLoginButton {
     width: 200px; height: 38px;

@@ -4,6 +4,8 @@ import { AuthProvider, useAuth } from "./features/Auth/useAuth";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import { ThemeProvider } from "./Context";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/ReactToastify.css'
 import './App.css';
 import HomePage from "./pages/HomePage/HomePage";
 import Navbar from "./components/Navbar/Navbar";
@@ -51,6 +53,7 @@ function AppRoutes() {
 
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick pauseOnHover draggable />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={

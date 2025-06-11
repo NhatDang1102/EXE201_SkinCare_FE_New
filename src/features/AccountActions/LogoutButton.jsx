@@ -3,6 +3,7 @@ import { auth } from "../../firebase";
 import { useAuth } from "../../features/Auth/useAuth"
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { showSuccess, showError, showLoading, updateToast } from '../../utils/toastUtils';
 
 import "./LogoutButton.css"
 
@@ -21,6 +22,7 @@ export default function LogoutButton() {
     }, []);
   
   const handleLogout = async () => {
+    const toastId = showLoading("Logging out...");
     try {
       if (userType === 'AccountIndex'){
         await logout();
@@ -29,6 +31,7 @@ export default function LogoutButton() {
         setTimeout(() => {
           navigate("/");
         }, 20);
+        updateToast(toastId, "success", "Logout successfully.");
       }
       else {
         await logout();
@@ -38,9 +41,11 @@ export default function LogoutButton() {
 
         setTimeout(() => {
           navigate("/");
-        }, 100);
+        }, 20);
+        updateToast(toastId, "success", "Logout successfully.");
       }
     } catch (error) {
+      updateToast(toastId, "error", "Something went wrong while logging out.");
       console.error("Logout Failed:", error);
     }
   };

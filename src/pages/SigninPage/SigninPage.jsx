@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Visibility, VisibilityOff, ArrowForward, Mail, Lock, Person } from '@mui/icons-material';
 import { useAuth } from '../../features/Auth/useAuth';
 import { signUp } from '../../features/Auth/signUp';
+import { showSuccess, showError, showLoading, updateToast } from '../../utils/toastUtils'; // adjust path
 
 import "../LoginPage/LoginPage.css";
 import "./SigninPage.css";
@@ -32,6 +33,8 @@ export default function SigninPage() {
       return;
     }
 
+    const toastId = showLoading("Sending OTP to email...");
+
     try {
       setError("");
       const result = await signUp({
@@ -41,19 +44,21 @@ export default function SigninPage() {
       });
 
       if (result.message == "Network Error") {
+        updateToast(toastId, "error", "Network Error. Please try again.");
         setError("Network Error. Please try again later.");
       }
       else if (result.message == "Email đã tồn tại hoặc chưa xác thực OTP.") {
+        updateToast(toastId, "error", result.message);
         setError(result.message);
       }
 
+      updateToast(toastId, "success", "Please verify OTP sent to email.");
       // Show OTP popup
-    setShowOtpModal(true);
-
-    console.log("Sign up success:", result);
-    //   navigate("/login"); // Or auto-login or go to dashboard
+      setShowOtpModal(true);
+      // navigate("/login"); // Or auto-login or go to dashboard
 
     } catch (error) {
+      updateToast(toastId, "error", "Failed to sign up.");
       setError("Failed to sign up. Please try again.");
     }
   };
