@@ -218,8 +218,215 @@
   color: #6a6a6a;
   margin-top: 12px;
 }
+.product-review-section {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto 72px auto;
+  gap: 50px;
+  padding: 44px 10px 32px 10px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 14px rgba(80,80,120,0.06);
+}
+.review-summary {
+  flex: 0 0 310px;
+  border-right: 1px solid #eaeaea;
+  padding-right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.review-title {
+  font-size: 1.17rem;
+  font-weight: 600;
+  margin-bottom: 13px;
+}
+.review-stars {
+  font-size: 1.44rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.review-stars .stars { color: #ffc700; font-size: 1.26em;}
+.review-avg { color: #232; font-size: 1.04em;}
+.review-total { color: #6b6b6b; font-size: 1em; margin-bottom: 13px;}
+.review-bars { width: 100%; margin-bottom: 17px;}
+.review-bar-row {
+  display: flex;
+  align-items: center;
+  font-size: 0.98em;
+  margin-bottom: 2.5px;
+  gap: 7px;
+}
+.star-num { width: 29px; color: #444;}
+.bar-bg {
+  width: 120px; height: 9px;
+  background: #eee;
+  border-radius: 7px;
+  margin: 0 6px;
+  position: relative;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: #222;
+  border-radius: 7px;
+  transition: width 0.2s;
+}
+.star-cnt { width: 18px; text-align: right; color: #232;}
+.review-create {
+  margin-top: 14px;
+  font-size: 1.03em;
+  color: #002d61;
+  text-decoration: underline;
+  cursor: pointer;
+}
 
-/* ===== Responsive cho cả 2 phần ===== */
+.review-detail {
+  flex: 1.6;
+  padding-left: 5px;
+  text-align: left; 
+}
+.review-detail-title {
+  font-size: 1.12rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.review-detail-note {
+  font-size: 0.97em;
+  color: #333;
+  margin-bottom: 15px;
+}
+.review-empty { color: #868; font-style: italic; }
+.review-item {
+  margin: 18px 0;
+}
+.review-item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+.review-avatar {
+  width: 62px;
+  height: 62px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2.2px solid #e8e8e8;
+}
+.review-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.review-username {
+  font-size: 1.09em;
+  font-weight: 600;
+  color: #1d365d;
+  margin-bottom: 2px;
+}
+.review-rating {
+  color: #ffc700;
+  font-size: 1.01em;
+  letter-spacing: 1.2px;
+}
+.review-text {
+  color: #222;
+  font-size: 1.01em;
+  margin-bottom: 5px;
+}
+.review-date {
+  font-size: 0.98em;
+  color: #2d4b19;
+  margin-bottom: 2px;
+}
+.review-verified {
+  color: #39c079;
+  font-size: 0.95em;
+  font-weight: 500;
+}
+.review-helpful {
+  font-size: 0.98em;
+  margin: 5px 0;
+  color: #151515;
+}
+.review-helpful {
+  font-size: 1em;
+  margin: 16px 0 10px 0;
+  color: #111;
+  display: flex;
+  flex-direction: column;  
+  align-items: flex-start;  
+  gap: 10px;
+}
+.helpful-btn-group {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+}
+.helpful-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  padding: 16px 34px;
+  font-size: 1.07em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, color 0.14s, border 0.13s;
+  box-shadow: 0 2px 6px rgba(20,20,30,0.03);
+  letter-spacing: 0.5px;
+  min-width: 110px;
+}
+.helpful-btn b {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  font-size: 1em;
+}
+.helpful-icon {
+  font-size: 1.15em;
+  margin-right: 11px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.review-report {
+  font-size: 0.97em;
+  color: #3d3d6e;
+  text-decoration: underline;
+  margin-top: 7px;
+  cursor: pointer;
+}
+hr {
+  border: none;
+  border-top: 1px solid #ededed;
+  margin: 15px 0 8px 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .product-review-section {
+    flex-direction: column;
+    gap: 34px;
+    padding: 16px 2vw 20px 2vw;
+  }
+  .review-summary {
+    border-right: none;
+    border-bottom: 1px solid #eaeaea;
+    padding-right: 0;
+    padding-bottom: 18px;
+    align-items: center;
+  }
+  .review-detail { padding-left: 0;}
+  .review-item-row { gap: 10px;}
+  .review-avatar { width: 50px; height: 50px;}
+  
+}
+
 @media (max-width: 1050px) {
   .product-ecom-container {
     gap: 30px;
