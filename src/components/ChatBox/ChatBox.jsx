@@ -7,6 +7,7 @@ import { FiberManualRecord, Send } from '@mui/icons-material';
 
 const ChatBox = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAllowed, setIsAllowed] = useState(false);
   const [messages, setMessages] = useState([
     { type: 'bot', text: 'Hello! Welcome to our skincare webapp. I am your personal AI, How can I assist you today?' }
   ]);
@@ -16,7 +17,17 @@ const ChatBox = () => {
   const messagesEndRef = useRef(null);
 
   const toggleChatbox = () => {
-    setIsOpen(prev => !prev);
+    const checkUser = sessionStorage.getItem("username") || localStorage.getItem("username");
+    if (checkUser) {
+      setIsAllowed(true);    // allow showing full chat UI
+      setIsOpen(prev => !prev);
+    } else {
+      setIsAllowed(false);   // show login required notice
+      setIsOpen(true);
+      setTimeout(() => {
+        setIsOpen(false);
+      }, 8000);
+    }
   };
 
   const scrollToBottom = () => {
@@ -64,6 +75,7 @@ const ChatBox = () => {
 
   return (
     <div className="chatbox">
+      {isAllowed ? (
       <div className={`chatbox__support ${isOpen ? 'chatbox--active' : ''}`}>
         <div className="chatbox__header">
           <div className="chatbox__image--header">
@@ -117,6 +129,34 @@ const ChatBox = () => {
           </p>
         </div>
       </div>
+      ) : (
+        <>{isOpen && (<div className="chatbox__support chatbox--active">
+          <div className="container login-required">
+            <div className="card">
+              <div className="card-body">
+                <div className="chat-thread">
+                  <div className="message">
+                    <div className="message-content">
+                      <div className="typing-indicator">
+                        <span></span><span></span><span></span>
+                      </div>
+                      <p>Welcome back!</p>
+                    </div>
+                  </div>
+                  <div className="message">
+                    <div className="message-content">
+                      <div className="typing-indicator">
+                        <span></span><span></span><span></span>
+                      </div>
+                      <p>It seems you haven't logged in to ask me, please log in first.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>)}</>
+    )}
 
       <div className="chatbox__button" onClick={toggleChatbox}>
         <button>
