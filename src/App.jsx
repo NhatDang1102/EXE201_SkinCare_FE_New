@@ -4,6 +4,8 @@ import { AuthProvider, useAuth } from "./features/Auth/useAuth";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import { ThemeProvider } from "./Context";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/ReactToastify.css'
 import './App.css';
 import HomePage from "./pages/HomePage/HomePage";
 import Navbar from "./components/Navbar/Navbar";
@@ -17,6 +19,8 @@ import ProtectedRoutes from "./utils/ProtectedRoute";
 import VIPPurchasePage from "./pages/VIPPurchasePage/VIPPurchasePage";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
+import DashboardPage from "./pages/AdminPages/Dashboard/DashboardPage";
+import Sidebar from "./components/Sidebar/Sidebar";
 function App() {
   return (
     <AuthProvider>
@@ -49,6 +53,7 @@ function AppRoutes() {
 
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick pauseOnHover draggable />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={
@@ -71,6 +76,9 @@ function AppRoutes() {
         <Route element={user ? <ProtectedRoutes user={user} /> : <ProtectedRoutes user={userAuth} />}>
           <Route path='/profile' element={ <ThemeProvider> <Navbar selected={"profile"}/> <ProfilePage /><Footer/></ThemeProvider> } />
           <Route path='/editprofile' element={ <ThemeProvider> <Navbar selected={"profile"}/> <EditProfilePage /><Footer/></ThemeProvider> } />
+
+          <Route path='/AdminPage/Dashboard' element={ <ThemeProvider> <Sidebar selected={"Dashboard"}/> <DashboardPage /> </ThemeProvider> } />
+          <Route path='/AdminPage/Profile' element={ <ThemeProvider> <Sidebar selected={"Profile"}/> <ProfilePage /> </ThemeProvider> } />
         </Route>
         <Route path="/VIP-purchase" element={<ThemeProvider> <Navbar selected={""}/> <VIPPurchasePage /> <Footer /> </ThemeProvider> } />
         <Route path="/blog" element={<ThemeProvider> <Navbar selected={"blog"}/> <BlogPage /> <Footer /> </ThemeProvider> } />

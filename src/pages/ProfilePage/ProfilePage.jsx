@@ -50,7 +50,7 @@ const navigate = useNavigate();
             <div className="userName">
               {userProfile.username || "Loading..."}
             </div>
-            <div className="userRole">{userProfile.role}</div>
+            <div className="userRole">{userProfile.role} - {userProfile.role === 'Admin' ? (<a className="dashBoardNav" onClick={() => navigate("/AdminPage/Dashboard")}>Dashboard</a>) : (<></>)}</div>
           </div>
 
           <div className="profileDetails">

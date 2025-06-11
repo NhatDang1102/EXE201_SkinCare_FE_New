@@ -5,6 +5,7 @@ import { useAuth } from '../../features/Auth/useAuth';
 
 import { Box, Checkbox, FormControlLabel } from '@mui/material';
 import { Visibility, VisibilityOff, ArrowBack, ArrowForward, Mail, Lock } from '@mui/icons-material';
+import { showSuccess, showError, showLoading, updateToast } from '../../utils/toastUtils';
 
 import "./LoginPage.css";
 import GoogleIcon from '../../assets/24px.svg';
@@ -35,40 +36,50 @@ const LoginPage = ({accountAction}) => {
   };
 
   const handleGoogleLogin = async () => {
+    const toastId = showLoading("Logging in with Google...");
     try {
       const result = await signInWithPopup(auth, provider);
 
       if (result) { 
         const response = await googleLogin(result.user.email, result.user.accessToken, rememberMe); 
       
-        if(response.role) navigate("/profile");
+        if(response.role) {
+          updateToast(toastId, "success", "Google Login Successful");
+          setTimeout(() => {
+            navigate(response.role === "Admin" ? "/AdminPage/Dashboard" : "/profile");
+          }, 100);
+        }
 
       }
     } catch (error) {
       console.error("Google Login Failed:", error);
+      updateToast(toastId, "error", "Google Login Failed. Please try again.");
       setError("Failed to login. Please try again.");
     }
   };
 
   const handleNormalLogin = async (e) => {
     e.preventDefault();
+    const toastId = showLoading("Logging in...");
     try {
       setError("");
       const response = await login(email, password, rememberMe);
       if (response.role) {
-        console.log("Logged in: ", response);
+        updateToast(toastId, "success", "Login Successful");
         setTimeout(() => {
-          navigate(response.role === "Admin" ? "/AdminPage/" : "/profile");
+          navigate(response.role === "Admin" ? "/AdminPage/Dashboard" : "/profile");
         }, 100);
       }
 
       else if(response.code === "ERR_BAD_REQUEST") {
-        console.log("Bad Login:", response)
+        updateToast(toastId, "error", response.response.data.message);
+        console.log("Error Login:", response)
         setError(response.response.data.message);
       }
 
     } catch (error) {
       console.error("Login error:", error);
+      updateToast(toastId, "error", "Network Error. Please try again.");
       setError("Failed to login. Please try again.");
     }
   };
