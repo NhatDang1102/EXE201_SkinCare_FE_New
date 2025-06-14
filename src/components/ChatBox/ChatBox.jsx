@@ -62,7 +62,7 @@ const ChatBox = () => {
       setMessages(prev => [...prev, { type: 'bot', text: botResponse }]);
     } catch (error) {
       console.error('Chat API error:', error);
-      setMessages(prev => [...prev, { type: 'bot', text: 'Oops! Something went wrong. Please try again.' }]);
+      setMessages(prev => [...prev, { type: 'bot', text: 'Oops! Something went wrong while processing your request. Please try again.' }]);
     } finally {
       setIsTyping(false);
       scrollToBottom();

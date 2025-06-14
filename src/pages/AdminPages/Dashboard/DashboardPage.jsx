@@ -8,12 +8,75 @@ import SalesTracker from "../../../components/Charts/SalesTracker"
 import { AccountBox, AssignmentInd, BarChart, ListAlt, LocalMall, PermContactCalendar, PersonOutline } from "@mui/icons-material"
 import CompositionExample from "../../../components/Charts/GaugePointer"
 import { LineChart } from "@mui/x-charts"
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function DashboardPage() {
   const { scrollYProgress } = useScroll();
+  const [dailyRegister, setDailyRegister] = useState(0);
+  const [weeklyRegister, setWeeklyRegister] = useState(0);
+  const [monthlyRegister, setMonthlyRegister] = useState(0);
 
   useMotionValueEvent(scrollYProgress, "change",
   );
+
+  useEffect(() => {
+    const fetchDailyRegister = async () => {
+      try {
+        const response = await axios.get("https://skincareapp.somee.com/SkinCare/Admin/reg-users-daily", {
+          withCredentials: true
+        });
+        if (response.data && typeof response.data.count === "number") {
+          setDailyRegister(response.data.count);
+        }
+      } catch (error) {
+        console.error("Failed to fetch daily register count", error);
+      }
+    };
+
+    fetchDailyRegister();
+    const interval = setInterval(fetchDailyRegister, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const fetchWeeklyRegister = async () => {
+      try {
+        const response = await axios.get("https://skincareapp.somee.com/SkinCare/Admin/reg-users-weekly", {
+          withCredentials: true
+        });
+        if (response.data && typeof response.data.count === "number") {
+          setWeeklyRegister(response.data.count);
+        }
+      } catch (error) {
+        console.error("Failed to fetch weekly register count", error);
+      }
+    };
+
+    fetchWeeklyRegister();
+    const interval = setInterval(fetchWeeklyRegister, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const fetchMonthlyRegister = async () => {
+      try {
+        const response = await axios.get("https://skincareapp.somee.com/SkinCare/Admin/reg-users-monthly", {
+          withCredentials: true
+        });
+        if (response.data && typeof response.data.count === "number") {
+          console.log('Count Month', response.data.count);
+          setMonthlyRegister(response.data.count);
+        }
+      } catch (error) {
+        console.error("Failed to fetch monthly register count", error);
+      }
+    };
+
+    fetchMonthlyRegister();
+    const interval = setInterval(fetchMonthlyRegister, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   const position1 = useTransform(
       scrollYProgress,
@@ -68,9 +131,9 @@ export default function DashboardPage() {
           <Header title="ADMIN DASHBOARD" subtitle="Welcome to your dashboard" />
           
           <div className="counterContainer" >
-            <Tracker icon={<AccountBox />} title="Daily Register" number="100000000" />
-            <Tracker icon={<AssignmentInd />} title="Weekly Register" number="20" />
-            <Tracker icon={<PermContactCalendar />} title="Monthly Register" number="80" />
+            <Tracker icon={<AccountBox />} title="Daily Register" number={dailyRegister} />
+            <Tracker icon={<AssignmentInd />} title="Weekly Register" number={weeklyRegister} />
+            <Tracker icon={<PermContactCalendar />} title="Monthly Register" number={monthlyRegister} />
           </div>
           
         </motion.div >
@@ -83,10 +146,10 @@ export default function DashboardPage() {
                 <span className="statSubTitle">Sales Summary</span>
                 
                 <div className="trackerContainer" >
-                    <SalesTracker icon={<BarChart />} number="$5k" title="Total Sales" profit="+10% from yesterday" />
-                    <SalesTracker icon={<ListAlt />} number="500" title="Total Order" profit="+10% from yesterday" />
-                    <SalesTracker icon={<LocalMall />} number="9" title="Product Sold" profit="+10% from yesterday" />
-                    <SalesTracker icon={<PersonOutline />} number="12" title="New Customer" profit="+10% from yesterday" />
+                    <SalesTracker icon={<BarChart />} number="5" title="Total Sales" profit="+10% from yesterday" />
+                    <SalesTracker icon={<ListAlt />} number="20" title="Total Order" profit="57% product delivered" />
+                    <SalesTracker icon={<LocalMall />} number="9" title="Product Sold" profit="+5% product sold" />
+                    <SalesTracker icon={<PersonOutline />} number={monthlyRegister} title="New Customer" profit="+40% since last month" />
                 </div>
             </div>
           

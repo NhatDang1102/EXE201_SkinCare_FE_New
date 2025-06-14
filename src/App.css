@@ -32,9 +32,14 @@
 
 
 /* Base style for all toasts */
+.Toastify__toast--default {
+  box-shadow: 5px 5px 5px #777777,
+              10px 10px 10px #dedede;
+}
+
 .Toastify__toast--success {
-  box-shadow: 5px 5px 5px #28a745,
-              10px 10px 10px #5ddc84 30%;
+  box-shadow: 5px 5px 5px #2a9a44,
+              10px 10px 10px #5d996f;
 }
 
 .Toastify__toast--error {
