@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 #root {
   text-align: center;
 }
@@ -30,29 +32,23 @@
   }
 }
 
-
 /* Base style for all toasts */
 .Toastify__toast--default {
-  box-shadow: 5px 5px 5px #777777,
-              10px 10px 10px #dedede;
+  box-shadow: 5px 5px 5px #777777, 10px 10px 10px #dedede;
 }
 
 .Toastify__toast--success {
-  box-shadow: 5px 5px 5px #2a9a44,
-              10px 10px 10px #5d996f;
+  box-shadow: 5px 5px 5px #2a9a44, 10px 10px 10px #5d996f;
 }
 
 .Toastify__toast--error {
-  box-shadow: 5px 5px 5px #dc3545,
-              10px 10px 10px #ff6e7f;
+  box-shadow: 5px 5px 5px #dc3545, 10px 10px 10px #ff6e7f;
 }
 
 .Toastify__toast--warning {
-  box-shadow: 5px 5px 5px #ffc107,
-              10px 10px 10px #ffe97f 30%;
+  box-shadow: 5px 5px 5px #ffc107, 10px 10px 10px #ffe97f 30%;
 }
 
 .Toastify__toast--info {
-  box-shadow: 5px 5px 5px #17a2b8,
-              10px 10px 10px #8fd3f4;
+  box-shadow: 5px 5px 5px #17a2b8, 10px 10px 10px #8fd3f4;
 }
