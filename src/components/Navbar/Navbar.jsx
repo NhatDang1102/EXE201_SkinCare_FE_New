@@ -90,7 +90,16 @@ const navbar = ({ selected }) => {
               </Link>
             </li>
             <li>
-              <a>AI Consultation1111</a>
+              <Link
+                to="top"
+                spy={true}
+                smooth={true}
+                className={selected === "consultation" ? "selected" : ""}
+                onClick={() => navigate("/consultation")}
+                style={{ cursor: "pointer" }}
+              >
+                AI Consultation
+              </Link>
             </li>
             <li>
               <Link
