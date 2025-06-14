@@ -13,8 +13,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --bg-color: #FFFF;
-  --secondary-bg-color: #FFf5f5f5;
+  --bg-color: #ffff;
+  --secondary-bg-color: #fff5f5f5;
   --foreground-color: #ffffff;
   --primary-text-color: #000000;
   --secondary-text-color: #808080;
@@ -28,20 +28,24 @@
   --btn-background-color4: orange;
   --btn-background-color5: #f539ff;
 
-  --yellow: #F5C32C;
-  --orange : #FCA61F;
-  --black : #ccc;
-  --gray : #788097;
-  --blue: #A9DFD8;
-  --blueCard : #DDF8FE;
+  --yellow: #f5c32c;
+  --orange: #fca61f;
+  --black: #ccc;
+  --gray: #788097;
+  --blue: #a9dfd8;
+  --blueCard: #ddf8fe;
   --purple: rgb(238 210 255);
-  --boxShadow : 0px 19px 60px rgb(0 0 0 / 8%);
+  --boxShadow: 0px 19px 60px rgb(0 0 0 / 8%);
   --orangeCard: rgba(252, 166, 31, 0.45);
   --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
 
   /*Chat box*/
-  --primaryGradient: linear-gradient(93.12deg, #E8A689 0.52%, #de8764 100%);
-  --secondaryGradient: linear-gradient(268.91deg, #E8A689 -2.14%, #de8764 99.69%);
+  --primaryGradient: linear-gradient(93.12deg, #e8a689 0.52%, #de8764 100%);
+  --secondaryGradient: linear-gradient(
+    268.91deg,
+    #e8a689 -2.14%,
+    #de8764 99.69%
+  );
   --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
   --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
   --light: 300;
@@ -49,7 +53,7 @@
   --semiBold: 600;
   --extraLight: 300;
   --italic: 300;
-  --primary: #581B98;
+  --primary: #581b98;
 
   --accent-color: #3498db;
   --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -63,14 +67,6 @@ a {
 }
 a:hover {
   color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -98,7 +94,7 @@ button:focus-visible {
 }
 
 [data-theme="dark"] {
-  --bg-color: #0F0F0F;
+  --bg-color: #0f0f0f;
   --secondary-bg-color: #121212;
   --foreground-color: #272727;
   --primary-text-color: #ffffff;

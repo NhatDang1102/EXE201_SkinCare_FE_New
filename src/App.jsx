@@ -21,6 +21,7 @@ import BlogPage from "./pages/BlogPage/BlogPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import DashboardPage from "./pages/AdminPages/Dashboard/DashboardPage";
 import Sidebar from "./components/Sidebar/Sidebar";
+import AIConsultation from "./pages/Consultation/AIConsultation";
 function App() {
   return (
     <AuthProvider>
@@ -129,8 +130,7 @@ function AppRoutes() {
             element={
               <ThemeProvider>
                 {" "}
-                <Navbar selected={"consultation"} /> <EditProfilePage />
-                <Footer />
+                <Navbar selected={"consultation"} /> <AIConsultation />
               </ThemeProvider>
             }
           />
