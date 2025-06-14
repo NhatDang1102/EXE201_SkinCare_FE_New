@@ -164,7 +164,7 @@ export default function DashboardPage() {
                 
                 <div className="progressGaugeContainer" >
                     <CompositionExample />
-                    <div className='valuePercentage'>30%</div>
+                    <div className='valuePercentage'>47%</div>
                 </div>
             </div>
 
