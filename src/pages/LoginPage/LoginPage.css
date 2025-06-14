@@ -280,7 +280,7 @@
     display: flex;
     position: absolute;
     margin-bottom: 6px;
-    right: 80px;
+    right: 100px;
 }
 .passToggle.show { flex-direction: row-reverse; }
 .passToggle.hide { flex-direction: row; }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import './ChatBox.css';
 import chatIcon from '../../assets/images/icons/robo-idle-transparent.gif';
 import headerImage from '../../assets/images/Logo.png';
-import { FiberManualRecord, Send } from '@mui/icons-material';
+import { FiberManualRecord, PsychologyAlt, Send } from '@mui/icons-material';
 
 const ChatBox = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,6 +77,19 @@ const ChatBox = () => {
     <div className="chatbox">
       {isAllowed ? (
       <div className={`chatbox__support ${isOpen ? 'chatbox--active' : ''}`}>
+        <div className="threeDSpin">
+            <div className="cube">
+                <div className="top">
+                    <div className="fa-brands">AI</div>
+                </div>
+                <div className="box">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
         <div className="chatbox__header">
           <div className="chatbox__image--header">
             <img src={headerImage} alt="Header" />

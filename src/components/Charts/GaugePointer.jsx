@@ -21,10 +21,10 @@ function GaugePointer() {
     <g>
       <path
         d={`M ${cx} ${cy} L ${target.x} ${target.y}`}
-        stroke="#A9DFD8"
-        strokeWidth={4}
+        stroke="#71b9fd"
+        strokeWidth={5}
       />
-      <circle cx={cx} cy={cy} r={65} fill="#21222D" />
+      <circle cx={cx} cy={cy} r={65} fill="#ffff" />
     </g>
   );
 }

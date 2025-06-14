@@ -31,48 +31,23 @@
 }
 
 
-/* Base style for all toasts
-.Toastify__toast-container {
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  color: white;
-  animation: gradientMove 4s ease infinite;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+/* Base style for all toasts */
+.Toastify__toast--success {
+  box-shadow: 5px 5px 5px #28a745,
+              10px 10px 10px #5ddc84 30%;
 }
 
-@keyframes gradientMove {
-  0% { background-position: 0% 100%; }
-  100% { background-position: 100% 0%; }
+.Toastify__toast--error {
+  box-shadow: 5px 5px 5px #dc3545,
+              10px 10px 10px #ff6e7f;
 }
 
-.toast-success {
-  background: linear-gradient(
-    to top right,
-    #28a745 10%,
-    #5ddc84 90%
-  );
+.Toastify__toast--warning {
+  box-shadow: 5px 5px 5px #ffc107,
+              10px 10px 10px #ffe97f 30%;
 }
 
-.toast-error {
-  background: linear-gradient(
-    to top right,
-    #dc3545 10%,
-    #ff6e7f 90%
-  );
+.Toastify__toast--info {
+  box-shadow: 5px 5px 5px #17a2b8,
+              10px 10px 10px #8fd3f4;
 }
-
-.toast-warning {
-  background: linear-gradient(
-    to top right,
-    #ffc107 10%,
-    #ffe97f 90%
-  );
-}
-
-.toast-info {
-  background: linear-gradient(
-    to top right,
-    #17a2b8 10%,
-    #8fd3f4 90%
-  );
-}*/

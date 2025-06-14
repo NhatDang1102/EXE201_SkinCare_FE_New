@@ -1,4 +1,3 @@
-import { Box } from "@mui/material"
 import BGImage from "../../../components/BGImage/BGImage"
 import "./DashboardPage.css"
 import Header from "../../../components/Header/Header"
@@ -6,8 +5,9 @@ import Tracker from "../../../components/Charts/Tracker"
 
 import { motion, useScroll, useMotionValueEvent, useTransform, useInView } from "framer-motion";
 import SalesTracker from "../../../components/Charts/SalesTracker"
-import { BarChart, ListAlt, LocalMall, PersonOutline } from "@mui/icons-material"
+import { AccountBox, AssignmentInd, BarChart, ListAlt, LocalMall, PermContactCalendar, PersonOutline } from "@mui/icons-material"
 import CompositionExample from "../../../components/Charts/GaugePointer"
+import { LineChart } from "@mui/x-charts"
 
 export default function DashboardPage() {
   const { scrollYProgress } = useScroll();
@@ -68,9 +68,9 @@ export default function DashboardPage() {
           <Header title="ADMIN DASHBOARD" subtitle="Welcome to your dashboard" />
           
           <div className="counterContainer" >
-            <Tracker title="Active User" number="100" />
-            <Tracker title="Vip User" number="20" />
-            <Tracker title="Free User" number="80" />
+            <Tracker icon={<AccountBox />} title="Daily Register" number="100000000" />
+            <Tracker icon={<AssignmentInd />} title="Weekly Register" number="20" />
+            <Tracker icon={<PermContactCalendar />} title="Monthly Register" number="80" />
           </div>
           
         </motion.div >
@@ -106,11 +106,16 @@ export default function DashboardPage() {
             </div>
 
             <div className="lineChartContainer">
-                <div className="chartTitle">Earnings</div>
-                <span className="chartSubTitle">Total Expense</span>
+                <div className="chartTitle">AI Request Rate</div>
                 
-                <div className="lineChartContainer" >
-                    
+                <div className="lineChartBox" >
+                    <LineChart className="lineChart"
+                        
+                        series={[
+                            { curve: "linear", data: [1, 5, 2, 6, 3, 9.3] },
+                            { curve: "linear", data: [6, 3, 7, 9.5, 4, 2] },
+                        ]}
+                    />
                 </div>
             </div>
         </motion.div >
