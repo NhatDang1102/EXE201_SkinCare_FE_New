@@ -8,12 +8,12 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCzqd0TVpFDK3H5vzPwW_4TbrLYch6x8sE",
-  authDomain: "skincare-f2d06.firebaseapp.com",
-  projectId: "skincare-f2d06",
-  storageBucket: "skincare-f2d06.firebasestorage.app",
-  messagingSenderId: "651340502703",
-  appId: "1:651340502703:web:50e14134a42918bb65a65a"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
