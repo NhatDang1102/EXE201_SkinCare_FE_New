@@ -174,7 +174,7 @@ const AIConsultation = () => {
     }).format(price);
   };
 
-  const ProductCard = ({ product, timeIcon: timeColor }) => (
+  const ProductCard = ({ product, timeIcon: TimeIcon, timeColor }) => (
     <div
       className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group cursor-pointer transform hover:-translate-y-2"
       onClick={() => window.open(product.productLink, "_blank")}
