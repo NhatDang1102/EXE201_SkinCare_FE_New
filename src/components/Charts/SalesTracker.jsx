@@ -17,9 +17,10 @@ const SalesTracker = ({ icon, title, number, profit }) => {
       <div className="ambientShadow" />
       <Box className="salesTrackerBox" padding={5}>
           {icon}
-        <Typography fontSize={24} fontWeight={600} color="black" >
-          <motion.div>{rounded}</motion.div>
-        </Typography>
+        <motion.div style={{fontSize: '28px', fontWeight: '600', color: "black"}} >
+          {rounded}
+        </motion.div>
+        
         <Typography fontSize={14} fontWeight={200} color="darkgray" sx={{ m: "0 0 20px 0" }}>
           {title}
         </Typography>

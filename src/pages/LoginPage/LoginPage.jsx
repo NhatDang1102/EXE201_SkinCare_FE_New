@@ -124,8 +124,8 @@ const LoginPage = ({accountAction}) => {
             </div>
           </div>
           {error && <p className="error-message">{error}</p>}
-          <Box width="100%" height="20px" padding="0" display="flex" flexDirection="row" justifyContent="center" gap="220px" alignItems="center">
-            <FormControlLabel
+          <Box width="500px" height="20px" padding="0" display="flex" flexDirection="row" justifyContent="center" gap="200px" alignItems="center">
+            <FormControlLabel 
               control={<Checkbox size="small" color="primary" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />}
               label="Remember me"
             />

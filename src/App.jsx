@@ -109,7 +109,6 @@ function AppRoutes() {
             path="/profile"
             element={
               <ThemeProvider>
-                {" "}
                 <Navbar selected={"profile"} /> <ProfilePage />
                 <Footer />
               </ThemeProvider>
@@ -119,7 +118,6 @@ function AppRoutes() {
             path="/editprofile"
             element={
               <ThemeProvider>
-                {" "}
                 <Navbar selected={"profile"} /> <EditProfilePage />
                 <Footer />
               </ThemeProvider>
@@ -129,7 +127,6 @@ function AppRoutes() {
             path="/consultation"
             element={
               <ThemeProvider>
-                {" "}
                 <Navbar selected={"consultation"} /> <AIConsultation />
               </ThemeProvider>
             }
@@ -139,8 +136,7 @@ function AppRoutes() {
             path="/AdminPage/Dashboard"
             element={
               <ThemeProvider>
-                {" "}
-                <Sidebar selected={"Dashboard"} /> <DashboardPage />{" "}
+                <Sidebar selected={"Dashboard"} /> <DashboardPage />
               </ThemeProvider>
             }
           />
@@ -148,8 +144,7 @@ function AppRoutes() {
             path="/AdminPage/Profile"
             element={
               <ThemeProvider>
-                {" "}
-                <Sidebar selected={"Profile"} /> <ProfilePage />{" "}
+                <Sidebar selected={"Profile"} /> <ProfilePage />
               </ThemeProvider>
             }
           />
@@ -158,8 +153,7 @@ function AppRoutes() {
           path="/VIP-purchase"
           element={
             <ThemeProvider>
-              {" "}
-              <Navbar selected={""} /> <VIPPurchasePage /> <Footer />{" "}
+              <Navbar selected={""} /> <VIPPurchasePage /> <Footer />
             </ThemeProvider>
           }
         />
@@ -167,8 +161,7 @@ function AppRoutes() {
           path="/blog"
           element={
             <ThemeProvider>
-              {" "}
-              <Navbar selected={"blog"} /> <BlogPage /> <Footer />{" "}
+              <Navbar selected={"blog"} /> <BlogPage /> <Footer />
             </ThemeProvider>
           }
         />
@@ -176,8 +169,7 @@ function AppRoutes() {
           path="/product/:productId"
           element={
             <ThemeProvider>
-              {" "}
-              <Navbar selected={""} /> <ProductPage /> <Footer />{" "}
+              <Navbar selected={""} /> <ProductPage /> <Footer />
             </ThemeProvider>
           }
         />
