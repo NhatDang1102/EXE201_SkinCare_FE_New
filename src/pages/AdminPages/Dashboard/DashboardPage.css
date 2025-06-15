@@ -42,8 +42,8 @@
 .counterContainer .trackerBox {
   position: relative;
   z-index: 1;
-  width: 300px;
-  height: 160px;
+  width: 240px;
+  height: 80px;
   background-color: #F7F7F7;
   border: 0.5px solid #ccc;
   border-top: 4px solid #ccc;
@@ -117,7 +117,6 @@
 
 .statistaContainer {
     width: 95%;
-    height: 380px;
     padding: 0 0 30px 0;
     margin: 20px 10px 20px 10px;
     background-color: #F7F7F7;
@@ -171,7 +170,7 @@
     position: relative;
     z-index: 1;
     width: 200px;
-    height: 240px;
+    height: 200px;
     background-color: #ffffff;
     display: flex;
     padding: 0 0 40px 0;
