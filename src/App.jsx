@@ -22,6 +22,7 @@ import ProductPage from "./pages/ProductPage/ProductPage";
 import DashboardPage from "./pages/AdminPages/Dashboard/DashboardPage";
 import Sidebar from "./components/Sidebar/Sidebar";
 import AIConsultation from "./pages/Consultation/AIConsultation";
+import SkincareSchedule from "./pages/Schedule/SkincareSchedule";
 function App() {
   return (
     <AuthProvider>
@@ -96,6 +97,10 @@ function AppRoutes() {
 
         <Route path="/login" element={<LoginPage accountAction={false} />} />
         <Route path="/sign-in" element={<LoginPage accountAction={true} />} />
+        <Route
+          path="/schedule"
+          element={<SkincareSchedule accountAction={true} />}
+        />
         <Route
           element={
             user ? (
