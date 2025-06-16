@@ -10,6 +10,7 @@ import {
   X,
 } from "lucide-react";
 import "./AIConsultation.css";
+import { useNavigate } from "react-router-dom";
 
 const AIConsultation = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -25,6 +26,31 @@ const AIConsultation = () => {
 
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
+
+  const navigate = useNavigate();
+  // Fetch current routine
+  const fetchRoutine = async () => {
+    try {
+      const response = await fetch(
+        "https://skincareapp.somee.com/SkinCare/Routine/current",
+        {
+          credentials: "include",
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        if (data.data) {
+          navigate("/schedule");
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching routine:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchRoutine();
+  }, []);
 
   useEffect(() => {
     if (isCameraOpen && stream && videoRef.current) {
