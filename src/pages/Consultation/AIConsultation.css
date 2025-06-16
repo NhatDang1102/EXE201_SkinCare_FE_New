@@ -2,7 +2,7 @@
 .main-container {
   /* Override body flex centering */
   position: fixed;
-  top: 0;
+  top: 4%;
   left: 0;
   right: 0;
   bottom: 0;
