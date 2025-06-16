@@ -10,13 +10,6 @@
   overflow-y: auto;
   overflow-x: hidden;
 
-  /* Background using CSS variables */
-  background: linear-gradient(
-    135deg,
-    var(--bg-color) 0%,
-    #f0f2f5 50%,
-    #e6f3ff 100%
-  );
   color: var(--primary-text-color);
   font-family: var(
     --font-family,
@@ -39,13 +32,7 @@
 .schedule-container {
   max-width: max-content;
   margin: 0 auto;
-  padding: 20px;
-  background: linear-gradient(
-    135deg,
-    var(--bg-color) 0%,
-    #f0f2f5 50%,
-    #e6f3ff 100%
-  );
+
   min-height: 100vh;
   font-family: var(
     --font-family,
@@ -56,6 +43,24 @@
     sans-serif
   );
   color: var(--primary-text-color);
+}
+
+.create-routine-btn {
+  background-color: #4caf50; /* Màu nền xanh lá */
+  color: #fff; /* Màu chữ trắng */
+  padding: 12px 28px; /* Khoảng cách bên trong */
+  border: none; /* Không viền */
+  border-radius: 6px; /* Bo góc */
+  font-size: 16px; /* Cỡ chữ */
+  font-weight: 600; /* Đậm chữ */
+  cursor: pointer; /* Đổi con trỏ khi hover */
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.15);
+}
+
+.create-routine-btn:hover {
+  background-color: #388e3c; /* Màu nền khi hover */
+  box-shadow: 0 4px 16px rgba(56, 142, 60, 0.2);
 }
 
 /* Loading State */
@@ -101,6 +106,7 @@
 /* No Routine State */
 .no-routine-section {
   display: flex;
+  margin-top: 50%;
   flex-direction: column;
   align-items: center;
   justify-content: center;

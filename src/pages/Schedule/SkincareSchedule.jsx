@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./SkincareSchedule.css";
 import { showLoading, updateToast } from "../../utils/toastUtils";
+import { useNavigate } from "react-router-dom";
 
 const SkincareSchedule = () => {
   const [routine, setRoutine] = useState(null);
@@ -8,6 +9,10 @@ const SkincareSchedule = () => {
   const [loading, setLoading] = useState(true);
   const [checkedItems, setCheckedItems] = useState(new Set());
 
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate("/consultation");
+  };
   // Get current week dates
   const getCurrentWeekDates = () => {
     const today = new Date();
@@ -321,6 +326,9 @@ const SkincareSchedule = () => {
           <p className="no-routine-description">
             Vui lòng tạo routine skincare để xem thời khóa biểu
           </p>
+          <button className="create-routine-btn" onClick={handleNavigate}>
+            Tạo routine ngay
+          </button>
         </div>
       </div>
     );
