@@ -1,11 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./BlogPage.css";
 import { Link } from "react-router-dom";
+
+// Hàm chuẩn hóa ngày sang múi giờ Việt Nam
+function getVietnamDate(dateString) {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    const utc = date.getTime() + (date.getTimezoneOffset() * 60000);
+    const vietnamDate = new Date(utc + 7 * 3600 * 1000);
+    const dd = vietnamDate.getDate().toString().padStart(2, "0");
+    const mm = (vietnamDate.getMonth() + 1).toString().padStart(2, "0");
+    const yyyy = vietnamDate.getFullYear();
+    return `${dd}/${mm}/${yyyy}`;
+}
+
 export default function BlogPage() {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 2;
+
     useEffect(() => {
         fetch("https://skincareapp.somee.com/SkinCare/Blog")
             .then((res) => res.json())
@@ -42,10 +56,9 @@ export default function BlogPage() {
                                     <div className="skinBlog-desc">
                                         {blog.content}
                                     </div>
-                                    <div className="skinBlog-meta">
-                                        {new Date(blog.createdAt).toLocaleDateString("vi-VN")} | By Team 202
-                                    </div>
-                                  
+                                   <div className="skinBlog-meta">
+  {getVietnamDate(blog.createdAt)} | By Team 202
+</div>
                                 </div>
                             </div>
                         ))}
