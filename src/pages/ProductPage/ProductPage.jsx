@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./ProductPage.css";
+
 export default function ProductPage() {
   const { productId } = useParams();
   const [blog, setBlog] = useState(null);
   const [reviews, setReviews] = useState([]);
+  const [showCreateReview, setShowCreateReview] = useState(false);
+  const [newReviewText, setNewReviewText] = useState("");
+
   useEffect(() => {
     fetch("https://skincareapp.somee.com/SkinCare/Blog")
       .then((res) => res.json())
@@ -15,6 +21,7 @@ export default function ProductPage() {
         setBlog(found);
       });
   }, [productId]);
+
   useEffect(() => {
     if (!blog) return;
     fetch(`https://skincareapp.somee.com/SkinCare/Blog/Comment/blog/${blog.id}`)
@@ -22,11 +29,18 @@ export default function ProductPage() {
       .then((data) => setReviews(data));
   }, [blog]);
 
+  const fetchReviews = () => {
+    if (!blog) return;
+    fetch(`https://skincareapp.somee.com/SkinCare/Blog/Comment/blog/${blog.id}`)
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  };
+
   if (!blog) return <div style={{ textAlign: "center" }}>Loading...</div>;
+
   const product = blog.product;
   const total = reviews.length;
-  const avg = 5;
-  const count = [total, 0, 0, 0, 0];; // [1*,2*,3*,4*,5*]
+
   return (
     <div className="productpage-root">
       <div className="productpage-section1">
@@ -46,7 +60,6 @@ export default function ProductPage() {
         )}
       </div>
 
-      {}
       <div className="product-ecom-container">
         <div className="product-ecom-gallery">
           <img
@@ -73,58 +86,29 @@ export default function ProductPage() {
         </div>
       </div>
 
-      {}
       <div className="product-review-section">
-        {}
-        <div className="review-summary">
-          <div className="review-title">Customer Reviews</div>
-          <div className="review-stars">
-            <span className="stars">{'★★★★★'}</span>
-            <span className="review-avg">{avg}</span>
-          </div>
-          <div className="review-total">{total} reviews</div>
-         <div className="review-bars">
-  {[5, 4, 3, 2, 1].map((star, i) => (
-    <div className="review-bar-row" key={star}>
-      <span className="star-num">{star} ★</span>
-      <div className="bar-bg">
-        <div
-          className="bar-fill"
-          style={{
-            width:
-              total === 0
-                ? "0%"
-                : `${Math.round((count[i] / total) * 100)}%`,  // <--- Sửa thành count[i]
-          }}
-        ></div>
-      </div>
-      <span className="star-cnt">{count[i]}</span>
-    </div>
-  ))}
-</div>
-          <a className="review-create" href="#review-form">
-            CREATE A REVIEW
-          </a>
-        </div>
-        {/* Cột phải: Review chi tiết */}
         <div className="review-detail">
           <div className="review-detail-title">Top Customer Reviews</div>
           <div className="review-detail-note">
             Reviews and results may vary from person to person. Customer reviews are and do not represent the views of The Hut Group.
           </div>
           <hr />
-          {reviews.length === 0 && <div className="review-empty">No reviews yet.</div>}
+          {reviews.length === 0 && (
+            <div className="review-empty">No reviews yet.</div>
+          )}
           {reviews.map((rev) => (
             <div className="review-item" key={rev.id}>
               <div className="review-item-row">
-                <img src={rev.user_Avatar} alt={rev.user_Name} className="review-avatar" />
+                <img
+                  src={rev.user_Avatar}
+                  alt={rev.user_Name}
+                  className="review-avatar"
+                />
                 <div className="review-main">
                   <div className="review-username">{rev.user_Name}</div>
-                  <div className="review-rating">★★★★★</div>
                   <div className="review-text">{rev.commentText}</div>
                   <div className="review-date">
                     {new Date(rev.createdAt).toLocaleDateString("en-CA")}
-                    <span className="review-verified">  ** Verified Purchase **</span>
                   </div>
                   <div className="review-helpful">
                     Was this helpful?
@@ -137,15 +121,90 @@ export default function ProductPage() {
                       </button>
                     </div>
                   </div>
-
-                  <a href="#" className="review-report">REPORT THIS REVIEW</a>
+                  <a href="#" className="review-report">
+                    REPORT THIS REVIEW
+                  </a>
                 </div>
               </div>
               <hr />
             </div>
           ))}
+
+          <a
+            className="review-create"
+            onClick={() => setShowCreateReview(true)}
+          >
+            CREATE A REVIEW
+          </a>
         </div>
       </div>
+
+      {showCreateReview && (
+        <div className="adminBlogModal">
+          <div className="adminBlogModalContent">
+            <h3>Write a review</h3>
+            <textarea
+              value={newReviewText}
+              onChange={(e) => setNewReviewText(e.target.value)}
+              placeholder="Enter review content..."
+              rows={5}
+            />
+            <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
+              <button
+                style={{
+                  background: "#4caf50",
+                  color: "#fff",
+                  border: "none",
+                  padding: "6px 12px",
+                  borderRadius: 4
+                }}
+                onClick={async () => {
+                  try {
+                    const resp = await fetch(
+                      "https://skincareapp.somee.com/SkinCare/Blog/Comment",
+                      {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          blogId: blog.id,
+                          commentText: newReviewText
+                        }),
+                        credentials: "include"
+                      }
+                    );
+                    if (resp.ok) {
+                      toast.success("Send Review Successfully!");
+                      fetchReviews();
+                      setShowCreateReview(false);
+                      setNewReviewText("");
+                    } else {
+                      toast.error("Gửi đánh giá thất bại!");
+                    }
+                  } catch {
+                    toast.error("Có lỗi xảy ra khi gửi đánh giá!");
+                  }
+                }}
+              >
+                Send
+              </button>
+              <button
+                style={{
+                  background: "#eee",
+                  color: "#333",
+                  border: "none",
+                  padding: "6px 12px",
+                  borderRadius: 4
+                }}
+                onClick={() => setShowCreateReview(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <ToastContainer />
     </div>
   );
 }
