@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./ProductPage.css";
+import TrustedBrand from "../../assets/trusted_brand_icon.png"
+import LeavesBg from "../../assets/—Pngtree—leaves_5636474.png"
+
 export default function ProductPage() {
   const { productId } = useParams();
   const [blog, setBlog] = useState(null);
@@ -29,21 +32,30 @@ export default function ProductPage() {
   const count = [total, 0, 0, 0, 0];; // [1*,2*,3*,4*,5*]
   return (
     <div className="productpage-root">
+      <img className="bg-leaves" src={LeavesBg} alt="" />
+      <div id="leaves">
+        <i></i> <i></i> <i></i> <i></i> <i></i> <i></i> <i></i> <i></i> <i></i> <i></i> <i></i> <i></i> <i></i> <i></i> <i></i> 
+      </div>
       <div className="productpage-section1">
         <div className="productpage-category">SKIN CARE BLOGS</div>
-        <h1 className="productpage-title">{blog.title}</h1>
-        {product.imageLink && (
-          <div className="productpage-imgBox">
-            <img
-              src={product.imageLink}
-              alt={product.name}
-              className="productpage-img"
-            />
-          </div>
-        )}
-        {blog.content && (
-          <div className="productpage-summary">{blog.content}</div>
-        )}
+        <div className="productpage-item-box">
+          <h1 className="productpage-title">{blog.title}</h1>
+          {product.imageLink && (
+            <div className="productpage-imgBox">
+              <img
+                src={product.imageLink}
+                alt={product.name}
+                className="productpage-img"
+              />
+            </div>
+          )}
+          {blog.content && (
+            <div className="productpage-summary">{blog.content}</div>
+          )}
+          <img className="trustedBrandIcon" src={TrustedBrand} alt="" />
+          <div className="rippleContainer"><div class="wave"></div></div>
+          <div className="rippleContainer2"><div class="wave"></div></div>
+        </div>
       </div>
 
       {}
@@ -84,24 +96,24 @@ export default function ProductPage() {
           </div>
           <div className="review-total">{total} reviews</div>
          <div className="review-bars">
-  {[5, 4, 3, 2, 1].map((star, i) => (
-    <div className="review-bar-row" key={star}>
-      <span className="star-num">{star} ★</span>
-      <div className="bar-bg">
-        <div
-          className="bar-fill"
-          style={{
-            width:
-              total === 0
-                ? "0%"
-                : `${Math.round((count[i] / total) * 100)}%`,  // <--- Sửa thành count[i]
-          }}
-        ></div>
+        {[5, 4, 3, 2, 1].map((star, i) => (
+          <div className="review-bar-row" key={star}>
+            <span className="star-num">{star} ★</span>
+            <div className="bar-bg">
+              <div
+                className="bar-fill"
+                style={{
+                  width:
+                    total === 0
+                      ? "0%"
+                      : `${Math.round((count[i] / total) * 100)}%`,  // <--- Sửa thành count[i]
+                }}
+              ></div>
+            </div>
+            <span className="star-cnt">{count[i]}</span>
+          </div>
+        ))}
       </div>
-      <span className="star-cnt">{count[i]}</span>
-    </div>
-  ))}
-</div>
           <a className="review-create" href="#review-form">
             CREATE A REVIEW
           </a>
