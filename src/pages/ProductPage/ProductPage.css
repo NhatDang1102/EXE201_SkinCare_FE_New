@@ -165,8 +165,6 @@
   max-width: 730px;
   font-weight: 400;
 }
-
-/* ===== PHẦN 2: ECOMMERCE – ẢNH TRÁI, INFO PHẢI ===== */
 .product-ecom-container {
   display: flex;
   flex-direction: row;
@@ -295,14 +293,38 @@
 }
 .product-review-section {
   display: flex;
-  max-width: 1100px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1100px; 
   margin: 0 auto 72px auto;
-  gap: 50px;
-  padding: 44px 10px 32px 10px;
+  padding: 44px 20px 32px 20px; 
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 2px 14px rgba(80,80,120,0.06);
 }
+.review-detail {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.review-detail-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.review-detail-note {
+  font-size: 0.97em;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
 .review-summary {
   flex: 0 0 310px;
   border-right: 1px solid #eaeaea;
@@ -481,6 +503,32 @@ hr {
   border-top: 1px solid #ededed;
   margin: 15px 0 8px 0;
 }
+.adminBlogModal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.adminBlogModalContent {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.adminBlogModalContent textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -543,6 +591,7 @@ hr {
     gap: 12px;
     padding-top: 8px;
   }
+  
 }
 
 #leaves {position: fixed; top: 50px; left: 20%; text-align: right; z-index: 10;}
