@@ -20,6 +20,7 @@ import VIPPurchasePage from "./pages/VIPPurchasePage/VIPPurchasePage";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import DashboardPage from "./pages/AdminPages/Dashboard/DashboardPage";
+import CreateBlogPage from "./pages/CreateBlogPage/CreateBlogPage";
 import Sidebar from "./components/Sidebar/Sidebar";
 import AIConsultation from "./pages/Consultation/AIConsultation";
 import SkincareSchedule from "./pages/Schedule/SkincareSchedule";
@@ -155,6 +156,14 @@ function AppRoutes() {
             element={
               <ThemeProvider>
                 <Sidebar selected={"Profile"} /> <ProfilePage />{" "}
+              </ThemeProvider>
+            }
+          />
+           <Route
+            path="/CreateBlogPage"
+            element={
+              <ThemeProvider>
+                <Sidebar selected={"Blog Management"} /> <CreateBlogPage />{" "}
               </ThemeProvider>
             }
           />
