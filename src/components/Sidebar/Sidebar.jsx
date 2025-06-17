@@ -93,26 +93,26 @@ const Sidebar = ({ selected }) => {
                                 <AccountBox className={selected === "Leaderboard" ? 'morbinTime' : ''} /> Leaderboard
                             </Link>
                         </li>
-                      <li
-  className="sidebar-menu-item"
-  tabIndex={0}
-  onClick={() => setShowBlogDropdown(v => !v)}
-  style={{ cursor: "pointer" }}
->
-  <span className="sidebar-dot" />
-  <span className={`sidebar-text ${showBlogDropdown ? "active" : ""}`}>
-    Blog Management
-    <span style={{ fontSize: "1rem", marginLeft: 5, transition: "transform 0.16s", display: "inline-block", transform: showBlogDropdown ? "rotate(180deg)" : "none" }}>
-      ▼
-    </span>
-  </span>
-</li>
-{showBlogDropdown && (
-  <ul className="sidebar-dropdown">
-    <li onClick={() => navigate("/AdminPage/CreateBlogPage")} className="sidebar-dropdown-item">Create Blog</li>
-    <li onClick={() => navigate("/AdminPage/ListBlogPage")} className="sidebar-dropdown-item">List Blog</li>
-  </ul>
-)}
+                        <li
+                            className="sidebar-menu-item"
+                            tabIndex={0}
+                            onClick={() => setShowBlogDropdown(v => !v)}
+                            style={{ cursor: "pointer" }}
+                        >
+                            <span className="sidebar-dot" />
+                            <span className={`sidebar-text ${showBlogDropdown ? "active" : ""}`}>
+                                Blog Management
+                                <span style={{ fontSize: "1rem", marginLeft: 5, transition: "transform 0.16s", display: "inline-block", transform: showBlogDropdown ? "rotate(180deg)" : "none" }}>
+                                    ▼
+                                </span>
+                            </span>
+                        </li>
+                        {showBlogDropdown && (
+                            <ul className="sidebar-dropdown">
+                                <li onClick={() => navigate("/AdminPage/CreateBlogPage")} className="sidebar-dropdown-item">Create Blog</li>
+                                <li onClick={() => navigate("/AdminPage/ListBlogPage")} className="sidebar-dropdown-item">List Blog</li>
+                            </ul>
+                        )}
 
                         <li>
                             <Link to="top" spy={true} smooth={true} className={selected === "about" ? 'selected' : ''}
