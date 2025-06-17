@@ -806,8 +806,8 @@
 .spinner-small {
   width: 28px;
   height: 28px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  border-top: 3px solid var(--foreground-color, white);
+  border: 3px solid rgba(52, 152, 219, 0.3);
+  border-top-color: #3498db;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -1311,7 +1311,10 @@
 
 /* New Analysis Button */
 .new-analysis-container {
-  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .new-analysis-btn {
@@ -1501,6 +1504,29 @@
   }
 
   .results-container {
+    gap: 40px;
+  }
+}
+.results-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.results-container > .advice-section,
+.results-container > .new-analysis-container {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 1024px) {
+  .results-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .results-container {
+    grid-template-columns: 1fr;
     gap: 40px;
   }
 }

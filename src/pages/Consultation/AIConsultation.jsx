@@ -6,10 +6,11 @@ import {
   Sun,
   Moon,
   Star,
-  ExternalLink,
+  CalendarDays,
   X,
 } from "lucide-react";
 import "./AIConsultation.css";
+import { useNavigate } from "react-router-dom";
 
 const AIConsultation = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -25,7 +26,10 @@ const AIConsultation = () => {
 
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-
+  const navigate = useNavigate();
+  const navigateToSchedule = () => {
+    navigate("/schedule");
+  };
   useEffect(() => {
     if (isCameraOpen && stream && videoRef.current) {
       videoRef.current.srcObject = stream;
@@ -167,7 +171,7 @@ const AIConsultation = () => {
     }
   };
 
-  const ProductCard = ({ product, timeIcon: TimeIcon, timeColor }) => (
+  const ProductCard = ({ product, timeIcon: TimeIcon }) => (
     <div className="product-card">
       <div className="product-image-container">
         <img
@@ -176,9 +180,6 @@ const AIConsultation = () => {
           className="product-image"
         />
         <div className="product-overlay"></div>
-        <div className={`time-icon ${timeColor}`}>
-          <TimeIcon size={18} />
-        </div>
       </div>
 
       <div className="product-content">
@@ -502,12 +503,12 @@ const AIConsultation = () => {
                 {loading ? (
                   <div className="upload-btn-content">
                     <div className="spinner-small"></div>
-                    Đang phân tích với AI...
+                    Đang phân tích, vui lòng đợi...
                   </div>
                 ) : (
                   <div className="upload-btn-content">
                     <Star size={24} />
-                    Bắt đầu phân tích với AI
+                    Bắt đầu phân tích
                   </div>
                 )}
               </button>
@@ -594,6 +595,13 @@ const AIConsultation = () => {
               >
                 <Camera size={24} />
                 Phân tích ảnh mới
+              </button>
+              <button
+                onClick={() => navigateToSchedule()}
+                className="new-analysis-btn"
+              >
+                <CalendarDays size={24} />
+                Xem lịch trình
               </button>
             </div>
           </div>
