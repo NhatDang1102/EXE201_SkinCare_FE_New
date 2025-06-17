@@ -145,7 +145,7 @@ const ChatBox = () => {
       ) : (
         <>{isOpen && (<div className="chatbox__support chatbox--active">
           <div className="container login-required">
-            <div className="card">
+            <div className="cardSuggest">
               <div className="card-body">
                 <div className="chat-thread">
                   <div className="message">

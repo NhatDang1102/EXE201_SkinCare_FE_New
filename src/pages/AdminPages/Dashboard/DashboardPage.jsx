@@ -3,6 +3,10 @@ import "./DashboardPage.css"
 import Header from "../../../components/Header/Header"
 import Tracker from "../../../components/Charts/Tracker"
 
+import skincareIcon from "../../../assets/product_icon.png";
+import skincareIcon2 from "../../../assets/product_icon_2.png";
+import skincareIcon3 from "../../../assets/product_icon_3.png";
+
 import { motion, useScroll, useMotionValueEvent, useTransform, useInView } from "framer-motion";
 import SalesTracker from "../../../components/Charts/SalesTracker"
 import { AccountBox, AssignmentInd, BarChart, ListAlt, LocalMall, PermContactCalendar, PersonOutline } from "@mui/icons-material"
@@ -126,6 +130,9 @@ export default function DashboardPage() {
   return (
     <div className='dashBoardPage'>
         <BGImage />
+        <img src={skincareIcon} alt="" className="misc"/>
+        <img src={skincareIcon2} alt="" className="misc2"/>
+        <img src={skincareIcon3} alt="" className="misc3"/>
         <motion.div  className="dashBoardContainer"
               style={{y: position1, scale: size1, opacity: blurFilter1}}>
           <Header title="ADMIN DASHBOARD" subtitle="Welcome to your dashboard" />

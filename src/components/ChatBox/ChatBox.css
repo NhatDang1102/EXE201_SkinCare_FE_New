@@ -275,8 +275,9 @@ span.messages__dot {
   justify-content: right;
 }
 
-.card {
+.cardSuggest {
   width: 20vw;
+  transform: translateY(-50%);
 }
 
 /* Chat Thread */
@@ -311,6 +312,7 @@ span.messages__dot {
   padding: 0.75em 1.5em;
   background: #ECF0F1;
   border-radius: 20px;
+  box-shadow: 1px 2px 5px #333;
   position: relative;
 }
 
