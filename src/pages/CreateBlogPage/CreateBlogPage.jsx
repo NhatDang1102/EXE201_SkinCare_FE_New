@@ -2,6 +2,8 @@ import BGImage from "../../components/BGImage/BGImage";
 import React, { useState, useEffect } from "react";
 import "./CreateBlogPage.css";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CreateBlogPage() {
   const { scrollYProgress } = useScroll();
@@ -51,7 +53,7 @@ export default function CreateBlogPage() {
   const handleSubmit = async e => {
     e.preventDefault();
     if (!title.trim() || !content.trim() || !productId) {
-      alert("Please fill all fields and select a product.");
+      toast.warning("Please fill all fields and select a product.");
       return;
     }
     setLoading(true);
@@ -69,7 +71,7 @@ export default function CreateBlogPage() {
     });
     setLoading(false);
     if (resp.ok) {
-      alert("Create blog success!");
+      toast.success("Create blog successfully!");
       setTitle("");
       setContent("");
       setLink("");
@@ -77,7 +79,7 @@ export default function CreateBlogPage() {
       setAutoImage("");
       setSelectedCategory("");
     } else {
-      alert("Create blog failed!");
+      toast.error("Create blog failed!");
     }
   };
 
@@ -149,6 +151,16 @@ export default function CreateBlogPage() {
           {loading ? "Submitting..." : "Submit"}
         </button>
       </motion.form>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="light"
+      />
     </div>
   );
 }
