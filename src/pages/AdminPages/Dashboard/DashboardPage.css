@@ -424,3 +424,35 @@
             0 30px 100px rgba(65, 105, 225, 1);
     }
 }
+
+.misc2 {
+  width: 100px;
+  position: fixed;
+  top: 0;
+  right: 600px;
+  filter: blur(2px);
+  opacity: 0.8;
+  animation: rotateRight 12s linear infinite;
+}
+
+.misc3 {
+  width: 100px;
+  position: fixed;
+  bottom: 150px;
+  left: 200px;
+  filter: blur(1px);
+  opacity: 0.6;
+  animation: rotateLeft 8s linear infinite;
+}
+
+@keyframes constantRotateRight {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes constantRotateLeft {
+  to {
+    transform: rotate(-360deg);
+  }
+}
