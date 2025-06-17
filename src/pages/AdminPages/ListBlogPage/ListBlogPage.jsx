@@ -1,10 +1,44 @@
-
 import React, { useEffect, useState } from "react";
 import BGImage from "../../../components/BGImage/BGImage";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./ListBlogPage.css";
+
+// Custom Toast Confirm Component
+const ToastConfirm = ({ onConfirm, onCancel }) => (
+  <div style={{ minWidth: 180 }}>
+    <div style={{ marginBottom: 12 }}>Do You Want To Delete This Blog?</div>
+    <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
+      <button
+        style={{
+          background: "#e44",
+          color: "#fff",
+          border: "none",
+          borderRadius: 4,
+          padding: "6px 16px",
+          cursor: "pointer"
+        }}
+        onClick={onConfirm}
+      >
+        Delete
+      </button>
+      <button
+        style={{
+          background: "#eee",
+          color: "#333",
+          border: "none",
+          borderRadius: 4,
+          padding: "6px 16px",
+          cursor: "pointer"
+        }}
+        onClick={onCancel}
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+);
 
 export default function ListBlogPage() {
   const { scrollYProgress } = useScroll();
@@ -13,6 +47,8 @@ export default function ListBlogPage() {
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.85]);
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+const [editBlog, setEditBlog] = useState(null); 
+
   const fetchBlogs = () => {
     setLoading(true);
     fetch("https://skincareapp.somee.com/SkinCare/Blog")
@@ -25,43 +61,77 @@ export default function ListBlogPage() {
     fetchBlogs();
   }, []);
 
-  // Xoá blog
-  const handleDelete = async (id) => {
-    if (!window.confirm("Bạn có chắc chắn muốn xóa blog này?")) return;
-    try {
-      const resp = await fetch(`https://skincareapp.somee.com/SkinCare/Blog/${id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include"
-      });
-      if (resp.ok) {
-        toast.success("Xóa blog thành công!");
-        fetchBlogs();
-      } else {
-        toast.error("Xóa blog thất bại!");
+  // Toast confirm logic
+  const showDeleteToast = (onConfirm) => {
+    const toastId = toast(
+      ({ closeToast }) => (
+        <ToastConfirm
+          onConfirm={() => {
+            onConfirm();
+            closeToast();
+          }}
+          onCancel={closeToast}
+        />
+      ),
+      {
+        position: "top-center",
+        autoClose: false,
+        closeOnClick: false,
+        closeButton: false,
+        draggable: false,
       }
-    } catch (err) {
-      toast.error("Có lỗi xảy ra khi xóa!");
-    }
+    );
   };
 
-  // Chuyển trang Edit Blog (giả sử đã có trang này)
-  const handleEdit = (id) => {
-    window.location.href = `/AdminPage/EditBlogPage/${id}`;
+  const handleDelete = async (id) => {
+    showDeleteToast(async () => {
+      try {
+        const resp = await fetch(
+          `https://skincareapp.somee.com/SkinCare/Blog/${id}`,
+          {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+          }
+        );
+        if (resp.ok) {
+          toast.success("Deleted Blog Successfully!");
+          fetchBlogs();
+        } else {
+          toast.error("Delete Blog Failed!");
+        }
+      } catch (err) {
+        toast.error("Somthing went wrong!");
+      }
+    });
   };
+
+const handleEdit = (id) => {
+  const blog = blogs.find((b) => b.id === id);
+  if (blog) {
+    setEditBlog({
+      id: blog.id,
+      title: blog.title,
+      content: blog.content,
+      productId: blog.productId,
+      externalProductLink: blog.externalProductLink
+    });
+  }
+};
 
   return (
+    
     <div className="listBlogPage-admin">
       <BGImage />
       <motion.div
         className="adminBlogListContainer"
         style={{ y: position, scale, opacity }}
       >
-        <h2 className="adminBlogTitle">Quản lý Blog</h2>
+        <h2 className="adminBlogTitle">Blog Management</h2>
         {loading ? (
-          <div className="adminBlogLoading">Đang tải...</div>
+          <div className="adminBlogLoading">Loading...</div>
         ) : blogs.length === 0 ? (
-          <div className="adminBlogNoData">Chưa có blog nào.</div>
+          <div className="adminBlogNoData">No blogs yet.</div>
         ) : (
           <div className="adminBlogList">
             {blogs.map((blog) => (
@@ -105,13 +175,13 @@ export default function ListBlogPage() {
                       className="adminBlogListBtn adminBlogListEdit"
                       onClick={() => handleEdit(blog.id)}
                     >
-                      Sửa
+                      Edit
                     </button>
                     <button
                       className="adminBlogListBtn adminBlogListDelete"
                       onClick={() => handleDelete(blog.id)}
                     >
-                      Xoá
+                      Delete
                     </button>
                   </div>
                 </div>
@@ -120,6 +190,102 @@ export default function ListBlogPage() {
           </div>
         )}
       </motion.div>
+      {editBlog && (
+ <div className="adminBlogModal">
+  <div className="adminBlogModalContent">
+    <h3>Eidt Blog</h3>
+
+    <div className="form-group">
+      <label className="form-label" htmlFor="edit-title">Title</label>
+      <input
+        id="edit-title"
+        value={editBlog.title}
+        onChange={(e) => setEditBlog({ ...editBlog, title: e.target.value })}
+        placeholder="Title..."
+      />
+    </div>
+
+    <div className="form-group">
+      <label className="form-label" htmlFor="edit-content">Content</label>
+      <textarea
+        id="edit-content"
+        value={editBlog.content}
+        onChange={(e) => setEditBlog({ ...editBlog, content: e.target.value })}
+        placeholder="Content..."
+      />
+    </div>
+
+    <div className="form-group">
+      <label className="form-label" htmlFor="edit-link">Link</label>
+      <input
+        id="edit-link"
+        value={editBlog.externalProductLink}
+        onChange={(e) =>
+          setEditBlog({ ...editBlog, externalProductLink: e.target.value })
+        }
+        placeholder="Product Link..."
+      />
+    </div>
+
+    <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
+      <button
+        style={{
+          background: "#4caf50",
+          color: "#fff",
+          border: "none",
+          padding: "6px 12px",
+          borderRadius: 4,
+          cursor: "pointer"
+        }}
+        onClick={async () => {
+          try {
+            const resp = await fetch(
+              `https://skincareapp.somee.com/SkinCare/Blog/${editBlog.id}`,
+              {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  title: editBlog.title,
+                  content: editBlog.content,
+                  productId: editBlog.productId,
+                  externalProductLink: editBlog.externalProductLink
+                }),
+                credentials: "include"
+              }
+            );
+            if (resp.ok) {
+              toast.success("Blog Updated Successfully!");
+              fetchBlogs();
+              setEditBlog(null);
+            } else {
+              toast.error("Failed to update blog!");
+            }
+          } catch {
+            toast.error("An error occurred while updating!");
+          }
+        }}
+      >
+        Save
+      </button>
+      <button
+        style={{
+          background: "#eee",
+          color: "#333",
+          border: "none",
+          padding: "6px 12px",
+          borderRadius: 4,
+          cursor: "pointer"
+        }}
+        onClick={() => setEditBlog(null)}
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+)}
+
       <ToastContainer
         position="top-right"
         autoClose={2500}
