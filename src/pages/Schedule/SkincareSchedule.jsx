@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./SkincareSchedule.css";
 import { showLoading, updateToast } from "../../utils/toastUtils";
+import { useNavigate } from "react-router-dom";
 
 const SkincareSchedule = () => {
   const [routine, setRoutine] = useState(null);
   const [weekProgress, setWeekProgress] = useState([]);
+  const [dailyRoutines, setDailyRoutines] = useState({});
   const [loading, setLoading] = useState(true);
-  const [checkedItems, setCheckedItems] = useState(new Set());
+
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate("/consultation");
+  };
 
   // Get current week dates
   const getCurrentWeekDates = () => {
@@ -26,55 +32,6 @@ const SkincareSchedule = () => {
 
   const weekDates = getCurrentWeekDates();
   const dayNames = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "CN"];
-
-  // Icon components using SVG
-  const SunIcon = ({ size = 24 }) => (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-    >
-      <circle cx="12" cy="12" r="5" />
-      <line x1="12" y1="1" x2="12" y2="3" />
-      <line x1="12" y1="21" x2="12" y2="23" />
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-      <line x1="1" y1="12" x2="3" y2="12" />
-      <line x1="21" y1="12" x2="23" y2="12" />
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-    </svg>
-  );
-
-  const ClockIcon = ({ size = 24 }) => (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="12,6 12,12 16,14" />
-    </svg>
-  );
-
-  const MoonIcon = ({ size = 24 }) => (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-    >
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-    </svg>
-  );
 
   const CheckIcon = ({ size = 24 }) => (
     <svg
@@ -169,6 +126,45 @@ const SkincareSchedule = () => {
     }
   };
 
+  // Fetch daily routine cho một ngày cụ thể
+  const fetchDailyRoutine = async (date) => {
+    try {
+      const dateString = date.toISOString().split("T")[0];
+      const response = await fetch(
+        `https://skincareapp.somee.com/SkinCare/Routine/daily?date=${dateString}`,
+        {
+          credentials: "include",
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        return { dateString, data: data.data };
+      }
+    } catch (error) {
+      console.error(`Error fetching daily routine for ${date}:`, error);
+    }
+    return null;
+  };
+
+  // Fetch daily routines cho cả tuần
+  const fetchAllDailyRoutines = async () => {
+    try {
+      const promises = weekDates.map((date) => fetchDailyRoutine(date));
+      const results = await Promise.all(promises);
+
+      const dailyData = {};
+      results.forEach((result) => {
+        if (result) {
+          dailyData[result.dateString] = result.data;
+        }
+      });
+
+      setDailyRoutines(dailyData);
+    } catch (error) {
+      console.error("Error fetching all daily routines:", error);
+    }
+  };
+
   // Check product usage
   const checkProduct = async (productId, session, usageDate) => {
     const toastId = showLoading("Đang đánh dấu sản phẩm...");
@@ -192,10 +188,8 @@ const SkincareSchedule = () => {
       );
 
       if (response.ok) {
-        const checkKey = `${productId}-${session}-${usageDate}`;
-        setCheckedItems((prev) => new Set([...prev, checkKey]));
-        // Refresh week progress
-        fetchWeekProgress();
+        // Refresh data sau khi check
+        await Promise.all([fetchWeekProgress(), fetchAllDailyRoutines()]);
         updateToast(toastId, "success", "Đánh dấu sản phẩm thành công!");
       } else {
         updateToast(toastId, "error", "Có lỗi khi đánh dấu sản phẩm!");
@@ -209,7 +203,11 @@ const SkincareSchedule = () => {
   useEffect(() => {
     const loadData = async () => {
       setLoading(true);
-      await Promise.all([fetchRoutine(), fetchWeekProgress()]);
+      await Promise.all([
+        fetchRoutine(),
+        fetchWeekProgress(),
+        fetchAllDailyRoutines(),
+      ]);
       setLoading(false);
     };
     loadData();
@@ -232,6 +230,17 @@ const SkincareSchedule = () => {
   // Get progress for specific date
   const getProgressForDate = (date) => {
     const dateString = date.toISOString().split("T")[0];
+    const dailyData = dailyRoutines[dateString];
+
+    if (dailyData) {
+      return {
+        total: dailyData.total,
+        checked: dailyData.checked,
+        percent: dailyData.percent,
+      };
+    }
+
+    // Fallback to week progress if daily data not available
     return (
       weekProgress.find(
         (p) => new Date(p.usageDate).toISOString().split("T")[0] === dateString
@@ -239,15 +248,35 @@ const SkincareSchedule = () => {
     );
   };
 
-  // Check if product is checked
-  const isProductChecked = (productId, session, date) => {
-    const usageDate = date.toISOString();
-    const checkKey = `${productId}-${session}-${usageDate}`;
-    return checkedItems.has(checkKey);
+  // Check if product is checked từ API data
+  const isProductChecked = (productId, timeOfDay, date) => {
+    const dateString = date.toISOString().split("T")[0];
+    const dailyData = dailyRoutines[dateString];
+
+    if (!dailyData || !dailyData[timeOfDay]) {
+      return false;
+    }
+
+    const product = dailyData[timeOfDay].find((p) => p.productId === productId);
+    return product ? product.isChecked : false;
   };
 
-  const ProductCell = ({ products = [], timeOfDay, date }) => {
+  // Get products for specific date and session
+  const getProductsForSession = (timeOfDay, date) => {
+    const dateString = date.toISOString().split("T")[0];
+    const dailyData = dailyRoutines[dateString];
+
+    if (dailyData && dailyData[timeOfDay]) {
+      return dailyData[timeOfDay];
+    }
+
+    // Fallback to routine data if daily data not available
+    return routine[timeOfDay] || [];
+  };
+
+  const ProductCell = ({ timeOfDay, date }) => {
     const session = getSessionNumber(timeOfDay);
+    const products = getProductsForSession(timeOfDay, date);
 
     return (
       <td className="schedule-cell">
@@ -255,7 +284,7 @@ const SkincareSchedule = () => {
           {products.map((product, index) => {
             const isChecked = isProductChecked(
               product.productId,
-              session,
+              timeOfDay,
               date
             );
             return (
@@ -321,6 +350,9 @@ const SkincareSchedule = () => {
           <p className="no-routine-description">
             Vui lòng tạo routine skincare để xem thời khóa biểu
           </p>
+          <button className="create-routine-btn" onClick={handleNavigate}>
+            Tạo routine ngay
+          </button>
         </div>
       </div>
     );
@@ -345,32 +377,35 @@ const SkincareSchedule = () => {
 
           {/* Weekly Stats */}
           <div className="weekly-stats">
-            {weekProgress.map((day, index) => (
-              <div key={index} className="day-stat">
-                <div className="day-name">{dayNames[index]}</div>
-                <div className="progress-circle">
-                  <svg viewBox="0 0 36 36">
-                    <path
-                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                      fill="none"
-                      stroke="rgba(255,255,255,0.3)"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                      fill="none"
-                      stroke="#4ADE80"
-                      strokeWidth="2"
-                      strokeDasharray={`${day.percent}, 100`}
-                    />
-                  </svg>
-                  <div className="progress-text">{day.percent}%</div>
+            {weekDates.map((date, index) => {
+              const progress = getProgressForDate(date);
+              return (
+                <div key={index} className="day-stat">
+                  <div className="day-name">{dayNames[index]}</div>
+                  <div className="progress-circle">
+                    <svg viewBox="0 0 36 36">
+                      <path
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.3)"
+                        strokeWidth="2"
+                      />
+                      <path
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#4ADE80"
+                        strokeWidth="2"
+                        strokeDasharray={`${progress.percent}, 100`}
+                      />
+                    </svg>
+                    <div className="progress-text">{progress.percent}%</div>
+                  </div>
+                  <div className="day-stats">
+                    {progress.checked}/{progress.total}
+                  </div>
                 </div>
-                <div className="day-stats">
-                  {day.checked}/{day.total}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
@@ -413,7 +448,6 @@ const SkincareSchedule = () => {
                 {weekDates.map((date, index) => (
                   <ProductCell
                     key={`morning-${index}`}
-                    products={routine.morning || []}
                     timeOfDay="morning"
                     date={date}
                   />
@@ -432,7 +466,6 @@ const SkincareSchedule = () => {
                 {weekDates.map((date, index) => (
                   <ProductCell
                     key={`noon-${index}`}
-                    products={routine.noon || []}
                     timeOfDay="noon"
                     date={date}
                   />
@@ -451,7 +484,6 @@ const SkincareSchedule = () => {
                 {weekDates.map((date, index) => (
                   <ProductCell
                     key={`night-${index}`}
-                    products={routine.night || []}
                     timeOfDay="night"
                     date={date}
                   />

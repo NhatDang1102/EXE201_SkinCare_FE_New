@@ -97,10 +97,7 @@ function AppRoutes() {
 
         <Route path="/login" element={<LoginPage accountAction={false} />} />
         <Route path="/sign-in" element={<LoginPage accountAction={true} />} />
-        <Route
-          path="/schedule"
-          element={<SkincareSchedule accountAction={true} />}
-        />
+
         <Route
           element={
             user ? (
@@ -124,6 +121,14 @@ function AppRoutes() {
             element={
               <ThemeProvider>
                 <Navbar selected={"consultation"} /> <AIConsultation />
+              </ThemeProvider>
+            }
+          />
+          <Route
+            path="/schedule"
+            element={
+              <ThemeProvider>
+                <Navbar selected={"consultation"} /> <SkincareSchedule />
               </ThemeProvider>
             }
           />

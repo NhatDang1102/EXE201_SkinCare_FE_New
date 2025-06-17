@@ -95,7 +95,7 @@ const navbar = ({ selected }) => {
                 spy={true}
                 smooth={true}
                 className={selected === "consultation" ? "selected" : ""}
-                onClick={() => navigate("/consultation")}
+                onClick={() => navigate("/schedule")}
                 style={{ cursor: "pointer" }}
               >
                 AI Consultation
