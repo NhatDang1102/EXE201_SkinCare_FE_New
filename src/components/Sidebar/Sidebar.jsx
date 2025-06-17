@@ -93,8 +93,8 @@ const Sidebar = ({selected}) => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="top" spy={true} smooth={true} className={selected === "profile" ? 'selected' : ''}
-                                onClick={() => navigate('/profile')} style={{ cursor: 'pointer' }} >
+                            <Link to="top" spy={true} smooth={true} className={selected === "BLog Management" ? 'selected' : ''}
+                                onClick={() => navigate('/CreateBlogPage')} style={{ cursor: 'pointer' }} >
                                 Blog Management
                             </Link>
                         </li>
