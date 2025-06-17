@@ -1,4 +1,4 @@
-import BGImage from "../../components/BGImage/BGImage";
+import BGImage from "../../../components/BGImage/BGImage";
 import React, { useState, useEffect } from "react";
 import "./CreateBlogPage.css";
 import { motion, useScroll, useTransform } from "framer-motion";

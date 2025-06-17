@@ -127,6 +127,55 @@ body:has(.s-wrapper) .bgImg {
 body:has(.s-wrapper) .bgImg img {
     width: 150%;
 }
+.sidebar-menu-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+  font-size: 1.16rem;
+  font-weight: 600;
+  color: #757575;
+  transition: color 0.13s;
+}
+.sidebar-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #888;
+  margin-right: 13px;
+}
+.sidebar-text {
+  display: flex;
+  align-items: center;
+  font-size: 1.16rem;
+  font-weight: 600;
+  color: #757575;
+}
+.sidebar-text.active {
+  color: #45a8e6;
+}
+.sidebar-dropdown {
+  list-style: none;
+  padding-left: 34px;
+  margin-top: -20px;
+  margin-bottom: 5px;
+}
+.sidebar-dropdown-item {
+  font-size: 1.03rem;
+  color: #727272;
+  margin: 1px 0;
+  cursor: pointer;
+  transition: color 0.14s, background 0.13s;
+  border-radius: 6px;
+  padding: 2px 9px;
+   width: 100%;           
+  box-sizing: border-box; 
+}
+.sidebar-dropdown-item:hover,
+.sidebar-dropdown-item.active {
+  background: #e8fcfc;
+  color: #249ac6;
+}
 
 @media screen and (max-width: 480px) {
   .s-list {

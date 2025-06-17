@@ -20,7 +20,8 @@ import VIPPurchasePage from "./pages/VIPPurchasePage/VIPPurchasePage";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import DashboardPage from "./pages/AdminPages/Dashboard/DashboardPage";
-import CreateBlogPage from "./pages/CreateBlogPage/CreateBlogPage";
+import CreateBlogPage from "./pages/AdminPages/CreateBlogPage/CreateBlogPage";
+import ListBlogPage from "./pages/AdminPages/ListBlogPage/ListBlogPage";
 import Sidebar from "./components/Sidebar/Sidebar";
 import AIConsultation from "./pages/Consultation/AIConsultation";
 function App() {
@@ -150,10 +151,18 @@ function AppRoutes() {
             }
           />
            <Route
-            path="/CreateBlogPage"
+            path="/AdminPage/CreateBlogPage"
             element={
               <ThemeProvider>
                 <Sidebar selected={"Blog Management"} /> <CreateBlogPage />{" "}
+              </ThemeProvider>
+            }
+          />
+            <Route
+            path="/AdminPage/ListBlogPage"
+            element={
+              <ThemeProvider>
+                <Sidebar selected={"Blog Management"} /> <ListBlogPage />{" "}
               </ThemeProvider>
             }
           />
