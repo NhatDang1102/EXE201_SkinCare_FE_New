@@ -91,6 +91,7 @@
   margin-top: 6px;
 }
 .adminBlogInput {
+  color: var(--primary-text-color);
   border-radius: 8px;
   border: 1.1px solid #bbb;
   background: rgba(246,246,246,0.97);
