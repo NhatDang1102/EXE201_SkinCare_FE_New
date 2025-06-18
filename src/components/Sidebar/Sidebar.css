@@ -127,54 +127,85 @@ body:has(.s-wrapper) .bgImg {
 body:has(.s-wrapper) .bgImg img {
     width: 150%;
 }
-.sidebar-menu-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 18px;
-  font-size: 1.16rem;
-  font-weight: 600;
-  color: #757575;
-  transition: color 0.13s;
-}
-.sidebar-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  display: inline-block;
-  background: #888;
-  margin-right: 13px;
-}
+
 .sidebar-text {
   display: flex;
   align-items: center;
-  font-size: 1.16rem;
+  font-size: 16px;
   font-weight: 600;
   color: #757575;
+  padding-left: 20px;
 }
-.sidebar-text.active {
+.sidebar-text:hover {
   color: #45a8e6;
 }
+.sidebar-text:hover svg {
+  background-color: rgb(108, 193, 246);
+  color: rgb(108, 193, 246);
+  transition: all 0.3s ease;
+}
+.sidebar-text svg {
+  margin-right: 10px;
+  background-color: var(--secondary-text-color);
+  color: var(--secondary-text-color);
+  border-radius: 50%;
+  transform: rotateZ(-30deg) scale(0.6);
+  transition: all 0.5s ease;
+}
+.sidebar-text svg.morbinTime {
+  color: var(--primary-text-color);
+  background-color: transparent;
+  border-radius: 10px;
+  transform: rotateZ(0deg) scale(1);
+}
+
+.sideBarList {
+  position: absolute;
+  width: 160px;
+  height: 150px;
+  left: 20%;
+  opacity: 0;
+  padding: 0 20px;
+  border-radius: 20px;
+  transform: translateY(40%);
+  background-color: #e0e0e0;
+  animation: appearList 0.3s forwards;
+}
 .sidebar-dropdown {
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   list-style: none;
-  padding-left: 34px;
-  margin-top: -20px;
-  margin-bottom: 5px;
+  margin-top: 25px;
+  gap: 20px;
 }
 .sidebar-dropdown-item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
   font-size: 1.03rem;
+  background-color: #ccc;
   color: #727272;
-  margin: 1px 0;
+  font-weight: 500;
   cursor: pointer;
   transition: color 0.14s, background 0.13s;
   border-radius: 6px;
-  padding: 2px 9px;
-   width: 100%;           
+  width: 100%;
   box-sizing: border-box; 
 }
 .sidebar-dropdown-item:hover,
 .sidebar-dropdown-item.active {
   background: #e8fcfc;
   color: #249ac6;
+}
+
+@keyframes appearList {
+  to {
+    opacity: 1;
+    left: 101%;
+  }
 }
 
 @media screen and (max-width: 480px) {

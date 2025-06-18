@@ -160,6 +160,14 @@ function AppRoutes() {
               </ThemeProvider>
             }
           />
+          <Route
+            path="/AdminPage/Leaderboard"
+            element={
+              <ThemeProvider>
+                <Sidebar selected={"Leaderboard"} /> <DashboardPage />{" "}
+              </ThemeProvider>
+            }
+          />
            <Route
             path="/AdminPage/CreateBlogPage"
             element={
