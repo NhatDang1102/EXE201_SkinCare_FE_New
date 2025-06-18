@@ -80,13 +80,14 @@
   max-width: 670px;
   font-weight: 500;
   transform: translate(0, 360px); opacity: 0;
-  padding: 0 5px;
+  padding: 10px 20px;
+  border: 1px solid rgba(128, 128, 128, 0.3);
   background-color: #f7f7f7; border-radius: 4px;
   z-index: 2;
   transition: all 0.5s ease;
 }
-.productpage-item-box:has(.productpage-imgBox:hover) .productpage-summary {
-  pointer-events: none;
+.productpage-item-box:has(.productpage-imgBox:hover) .productpage-summary,
+.productpage-summary:hover {
   user-select: text;
   transform: translate(0, 300px); opacity: 1;
   transition: all 0.3s ease;
