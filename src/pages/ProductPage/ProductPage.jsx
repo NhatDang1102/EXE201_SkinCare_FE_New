@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { motion, useScroll, useMotionValueEvent, useTransform } from "framer-motion";
 import "react-toastify/dist/ReactToastify.css";
 import "./ProductPage.css";
 import TrustedBrand from "../../assets/trusted_brand_icon.png";
@@ -12,6 +13,12 @@ export default function ProductPage() {
   const [reviews, setReviews] = useState([]);
   const [showCreateReview, setShowCreateReview] = useState(false);
   const [newReviewText, setNewReviewText] = useState("");
+
+  const { scrollYProgress } = useScroll();
+  useMotionValueEvent(scrollYProgress, "change");
+
+  const heightPop = useTransform(scrollYProgress, [0.1, 0.3], ["0", "100vh"]);
+  const transition = { duration: 2, type: "spring" };
 
   useEffect(() => {
     fetch("https://skincareapp.somee.com/SkinCare/Blog")
@@ -61,13 +68,17 @@ export default function ProductPage() {
               />
             </div>
           )}
-          {blog.content && (
-            <div className="productpage-summary">{blog.content}</div>
-          )}
+          
           <img className="trustedBrandIcon" src={TrustedBrand} alt="" />
           <div className="rippleContainer"><div className="wave"></div></div>
           <div className="rippleContainer2"><div className="wave"></div></div>
         </div>
+          {blog.content && (
+            <motion.div className="productpage-summary" style={{maxHeight: heightPop}}
+            transition={transition}>
+              {blog.content}
+            </motion.div>
+          )}
       </div>
 
       <div className="product-ecom-container">

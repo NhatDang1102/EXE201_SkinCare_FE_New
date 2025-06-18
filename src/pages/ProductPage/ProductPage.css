@@ -70,26 +70,25 @@
 }
 
 .productpage-summary {
-  position: absolute;
+  position: relative;
   font-size: 1.16rem;
   color: #343434;
   text-align: left;  
   margin-bottom: 26px;
   font-family: 'Montserrat', Arial, sans-serif;
   line-height: 1.5;
-  max-width: 670px;
+  width: 80vw;
+  overflow-y: hidden;
   font-weight: 500;
-  transform: translate(0, 360px); opacity: 0;
-  padding: 10px 20px;
-  border: 1px solid rgba(128, 128, 128, 0.3);
+  padding: 0 20px;
+  transform: translate(0, 110px);
   background-color: #f7f7f7; border-radius: 4px;
   z-index: 2;
   transition: all 0.5s ease;
 }
-.productpage-item-box:has(.productpage-imgBox:hover) .productpage-summary,
-.productpage-summary:hover {
+.productpage-section1 .productpage-summary:hover {
   user-select: text;
-  transform: translate(0, 300px); opacity: 1;
+  transform: translate(0, 100px);
   transition: all 0.3s ease;
 }
 
