@@ -27,6 +27,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+.schedule-container:has(.no-routine-section) {
+  width: 100vw;
+  max-width: none;
+  padding: 15% 37%;
+}
 
 /* Skincare Schedule Styles */
 .schedule-container {
@@ -104,9 +109,11 @@
 }
 
 /* No Routine State */
+.maskModal {position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9; background-color: #333333b0;}
 .no-routine-section {
+  position: absolute;
+  z-index: 10;
   display: flex;
-  margin-top: 50%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -148,6 +155,11 @@
   position: relative;
   overflow: hidden;
   margin-top: 8%;
+}
+
+.header-bg {
+  background-color: purple;
+  mask-image: linear-gradient(to right, transparent 0%, purple 40%, purple 60%, transparent 100%);
 }
 
 .schedule-header::before {

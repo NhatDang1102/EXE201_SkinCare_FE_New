@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./SkincareSchedule.css";
 import { showLoading, updateToast } from "../../utils/toastUtils";
 import { useNavigate } from "react-router-dom";
+import AIConsultation from "../Consultation/AIConsultation";
 
 const SkincareSchedule = () => {
   const [routine, setRoutine] = useState(null);
@@ -354,6 +355,8 @@ const SkincareSchedule = () => {
             Tạo routine ngay
           </button>
         </div>
+        <div className="maskModal"></div>
+        <AIConsultation />
       </div>
     );
   }
