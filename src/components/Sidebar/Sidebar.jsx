@@ -6,7 +6,7 @@ import { Link } from "react-scroll";
 import { useEffect, useState } from "react";
 
 import LogoutButton from '../../features/AccountActions/LogoutButton'
-import { AccountBox, InsertChart } from "@mui/icons-material";
+import { AccountBox, InsertChart, Leaderboard } from "@mui/icons-material";
 
 const Sidebar = ({selected}) => {
     const navigate = useNavigate();
@@ -88,8 +88,8 @@ const Sidebar = ({selected}) => {
                         </li>
                         <li>
                             <Link to="top" spy={true} smooth={true} className={selected === "Leaderboard" ? 'selected' : ''} 
-                               onClick={() => navigate('/AdminPage/Leaderboard')} style={{ cursor: 'pointer' }} >
-                                <AccountBox className={selected === "Leaderboard" ? 'morbinTime' : ''} /> Leaderboard
+                               onClick={() => navigate('/AdminPage/Dashboard')} style={{ cursor: 'pointer' }} >
+                                <Leaderboard className={selected === "Leaderboard" ? 'morbinTime' : ''} /> Leaderboard
                             </Link>
                         </li>
                         <li>

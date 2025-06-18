@@ -131,7 +131,7 @@
   object-fit: contain;
   border-radius: 12px;
   mix-blend-mode: darken;
-  transform: translate(0px, -130px) rotateZ(10deg);
+  transform: translate(0px, -100px) rotateZ(10deg);
   mask: linear-gradient(to bottom, transparent, transparent 15%, #eee 15%, #eee 95%, transparent 95%);
   transition: all 0.4s ease;
 }
