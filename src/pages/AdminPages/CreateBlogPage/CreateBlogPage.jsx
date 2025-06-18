@@ -1,4 +1,4 @@
-import BGImage from "../../components/BGImage/BGImage";
+import BGImage from "../../../components/BGImage/BGImage";
 import React, { useState, useEffect } from "react";
 import "./CreateBlogPage.css";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -71,7 +71,7 @@ export default function CreateBlogPage() {
     });
     setLoading(false);
     if (resp.ok) {
-      toast.success("Create blog successfully!");
+      toast.success("Create Blog Successfully!");
       setTitle("");
       setContent("");
       setLink("");
@@ -100,19 +100,19 @@ export default function CreateBlogPage() {
           )}
         </div>
 
-        <div className="adminBlogLabel">Chọn danh mục</div>
+        <div className="adminBlogLabel">Select category</div>
         <select
           className="adminBlogProduct"
           value={selectedCategory}
           onChange={e => setSelectedCategory(e.target.value)}
         >
-          <option value="">-- Tất cả danh mục --</option>
+          <option value="">--  All categories --</option>
           {categories.map(c => (
             <option key={c.id} value={c.id}>{c.name}</option>
           ))}
         </select>
 
-        <div className="adminBlogLabel">Chọn sản phẩm</div>
+        <div className="adminBlogLabel">Select product</div>
         <select
           className="adminBlogProduct"
           value={productId}

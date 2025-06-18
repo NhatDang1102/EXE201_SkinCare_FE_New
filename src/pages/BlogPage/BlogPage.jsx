@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./BlogPage.css";
 import { Link } from "react-router-dom";
 
-// Hàm chuẩn hóa ngày sang múi giờ Việt Nam
 function getVietnamDate(dateString) {
     if (!dateString) return "";
     const date = new Date(dateString);
@@ -56,9 +55,9 @@ export default function BlogPage() {
                                     <div className="skinBlog-desc">
                                         {blog.content}
                                     </div>
-                                   <div className="skinBlog-meta">
-  {getVietnamDate(blog.createdAt)} | By Team 202
-</div>
+                                    <div className="skinBlog-meta">
+                                        {getVietnamDate(blog.createdAt)} | By Team 202
+                                    </div>
                                 </div>
                             </div>
                         ))}
