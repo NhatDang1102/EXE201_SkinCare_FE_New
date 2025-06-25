@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import "./Services.css";
-import BannerImg from "../../assets/image 24.png"
+import Scene from "../../assets/scene.splinecode";
 
 import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import Spline from "@splinetool/react-spline";
 
 const Services = () => {
   const navigate = useNavigate();
@@ -18,20 +19,17 @@ const Services = () => {
     type: "slide",
   };
 
-  const handleRegisterDirect = () => {
-    navigate("/");
-  };
-
   return (
     <div className="services" id="services">
-      <motion.img
-        initial={{ top: "0" }}
-        whileInView={{ top: "-230px" }}
+      <motion.div
+        initial={{ top: "50px" }}
+        whileInView={{ top: "0" }}
         transition={transitionImg}
-        src={BannerImg} alt="" 
-        className="bannerImg"/>
+        className="bannerImg">
+          <Spline scene={Scene} />
+      </motion.div>
       <div className="s-title">Join Our Thriving Community</div>
-      <button className="getStartedButton">Get Started For Free</button>
+      <button className="getStartedButton" onClick={() => navigate("/VIP-purchase")}>Get VIP Package</button>
     </div>
   );
 };

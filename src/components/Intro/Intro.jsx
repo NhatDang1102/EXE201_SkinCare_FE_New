@@ -16,7 +16,7 @@ const Intro = () => {
   const darkMode = theme.state.darkMode;
 
   const handleDirect = () => {
-    navigate("/login");
+    navigate("/schedule");
   };
 
   return (

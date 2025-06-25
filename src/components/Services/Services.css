@@ -1,7 +1,12 @@
 .services {
     display: flex;
     justify-content: center;
-    margin-bottom: -700px;
+    background-color: black;
+    height: 600px;
+}
+
+.services canvas {
+    position: absolute;
 }
 
 .bannerImg {
@@ -9,11 +14,12 @@
     position: relative;
     left: 0;
     width: 100%;
+    height: 800px;
 }
 
 .s-title {
     position: absolute;
-    margin-top: 20px;
+    margin-top: 150px;
     font-size: 42px;
     font-weight: 600;
     color: white;
@@ -25,7 +31,7 @@
 .getStartedButton {
     position: absolute;
     z-index: 1;
-    margin-top: 100px;
+    margin-top: 240px;
     width: 20%;
     height: 60px;
     color: var(--primary-text-color);

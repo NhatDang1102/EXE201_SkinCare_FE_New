@@ -25,6 +25,7 @@ import ListBlogPage from "./pages/AdminPages/ListBlogPage/ListBlogPage";
 import Sidebar from "./components/Sidebar/Sidebar";
 import AIConsultation from "./pages/Consultation/AIConsultation";
 import SkincareSchedule from "./pages/Schedule/SkincareSchedule";
+import PaymentPage from "./pages/PaymentPage/PaymentPage";
 function App() {
   return (
     <AuthProvider>
@@ -184,15 +185,24 @@ function AppRoutes() {
               </ThemeProvider>
             }
           />
+          <Route
+            path="/VIP-purchase"
+            element={
+              <ThemeProvider>
+                <Navbar selected={""} /> <VIPPurchasePage /> <Footer />{" "}
+              </ThemeProvider>
+            }
+          />
+          <Route
+            path="/payment-page"
+            element={
+              <ThemeProvider>
+                <PaymentPage />
+              </ThemeProvider>
+            }
+          />
         </Route>
-        <Route
-          path="/VIP-purchase"
-          element={
-            <ThemeProvider>
-              <Navbar selected={""} /> <VIPPurchasePage /> <Footer />{" "}
-            </ThemeProvider>
-          }
-        />
+        
         <Route
           path="/blog"
           element={

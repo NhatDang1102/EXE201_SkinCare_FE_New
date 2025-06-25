@@ -17,7 +17,7 @@ export default function ProductPage() {
   const { scrollYProgress } = useScroll();
   useMotionValueEvent(scrollYProgress, "change");
 
-  const heightPop = useTransform(scrollYProgress, [0.1, 0.3], ["0", "100vh"]);
+  const heightPop = useTransform(scrollYProgress, [0.1, 0.2], ["0", "100vh"]);
   const transition = { duration: 2, type: "spring" };
 
   useEffect(() => {
