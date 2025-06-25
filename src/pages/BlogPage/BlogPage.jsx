@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./BlogPage.css";
 import { Link } from "react-router-dom";
 
@@ -19,6 +19,8 @@ export default function BlogPage() {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 2;
 
+    const bgRef = useRef();
+
     useEffect(() => {
         fetch("https://skincareapp.somee.com/SkinCare/Blog")
             .then((res) => res.json())
@@ -31,8 +33,23 @@ export default function BlogPage() {
     const endIdx = startIdx + itemsPerPage;
     const currentBlogs = blogs.slice(startIdx, endIdx);
 
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            const windowWidth = window.innerWidth / 5;
+            const windowHeight = window.innerHeight / 5;
+            const mouseX = e.clientX / windowWidth;
+            const mouseY = e.clientY / windowHeight;
+            if (bgRef.current) {
+                bgRef.current.style.transform = `translate3d(-${mouseX}%, -${mouseY}%, 0)`;
+            }
+        };
+        window.addEventListener("mousemove", handleMouseMove);
+        return () => window.removeEventListener("mousemove", handleMouseMove);
+    }, []);
+
     return (
         <div className="skinBlog-root">
+            <div class="blog-background-image"  ref={bgRef} />
             <div className="skinBlog-container">
                 <h1 className="skinBlog-title">Skin Care Blogs</h1>
                 {loading ? (

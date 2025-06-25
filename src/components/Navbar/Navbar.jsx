@@ -18,6 +18,11 @@ const navbar = ({ selected }) => {
   const { scrollYProgress } = useScroll();
   const [email, setEmail] = useState(null);
 
+  const transitionSmooth = {
+    duration: 2,
+    type: "slide",
+  };
+
   useEffect(() => {
     const updateEmail = () => {
       const savedEmail =
@@ -34,7 +39,7 @@ const navbar = ({ selected }) => {
 
   useMotionValueEvent(scrollYProgress, "change");
 
-  const position = useTransform(scrollYProgress, [0, 0.02], ["20%", "0%"]);
+  const position = useTransform(scrollYProgress, [0, 0.02], ["20px", "0px"]);
   const borderColor = useTransform(
     scrollYProgress,
     [0.02, 1],
@@ -62,11 +67,12 @@ const navbar = ({ selected }) => {
       id="Navbar"
       style={{
         position: "fixed",
-        y: position,
+        paddingTop: position,
         boxShadow: showShadow,
         backgroundColor: bgColor,
         backdropFilter: blurFilter,
       }}
+      transition={transitionSmooth}
     >
       {/* left */}
       <div className="n-left">

@@ -147,7 +147,7 @@
 }
 
 .productpage-item-box:has(.productpage-imgBox:hover) .trustedBrandIcon {
-  bottom: 34%;
+  bottom: 38%;
   right: 42%;
   rotate: -10deg;
   opacity: 1;
