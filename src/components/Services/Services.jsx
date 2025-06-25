@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import "./Services.css";
-import Scene from "../../assets/scene.splinecode";
 
 import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Spline from "@splinetool/react-spline";
+import Scene from "../../assets/scene.splinecode";
 
 const Services = () => {
   const navigate = useNavigate();

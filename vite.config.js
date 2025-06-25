@@ -17,4 +17,5 @@ export default defineConfig({
     https: true,
     host: true, // Optional: Allows access from local network (e.g., mobile testing)
   },
+  assetsInclude: ['**/*.splinecode'],
 });
