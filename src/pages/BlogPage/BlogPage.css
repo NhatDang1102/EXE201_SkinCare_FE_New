@@ -37,7 +37,8 @@
   letter-spacing: 2px;
   color: transparent;
   -webkit-text-stroke: 1px #232323;
-  text-shadow: -4px -4px  #232323;
+  text-shadow: -4px -4px  #232323,
+                -5px -5px 10px #ffffffd4;
   font-weight: 600;
   text-transform: uppercase;
 }
