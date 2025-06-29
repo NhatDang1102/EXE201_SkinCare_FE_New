@@ -53,7 +53,7 @@ export default function BlogPage() {
             <div className="skinBlog-container">
                 <h1 className="skinBlog-title">Skin Care Blogs</h1>
                 {loading ? (
-                    <div className="skinBlog-loading">Loading...</div>
+                    <div className="skinBlog-loading">Đang tải...</div>
                 ) : (
                     <>
                         {currentBlogs.map((blog) => (
@@ -86,7 +86,7 @@ export default function BlogPage() {
                             >
                                 &laquo;
                             </button>
-                            <span className="skinBlog-pagination-text"> PAGE  {currentPage}</span>
+                            <span className="skinBlog-pagination-text"> Trang  {currentPage} </span>
                             <button
                                 onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
                                 disabled={currentPage === totalPages}

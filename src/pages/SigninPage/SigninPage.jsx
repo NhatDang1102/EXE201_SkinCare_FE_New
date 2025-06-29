@@ -29,11 +29,11 @@ export default function SigninPage() {
     e.preventDefault();
 
     if (password !== passwordConfirm) {
-      setError("Passwords do not match.");
+      setError("Mật khẩu không khớp.");
       return;
     }
 
-    const toastId = showLoading("Sending OTP to email...");
+    const toastId = showLoading("Đang gửi mã OTP đến email...");
 
     try {
       setError("");
@@ -52,7 +52,7 @@ export default function SigninPage() {
         setError(result.message);
       }
 
-      updateToast(toastId, "success", "Please verify OTP sent to email.");
+      updateToast(toastId, "success", "Vui lòng xác minh mã OTP đã được gửi đến email.");
       // Show OTP popup
       setShowOtpModal(true);
       // navigate("/login"); // Or auto-login or go to dashboard
@@ -66,22 +66,22 @@ export default function SigninPage() {
   return (
     <>
       <div className='signinLable'>
-        Account
-        <span>Create your account credentials</span>
+        Tài khoản
+        <span>Tạo thông tin đăng nhập cho tài khoản của bạn</span>
       </div>
       <form onSubmit={handleSignin} className='signInFrom1'>
         <div className="input-field">
-          <label><Person /> Username</label>
-          <input type="text" className="input" placeholder="Enter your username" value={userName} onChange={(e) => setUserName(e.target.value)} required />
+          <label><Person /> Tên</label>
+          <input type="text" className="input" placeholder="Nhập tên của bạn" value={userName} onChange={(e) => setUserName(e.target.value)} required />
         </div>
         <div className="input-field">
-          <label><Mail /> Email address</label>
-          <input type="email" className="input" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <label><Mail /> Địa chỉ email</label>
+          <input type="email" className="input" placeholder="Nhập địa chỉ email của bạn" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
         <div className="input-field">
-          <label><Lock /> Password</label>
+          <label><Lock /> Mật khẩu</label>
           <div className="passInput">
-            <input type={showPassword ? "text" : "password"} className="input" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <input type={showPassword ? "text" : "password"} className="input" placeholder="Nhập mật khẩu của bạn" value={password} onChange={(e) => setPassword(e.target.value)} required />
             <div className={`passToggle ${showPassword ? 'hide' : 'show'}`} onClick={togglePasswordVisibility}>
               <Visibility className={showPassword ? 'show' : ''} />
               <VisibilityOff className={showPassword ? '' : 'hide'} />
@@ -89,9 +89,9 @@ export default function SigninPage() {
           </div>
         </div>
         <div className="input-field">
-          <label><Lock /> Confirm Password</label>
+          <label><Lock /> Xác nhận mật khẩu</label>
           <div className="passInput">
-            <input type={showPasswordConfirm ? "text" : "password"} className="input" placeholder="Confirm your password" value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)} required />
+            <input type={showPasswordConfirm ? "text" : "password"} className="input" placeholder="Xác nhận mật khẩu" value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)} required />
             <div className={`passToggle ${showPasswordConfirm ? 'hide' : 'show'}`} onClick={togglePasswordConfirmVisibility}>
               <Visibility className={showPasswordConfirm ? 'show' : ''} />
               <VisibilityOff className={showPasswordConfirm ? '' : 'hide'} />
@@ -100,7 +100,7 @@ export default function SigninPage() {
         </div>
         {error && <p className="error-message">{error}</p>}
         <button className='loginButton' type="submit">
-          Continue <ArrowForward />
+          Đăng nhập <ArrowForward />
         </button>
       </form>
 

@@ -58,7 +58,6 @@ export default function EditProfilePage() {
           },
           { withCredentials: true }
         );
-        // Có thể thông báo thành công nếu muốn
       }
 
       const res = await axios.put(
@@ -77,7 +76,6 @@ export default function EditProfilePage() {
       }
       if (avatarFile) {
         const formData = new FormData();
-        // ĐÚNG field name phải là 'ImageFile'
         formData.append("ImageFile", avatarFile);
 
         const resAvatar = await axios.post(
@@ -88,7 +86,6 @@ export default function EditProfilePage() {
             withCredentials: true,
           }
         );
-        // Backend trả về { url: ... }
         if (resAvatar.data?.url) {
           localStorage.setItem("profilePicture", resAvatar.data.url);
           setAvatarPreview(resAvatar.data.url);
@@ -127,14 +124,14 @@ export default function EditProfilePage() {
               <input id="avatarUpload" type="file" accept="image/*" style={{ display: "none" }} onChange={handleAvatarChange} />
                 <div className="statusBadge"></div>
             </div>
-            <div className="userName" style={{ fontSize: 32, fontWeight: 600, textAlign: "center", marginBottom: 6 }}>EDIT PROFILE</div>
+            <div className="userName" style={{ fontSize: 32, fontWeight: 600, textAlign: "center", marginBottom: 6 }}>Cập nhật thông tin</div>
           </div>
 
           <form className="profileDetails" onSubmit={handleSave} style={{ background: "none", boxShadow: "none" }}>
             <div className="detailItem" style={{ border: "none", marginBottom: 10 }}>
               <User className="detailIcon" color="#7c68ee" />
               <div className="detailContent">
-                <div className="detailLabel" style={{ color: "#a4a7b7", letterSpacing: 1, fontWeight: 600 }}>USERNAME</div>
+                <div className="detailLabel" style={{ color: "#a4a7b7", letterSpacing: 1, fontWeight: 600 }}>Tên</div>
                 <input
                   className="editInput"
                   style={{ fontWeight: 700, fontSize: 18, textAlign: "left", border: "none", background: "none", color: "#2b3247" }}
@@ -149,7 +146,7 @@ export default function EditProfilePage() {
             <div className="detailItem" style={{ border: "none", marginBottom: 10 }}>
               <Eye className="detailIcon" color="#7c68ee" />
               <div className="detailContent">
-                <div className="detailLabel" style={{ color: "#a4a7b7", letterSpacing: 1, fontWeight: 600 }}>OLD PASSWORD</div>
+                <div className="detailLabel" style={{ color: "#a4a7b7", letterSpacing: 1, fontWeight: 600 }}>Mật khẩu cũ</div>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <input
                     className="editInput"
@@ -174,7 +171,7 @@ export default function EditProfilePage() {
             <div className="detailItem" style={{ border: "none", marginBottom: 10 }}>
               <Eye className="detailIcon" color="#7c68ee" />
               <div className="detailContent">
-                <div className="detailLabel" style={{ color: "#a4a7b7", letterSpacing: 1, fontWeight: 600 }}>NEW PASSWORD</div>
+                <div className="detailLabel" style={{ color: "#a4a7b7", letterSpacing: 1, fontWeight: 600 }}>Mật khẩu mới</div>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <input
                     className="editInput"
@@ -198,15 +195,15 @@ export default function EditProfilePage() {
   <div style={{ display: "flex", justifyContent: "center", margin: "18px 0 12px 0" }}>
     <label className="uploadAvatarBtn">
       <UploadCloud style={{ marginRight: 8 }} size={21} />
-      Upload Avatar
+      Tải ảnh
       <input type="file" accept="image/*" style={{ display: "none" }} onChange={handleAvatarChange} />
     </label>
   </div>
             <div className="actionButtons" style={{ marginTop: 36, display: "flex", gap: 22 }}>
               <button type="submit" className="actionButton primaryButton" disabled={saving} style={{ fontWeight: 700, fontSize: 18, padding: "14px 0", background: "linear-gradient(90deg,#7c68ee,#6eb6fc)", border: "none" }}>
-                {saving ? "Saving..." : "Save"}
+                {saving ? "Saving..." : "Lưu"}
               </button>
-              <button type="button" className="actionButton secondaryButton" style={{ fontWeight: 700, fontSize: 18, padding: "14px 0", background: "#f6f7fa", border: "none", color: "#7c68ee" }} onClick={() => navigate("/profile")}>Cancel</button>
+              <button type="button" className="actionButton secondaryButton" style={{ fontWeight: 700, fontSize: 18, padding: "14px 0", background: "#f6f7fa", border: "none", color: "#7c68ee" }} onClick={() => navigate("/profile")}>Hủy</button>
             </div>
           </form>
         </div>

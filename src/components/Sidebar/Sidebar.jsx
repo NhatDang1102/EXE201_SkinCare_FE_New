@@ -84,18 +84,18 @@ const Sidebar = ({ selected }) => {
                         <li>
                             <Link spy={true} smooth={true} className={selected === "Profile" ? 'selected' : ''}
                                 onClick={() => navigate('/AdminPage/Profile')} style={{ cursor: 'pointer' }} >
-                                <AccountBox className={selected === "Profile" ? 'morbinTime' : ''} /> Profile
+                                <AccountBox className={selected === "Profile" ? 'morbinTime' : ''} /> Hồ sơ
                             </Link>
                         </li>
                         <li>
                             <Link spy={true} smooth={true} className={selected === "Leaderboard" ? 'selected' : ''} 
                                onClick={() => navigate('/AdminPage/Leaderboard')} style={{ cursor: 'pointer' }} >
-                                <Leaderboard className={selected === "Leaderboard" ? 'morbinTime' : ''} /> Leaderboard
+                                <Leaderboard className={selected === "Leaderboard" ? 'morbinTime' : ''} /> Bảng xếp hạng
                             </Link>
                         </li>
                         <li onClick={() => setShowBlogDropdown(v => !v)}>
                             <div className={`sidebar-text ${showBlogDropdown ? "active" : ""}`} style={{ cursor: 'pointer' }}>
-                                <RateReview className={showBlogDropdown ? 'morbinTime' : ''} /> Blog Management
+                                <RateReview className={showBlogDropdown ? 'morbinTime' : ''} /> Quản lý blog
                                 <span style={{ fontSize: "0.8rem", marginLeft: '5px', transition: "transform 0.16s", display: "inline-block", transform: showBlogDropdown ? "rotate(-90deg)" : "none" }}>
                                     ▼
                                 </span>
@@ -105,8 +105,8 @@ const Sidebar = ({ selected }) => {
                             <motion.div className="sideBarList"
                                 style={{ backgroundColor: bgColor}}>
                                 <ul className="sidebar-dropdown">
-                                    <li onClick={() => navigate("/AdminPage/CreateBlogPage")} className="sidebar-dropdown-item"><Create/> Create Blog</li>
-                                    <li onClick={() => navigate("/AdminPage/ListBlogPage")} className="sidebar-dropdown-item"><ListAlt/> List Blog</li>
+                                    <li onClick={() => navigate("/AdminPage/CreateBlogPage")} className="sidebar-dropdown-item"><Create/> Tạo blog</li>
+                                    <li onClick={() => navigate("/AdminPage/ListBlogPage")} className="sidebar-dropdown-item"><ListAlt/> Danh sách blog</li>
                                 </ul>
                             </motion.div>
                         )}
@@ -114,7 +114,7 @@ const Sidebar = ({ selected }) => {
                         <li>
                             <Link to="top" spy={true} smooth={true} className={selected === "about" ? 'selected' : ''}
                                 onClick={() => navigate('/about_us')} style={{ cursor: 'pointer' }} >
-                                About
+                                Giới thiệu
                             </Link>
                         </li>
                     </ul>
@@ -122,10 +122,10 @@ const Sidebar = ({ selected }) => {
                 {email ? (<LogoutButton onClick={() => setEmail(null)} />) :
                     (<>
                         <a>
-                            <button className="homePageLoginButton" onClick={() => navigate('/login')} style={{ cursor: 'pointer' }}>Log in</button>
+                            <button className="homePageLoginButton" onClick={() => navigate('/login')} style={{ cursor: 'pointer' }}>Đăng nhập</button>
                         </a>
                         <a>
-                            <button className="homePageSigninButton" onClick={() => navigate('/sign-in')} style={{ cursor: 'pointer' }}>Sign in</button>
+                            <button className="homePageSigninButton" onClick={() => navigate('/sign-in')} style={{ cursor: 'pointer' }}>Đăng ký</button>
                         </a>
                     </>)
                 }

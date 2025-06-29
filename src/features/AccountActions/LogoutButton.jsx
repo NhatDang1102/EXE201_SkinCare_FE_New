@@ -31,7 +31,7 @@ export default function LogoutButton() {
         setTimeout(() => {
           navigate("/");
         }, 20);
-        updateToast(toastId, "success", "Logout successfully.");
+        updateToast(toastId, "success", "Đăng xuất thành công.");
       }
       else {
         await logout();
@@ -42,7 +42,7 @@ export default function LogoutButton() {
         setTimeout(() => {
           navigate("/");
         }, 20);
-        updateToast(toastId, "success", "Logout successfully.");
+        updateToast(toastId, "success", "Đăng xuất thành công.");
       }
     } catch (error) {
       updateToast(toastId, "error", "Something went wrong while logging out.");
@@ -51,6 +51,6 @@ export default function LogoutButton() {
   };
 
   return (
-    <button type="primary" onClick={handleLogout} className='logout-Btn'>Logout</button>
+    <button type="primary" onClick={handleLogout} className='logout-Btn'>Đăng xuất</button>
   )
 }

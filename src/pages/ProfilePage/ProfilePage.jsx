@@ -57,7 +57,7 @@ const navigate = useNavigate();
             <div className="detailItem">
               <UserCheck className="detailIcon" />
               <div className="detailContent">
-                <div className="detailLabel">Username</div>
+                <div className="detailLabel">Tên</div>
                 <div className="detailValue">{userProfile.username}</div>
               </div>
             </div>
@@ -65,7 +65,7 @@ const navigate = useNavigate();
             <div className="detailItem">
               <Mail className="detailIcon" />
               <div className="detailContent">
-                <div className="detailLabel">Email Address</div>
+                <div className="detailLabel">Địa chỉ email</div>
                 <div className="detailValue">{userProfile.email}</div>
               </div>
             </div>
@@ -73,7 +73,7 @@ const navigate = useNavigate();
             <div className="detailItem">
               <Shield className="detailIcon" />
               <div className="detailContent">
-                <div className="detailLabel">Role</div>
+                <div className="detailLabel">Vai trò</div>
                 <div className="detailValue">{userProfile.role}</div>
               </div>
             </div>
@@ -81,9 +81,9 @@ const navigate = useNavigate();
 
           <div className="actionButtons">
             <button className="actionButton primaryButton" onClick={() => navigate("/editprofile")}>
-              Edit Profile
+              Cập nhật hồ sơ
             </button>
-            <button className="actionButton secondaryButton">Settings</button>
+            <button className="actionButton secondaryButton">Cài đặt</button>
           </div>
         </div>
       </div>

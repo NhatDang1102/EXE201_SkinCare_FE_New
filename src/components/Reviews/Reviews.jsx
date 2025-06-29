@@ -21,7 +21,7 @@ const Reviews = () => {
   return (
     <div className="reviewsBox" id="reviews">
       <div className="awesome">
-        <div className="reviewsBoxTitle">Reviews</div>
+        <div className="reviewsBoxTitle">Đánh giá từ người dùng</div>
         <div className="reviews">
           {/* first review */}
           <motion.div
@@ -31,10 +31,10 @@ const Reviews = () => {
             className="reviewContainer"
           >
             <Comment
-              review={"The AI recommendations completely transformed my skincare routine"}
+              review={"Các gợi ý từ AI đã thay đổi hoàn toàn quy trình chăm sóc da của tôi."}
               profile={pfp1}
               name={"Mike R."}
-              title={"KOL / Reviewer"}
+              title={"KOL / Người đánh giá"}
             />
           </motion.div>
           {/* second review */}
@@ -45,10 +45,10 @@ const Reviews = () => {
             className="reviewContainer"
           >
             <Comment
-              review={"Love the community support and product recommendations."}
+              review={"Tôi rất thích sự hỗ trợ từ cộng đồng và các sản phẩm được đề xuất."}
               profile={pfp2}
               name={"Sarah K."}
-              title={"Skincare Enthusiast"}
+              title={"Người yêu thích chăm sóc da"}
             />
           </motion.div>
           {/* 3rd review */}
@@ -59,10 +59,10 @@ const Reviews = () => {
             className="reviewContainer"
           >
             <Comment
-              review={"The tracking feature helps me stay consistent with my routine. Amazing results!"}
+              review={"Tính năng theo dõi giúp tôi duy trì thói quen đều đặn. Kết quả thật tuyệt vời!"}
               profile={pfp3}
               name={"Lisa M."}
-              title={"Skincare Blogger"}
+              title={"Blogger làm đẹp"}
             />
           </motion.div>
           {/* <div 

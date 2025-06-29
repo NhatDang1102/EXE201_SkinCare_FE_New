@@ -91,7 +91,7 @@ export default function CreateBlogPage() {
         onSubmit={handleSubmit}
         style={{ y: position, scale, opacity }}
       >
-        <h2 className="adminBlogTitle">Create Blog</h2>
+        <h2 className="adminBlogTitle">Tạo Blog</h2>
         <div className="adminBlogImages">
           {autoImage && (
             <div className="adminPreviewImgBox">
@@ -100,32 +100,32 @@ export default function CreateBlogPage() {
           )}
         </div>
 
-        <div className="adminBlogLabel">Select category</div>
+        <div className="adminBlogLabel">Chọn danh mục</div>
         <select
           className="adminBlogProduct"
           value={selectedCategory}
           onChange={e => setSelectedCategory(e.target.value)}
         >
-          <option value="">--  All categories --</option>
+          <option value="">--  Tất cả danh mục --</option>
           {categories.map(c => (
             <option key={c.id} value={c.id}>{c.name}</option>
           ))}
         </select>
 
-        <div className="adminBlogLabel">Select product</div>
+        <div className="adminBlogLabel">Chọn sản phẩm</div>
         <select
           className="adminBlogProduct"
           value={productId}
           onChange={e => setProductId(e.target.value)}
           disabled={!filteredProducts.length}
         >
-          <option value="">-- Select Product --</option>
+          <option value="">-- Chọn sản phẩm --</option>
           {filteredProducts.map(p => (
             <option key={p.id} value={p.id}>{p.name}</option>
           ))}
         </select>
 
-        <div className="adminBlogLabel">Blog Information</div>
+        <div className="adminBlogLabel">Thông tin blog</div>
         <input
           className="adminBlogInput"
           type="text"

@@ -135,12 +135,12 @@ export default function DashboardPage() {
         <img src={skincareIcon3} alt="" className="misc3"/>
         <motion.div  className="dashBoardContainer"
               style={{y: position1, scale: size1, opacity: blurFilter1}}>
-          <Header title="ADMIN DASHBOARD" subtitle="Welcome to your dashboard" />
+          <Header title="Trang quản trị" subtitle="Chào mừng bạn đến với bảng điều khiển" />
           
           <div className="counterContainer" >
-            <Tracker icon={<AccountBox />} title="Daily Register" number={dailyRegister} />
-            <Tracker icon={<AssignmentInd />} title="Weekly Register" number={weeklyRegister} />
-            <Tracker icon={<PermContactCalendar />} title="Monthly Register" number={monthlyRegister} />
+            <Tracker icon={<AccountBox />} title="Đăng ký hàng ngày" number={dailyRegister} />
+            <Tracker icon={<AssignmentInd />} title="Đăng ký hàng tuần" number={weeklyRegister} />
+            <Tracker icon={<PermContactCalendar />} title="Đăng ký hàng tháng" number={monthlyRegister} />
           </div>
           
         </motion.div >
@@ -149,8 +149,8 @@ export default function DashboardPage() {
             style={{y: position2, scale: size2, opacity: blurFilter2}}>
 
             <div className="statistaContainer">
-                <div className="statTitle">Today's Sales</div>
-                <span className="statSubTitle">Sales Summary</span>
+                <div className="statTitle">Doanh số hôm nay</div>
+                <span className="statSubTitle">Tổng quan doanh số</span>
                 
                 <div className="trackerContainer" >
                     <SalesTracker icon={<BarChart />} number="5" title="Total Sales" profit="+10% from yesterday" />
@@ -166,8 +166,8 @@ export default function DashboardPage() {
             style={{y: position3, scale: size3, opacity: blurFilter3}}>
 
             <div className="chartContainer">
-                <div className="chartTitle">Earnings</div>
-                <span className="chartSubTitle">Total Expense</span>
+                <div className="chartTitle">Thu nhập</div>
+                <span className="chartSubTitle">Tổng chi phí</span>
                 
                 <div className="progressGaugeContainer" >
                     <CompositionExample />
@@ -176,7 +176,7 @@ export default function DashboardPage() {
             </div>
 
             <div className="lineChartContainer">
-                <div className="chartTitle">AI Request Rate</div>
+                <div className="chartTitle">Mức độ sử dụng AI</div>
                 
                 <div className="lineChartBox" >
                     <LineChart className="lineChart"

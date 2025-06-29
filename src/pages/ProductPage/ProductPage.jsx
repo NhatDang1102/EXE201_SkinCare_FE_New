@@ -42,7 +42,7 @@ export default function ProductPage() {
     fetchReviews();
   }, [blog]);
 
-  if (!blog) return <div style={{ textAlign: "center" }}>Loading...</div>;
+  if (!blog) return <div style={{ textAlign: "center" }}>Đang tải...</div>;
 
   const product = blog.product;
 
@@ -102,20 +102,20 @@ export default function ProductPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="cart-icon">🛒</span> Buy Now
+            <span className="cart-icon">🛒</span> Mua ngay
           </a>
         </div>
       </div>
 
       <div className="product-review-section">
   <div className="review-detail">
-    <div className="review-detail-title">Top Customer Reviews</div>
+    <div className="review-detail-title">Đánh giá hàng đầu từ khách hàng</div>
     <div className="review-detail-note">
-      Reviews and results may vary from person to person. Customer reviews are and do not represent the views of The Hut Group.
+      Đánh giá và kết quả có thể khác nhau tùy theo từng người. Những đánh giá của khách hàng chỉ mang tính cá nhân.
     </div>
     <hr />
     {reviews.length === 0 && (
-      <div className="review-empty">No reviews yet.</div>
+      <div className="review-empty">Chưa có đánh giá nào.</div>
     )}
     {reviews.map((rev) => (
       <div className="review-item" key={rev.id}>
@@ -132,18 +132,18 @@ export default function ProductPage() {
               {new Date(rev.createdAt).toLocaleDateString("en-CA")}
             </div>
             <div className="review-helpful">
-              Was this helpful?
+              Thông tin này có hữu ích không?
               <div className="helpful-btn-group">
                 <button className="helpful-btn helpful-yes">
-                  <span className="helpful-icon">👍</span> <b>YES (0)</b>
+                  <span className="helpful-icon">👍</span> <b>Có (0)</b>
                 </button>
                 <button className="helpful-btn helpful-no">
-                  <span className="helpful-icon">👎</span> <b>NO (0)</b>
+                  <span className="helpful-icon">👎</span> <b>Không (0)</b>
                 </button>
               </div>
             </div>
             <a href="#" className="review-report">
-              REPORT THIS REVIEW
+              Báo cáo đánh giá này
             </a>
           </div>
         </div>
@@ -154,18 +154,18 @@ export default function ProductPage() {
             className="review-create"
             onClick={() => setShowCreateReview(true)}
           >
-            CREATE A REVIEW
+            Tạo đánh giá
           </a>
   </div>
 </div>
       {showCreateReview && (
         <div className="adminBlogModal">
           <div className="adminBlogModalContent">
-            <h3>Write a review</h3>
+            <h3>Viết đánh giá</h3>
             <textarea
               value={newReviewText}
               onChange={(e) => setNewReviewText(e.target.value)}
-              placeholder="Enter review content..."
+              placeholder="Nhập nội dung đánh giá..."
               rows={5}
             />
             <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
@@ -192,7 +192,7 @@ export default function ProductPage() {
                       }
                     );
                     if (resp.ok) {
-                      toast.success("Send Review Successfully!");
+                      toast.success("Gửi đánh giá thành công!");
                       fetchReviews();
                       setShowCreateReview(false);
                       setNewReviewText("");
@@ -204,7 +204,7 @@ export default function ProductPage() {
                   }
                 }}
               >
-                Send
+                Gửi
               </button>
               <button
                 style={{
@@ -216,7 +216,7 @@ export default function ProductPage() {
                 }}
                 onClick={() => setShowCreateReview(false)}
               >
-                Cancel
+                Hủy
               </button>
             </div>
           </div>

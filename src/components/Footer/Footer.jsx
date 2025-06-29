@@ -8,14 +8,14 @@ const Footer = () => {
       <div className="f-content-left">
         <img src={Logo} alt="" />
         <div>
-          <span>Team 202</span>
-          <span>Your AI-powered skincare companion</span>
+          <span>Nhóm 202</span>
+          <span>Chăm sóc da thông minh với AI</span>
         </div>
       </div>
       <div className="f-content-right">
-        <div> <span>Features</span> <span>Community</span> <span>AI Consultation</span> <span>Product Hub</span> </div>
-        <div> <span>Company</span> <span>About Us</span> <span>Blog</span> <span>Contact</span> </div>
-        <div> <span>Follow Us</span>
+        <div> <span>Tính năng</span> <span>Cộng đồng</span> <span>Tư vấn AI</span> <span>Kho sản phẩm</span> </div>
+        <div> <span>Công ty</span> <span>Về chúng tôi</span> <span>Blog</span> <span>Liên hệ</span> </div>
+        <div> <span>Theo dõi chúng tôi</span>
           <span className="f-icons">
             <a href='https://www.facebook.com/profile.php?id=61576623442340'>
               <Facebook style={{ color: "gray", size: "3rem" }} />

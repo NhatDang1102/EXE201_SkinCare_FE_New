@@ -28,8 +28,8 @@ const Services = () => {
         className="bannerImg">
           <Spline scene={Scene} />
       </motion.div>
-      <div className="s-title">Join Our Thriving Community</div>
-      <button className="getStartedButton" onClick={() => navigate("/VIP-purchase")}>Get VIP Package</button>
+      <div className="s-title">Tham gia cộng đồng cùng chúng tôi</div>
+      <button className="getStartedButton" onClick={() => navigate("/VIP-purchase")}>Mua gói VIP</button>
     </div>
   );
 };

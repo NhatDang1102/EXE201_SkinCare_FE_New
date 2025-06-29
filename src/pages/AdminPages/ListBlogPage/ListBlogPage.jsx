@@ -8,7 +8,7 @@ import "./ListBlogPage.css";
 // Custom Toast Confirm Component
 const ToastConfirm = ({ onConfirm, onCancel }) => (
   <div style={{ minWidth: 180 }}>
-    <div style={{ marginBottom: 12 }}>Do You Want To Delete This Blog?</div>
+    <div style={{ marginBottom: 12 }}>Bạn có muốn xóa blog này?</div>
     <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
       <button
         style={{
@@ -21,7 +21,7 @@ const ToastConfirm = ({ onConfirm, onCancel }) => (
         }}
         onClick={onConfirm}
       >
-        Delete
+        Xóa
       </button>
       <button
         style={{
@@ -34,7 +34,7 @@ const ToastConfirm = ({ onConfirm, onCancel }) => (
         }}
         onClick={onCancel}
       >
-        Cancel
+        Hủy
       </button>
     </div>
   </div>
