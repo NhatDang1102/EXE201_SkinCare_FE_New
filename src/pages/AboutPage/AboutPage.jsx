@@ -6,44 +6,44 @@ import { useEffect } from 'react'
 
 export default function AboutPage() {
   useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div className='aboutUs'>
       <BGImage />
       <div className='aboutUscontent'>
         <div className='aboutUscontent-left'>
-          <h1>About Our Skincare Platform</h1>
+          <h1>Về nền tảng chăm sóc da của chúng tôi</h1>
           <div>
-            About Our Skincare Platform
-            <span>Welcome to Team202, your go-to destination for personalized skincare solutions. 
-              Our platform is designed to empower users with knowledge, expert AI-driven skincare advice, and a thriving community where people share real experiences and product reviews.
+            Giới thiệu
+            <span> Chào mừng bạn đến với **Team202** – điểm đến hàng đầu cho các giải pháp chăm sóc da cá nhân hóa.
+              Nền tảng của chúng tôi giúp người dùng nâng cao hiểu biết, nhận tư vấn chuyên sâu từ AI, và kết nối với cộng đồng yêu thích làm đẹp để chia sẻ trải nghiệm thật và đánh giá sản phẩm thực tế.
             </span>
           </div>
           <div>
-          Our Mission
-            <span>We strive to revolutionize the skincare industry by providing a trustworthy space where users can find the best products for their skin type, backed by real reviews and cutting-edge AI technology.</span>
+            Sứ mệnh của chúng tôi
+            <span> Chúng tôi hướng tới việc đổi mới ngành chăm sóc da bằng cách xây dựng một không gian đáng tin cậy, nơi bạn có thể tìm thấy sản phẩm phù hợp nhất với làn da của mình – dựa trên công nghệ AI hiện đại và đánh giá thực từ người dùng.</span>
           </div>
           <div>
-          What We Offer
+            Chúng tôi mang đến cho bạn
             <span>
               <ul>
-                <li>AI-Powered Skincare Consultation: Get personalized recommendations based on your skin concerns.</li>
-                <li>Community Insights: Read and share authentic reviews, tips, and experiences.</li>
-                <li>Verified Product Listings: Discover carefully curated skincare products tailored to different needs.</li>
-                <li>Educational Content: Learn about skincare ingredients, routines, and industry trends.</li>
+                <li>Tư vấn chăm sóc da bằng AI: Gợi ý cá nhân hóa dựa trên vấn đề da của bạn.</li>
+                <li>Góc nhìn từ cộng đồng: Đọc và chia sẻ đánh giá thật, mẹo hay và trải nghiệm thực tế.</li>
+                <li>Sản phẩm được kiểm chứng: Khám phá các sản phẩm được tuyển chọn kỹ càng phù hợp với từng nhu cầu.</li>
+                <li>Kiến thức hữu ích: Tìm hiểu về thành phần, quy trình chăm sóc da và xu hướng ngành làm đẹp.</li>
               </ul>
             </span>
           </div>
           <div>
-          Why Choose Us?
+            Vì sao chọn chúng tôi?
             <span>
               <ul>
-                <li>Science-Based Recommendations: Our AI analyzes skin conditions to suggest the best products.</li>
-                <li>User-Driven Community: Real people, real experiences, and honest feedback.</li>
-                <li>Sustainability Focus: We highlight eco-friendly and cruelty-free skincare choices.</li>
+                <li>Gợi ý dựa trên khoa học: AI phân tích tình trạng da để đưa ra sản phẩm phù hợp nhất.</li>
+                <li>Cộng đồng thật sự: Người dùng thật – phản hồi thật – trải nghiệm thật.</li>
+                <li>Ưu tiên bền vững: Ưu tiên sản phẩm thân thiện với môi trường và không thử nghiệm trên động vật.</li>
               </ul>
-                Join us in redefining skincare through technology, transparency, and community-driven insights. Explore, connect, and take charge of your skincare journey with Team202.
+              Hãy đồng hành cùng chúng tôi trong hành trình tái định nghĩa chăm sóc da bằng công nghệ, minh bạch và sức mạnh cộng đồng. Khám phá – Kết nối – Làm chủ làn da của bạn cùng Team202.
             </span>
           </div>
         </div>

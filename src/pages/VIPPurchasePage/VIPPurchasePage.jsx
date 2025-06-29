@@ -67,24 +67,24 @@ export default function VIPPurchasePage() {
       <motion.img transition={transition} className='productFloatImg2' src={Bottle2} alt='' />
       <motion.div className='purchaseContainer' style={{transform: Paralax}} transition={transition}>
         <div className='content'>
-          <div className='title'>Exclusive VIP Skincare Consultation</div>
-          <div className='pricing'>180,000 VND / Month</div>
-          <div className='benefits'>VIP Membership Benefits:</div>
+          <div className='title'>Tư vấn chăm sóc da VIP độc quyền</div>
+          <div className='pricing'>180,000 VND / Tháng</div>
+          <div className='benefits'>Quyền lợi thành viên VIP:</div>
           <p className='block'>
             <div>
-              <Check /> <span>Personalized skincare plans based on AI skin analysis</span>
+              <Check /> <span>Liệu trình chăm sóc da cá nhân hóa dựa trên phân tích AI</span>
             </div>
             <div>
-              <Check /> <span>Priority access to new and exclusive skincare products</span>
+              <Check /> <span>Ưu tiên tiếp cận sản phẩm chăm sóc da mới và độc quyền</span>
             </div>
             <div>
-              <Check /> <span>Monthly progress tracking and AI follow-ups</span>
+              <Check /> <span>Theo dõi tiến trình mỗi tháng và được AI nhắc lịch</span>
             </div>
             <div>
-              <Check /> <span>24/7 skincare support and emergency advice</span>
+              <Check /> <span>Hỗ trợ chăm sóc da 24/7 và tư vấn khẩn cấp</span>
             </div>
           </p>
-          <button className='joinServiceBtn' onClick={() => navigate('/payment-page')}>Join Now</button>
+          <button className='joinServiceBtn' onClick={() => navigate('/payment-page')}>Tham gia ngay</button>
         </div>
       </motion.div>
       <div class='canvas'>

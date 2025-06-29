@@ -95,9 +95,9 @@ const ChatBox = () => {
             <img src={headerImage} alt="Header" />
           </div>
           <div className="chatbox__content--header">
-            <h4 className="chatbox__heading--header">Support Center</h4>
+            <h4 className="chatbox__heading--header">Trung tâm hỗ trợ</h4>
             <p className="chatbox__description--header">
-              <FiberManualRecord /> Online
+              <FiberManualRecord /> Trực tuyến
             </p>
           </div>
         </div>
@@ -132,7 +132,7 @@ const ChatBox = () => {
         <div className="chatbox__footer">
           <input
             type="text"
-            placeholder="Type your message here..."
+            placeholder="Nhập tin nhắn của bạn tại đây..."
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -153,7 +153,7 @@ const ChatBox = () => {
                       <div className="typing-indicator">
                         <span></span><span></span><span></span>
                       </div>
-                      <p>Welcome back!</p>
+                      <p>Chào mừng bạn quay trở lại!</p>
                     </div>
                   </div>
                   <div className="message">
@@ -161,7 +161,7 @@ const ChatBox = () => {
                       <div className="typing-indicator">
                         <span></span><span></span><span></span>
                       </div>
-                      <p>It seems you haven't logged in to ask me, please log in first.</p>
+                      <p>Có vẻ như bạn chưa đăng nhập để đặt câu hỏi. Vui lòng đăng nhập trước.</p>
                     </div>
                   </div>
                 </div>

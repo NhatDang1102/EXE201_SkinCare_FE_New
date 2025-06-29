@@ -15,11 +15,11 @@ import LogoutButton from "../../features/AccountActions/LogoutButton";
 import { Home, Info, LibraryBooks, Portrait, SensorOccupied } from "@mui/icons-material";
 
 const navItems = [
-  { icon: <Home />, label: "Home", route: "/", key: "home" },
-  { icon: <SensorOccupied />, label: "AI Consultation", route: "/schedule", key: "consultation" },
+  { icon: <Home />, label: "Trang chủ", route: "/", key: "home" },
+  { icon: <SensorOccupied />, label: "Tư vấn bằng AI", route: "/schedule", key: "consultation" },
   { icon: <LibraryBooks />, label: "Blog", route: "/blog", key: "blog" },
-  { icon: <Portrait />, label: "My Profile", route: "/profile", key: "profile" },
-  { icon: <Info />, label: "About", route: "/about_us", key: "about" },
+  { icon: <Portrait />, label: "Trang cá nhân", route: "/profile", key: "profile" },
+  { icon: <Info />, label: "Giới thiệu", route: "/about_us", key: "about" },
 ];
 
 const navbar = ({ selected, index }) => {
@@ -135,7 +135,7 @@ const navbar = ({ selected, index }) => {
                 onClick={() => navigate("/login")}
                 style={{ cursor: "pointer" }}
               >
-                Log in
+                Đăng nhập
               </button>
             </a>
             <a>
@@ -144,7 +144,7 @@ const navbar = ({ selected, index }) => {
                 onClick={() => navigate("/sign-in")}
                 style={{ cursor: "pointer" }}
               >
-                Sign in
+                Đăng kí
               </button>
             </a>
           </>

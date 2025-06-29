@@ -46,31 +46,31 @@ export default function ContactUs() {
   }
 
   if (submitted) {
-    return <p>We've received your message, thank you for contacting us!</p>;
+    return <p>Chúng tôi đã nhận được tin nhắn của bạn, cảm ơn bạn đã liên hệ!</p>;
   }
 
   return (
     <form onSubmit={submit} className="contactUsForm">
-      <div className="contactUsTitle">Contact Us</div>
-      <label htmlFor="firstName">First name</label>
+      <div className="contactUsTitle">Liên hệ với chúng tôi</div>
+      <label htmlFor="firstName">Tên</label>
       <input
         id="firstName"
         value={firstName}
-        placeholder="First name"
+        placeholder="Nhập tên của bạn"
         onChange={(e) => setFirstName(e.target.value)}
         required
       />
 
-      <label htmlFor="lastName">Last name</label>
+      <label htmlFor="lastName">Họ</label>
       <input
         id="lastName"
         value={lastName}
-        placeholder="Last name"
+        placeholder="Nhập họ của bạn"
         onChange={(e) => setLastName(e.target.value)}
         required
       />
 
-      <label htmlFor="email">Email address</label>
+      <label htmlFor="email">Địa chỉ email</label>
       <input
         id="email"
         type="email"
@@ -80,15 +80,15 @@ export default function ContactUs() {
         required
       />
 
-      <label htmlFor="message">Your message</label>
+      <label htmlFor="message">Tin nhắn của bạn</label>
       <textarea
         id="message"
         value={message}
-        placeholder="Enter your question or message"
+        placeholder="Nhập câu hỏi hoặc tin nhắn của bạn"
         onChange={(e) => setMessage(e.target.value)}
       />
 
-      <button type="submit">Send</button>
+      <button type="submit">Gửi</button>
     </form>
   );
 }
