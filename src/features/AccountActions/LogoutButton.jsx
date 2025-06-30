@@ -43,6 +43,9 @@ export default function LogoutButton() {
           navigate("/");
         }, 20);
         updateToast(toastId, "success", "Đăng xuất thành công.");
+
+        }, 10);
+        updateToast(toastId, "success", "Logout successfully.");
       }
     } catch (error) {
       updateToast(toastId, "error", "Something went wrong while logging out.");

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "./Intro.css";
 import FloatinDiv from "../FloatingDiv/FloatingDiv";
 import skincareIntro from "../../assets/image 4.png";
@@ -19,6 +19,18 @@ const Intro = () => {
     navigate("/schedule");
   };
 
+  useEffect(() => {
+    const ballsLeft = document.querySelectorAll('.sub-container-propeller--left > .ball');
+    const ballsRight = document.querySelectorAll('.sub-container-propeller--right > .ball');
+
+    for (let i = 0; i < ballsLeft.length; i++) {
+      ballsLeft[i].style.animationDelay = `${i}00ms`;
+      if (ballsRight[i]) {
+        ballsRight[i].style.animationDelay = `${i}00ms`;
+      }
+    }
+  }, []);
+
   return (
     <div className="Intro" id="Intro">
       <div className="i-left">
@@ -28,6 +40,99 @@ const Intro = () => {
             whileInView={{ left: "10%" }}
             transition={transition}
             src={skincareIntro} alt="" />
+        </div>
+        <div className="DNA-wrapper" >
+          <div className="box box--top"></div>
+          <div className="container-message">
+            <h1 className="DNA-title">Analysing...</h1>
+          </div>
+          <div className="container-propeller">
+            <div className="sub-container-propeller--left">
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+            </div>
+            <div className="sub-container-propeller--right">
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+              <div className="ball"></div>
+            </div>
+          </div>
+          <div className="box box--bottom"></div>
         </div>
       </div>
       <div className="i-right">
