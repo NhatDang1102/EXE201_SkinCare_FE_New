@@ -36,7 +36,7 @@ const LoginPage = ({accountAction}) => {
   };
 
   const handleGoogleLogin = async () => {
-    const toastId = showLoading("Logging in with Google...");
+    const toastId = showLoading("Đăng nhập với Google...");
     try {
       const result = await signInWithPopup(auth, provider);
 
@@ -44,7 +44,7 @@ const LoginPage = ({accountAction}) => {
         const response = await googleLogin(result.user.email, result.user.accessToken, rememberMe); 
       
         if(response.role) {
-          updateToast(toastId, "success", "Google Login Successful");
+          updateToast(toastId, "success", "Đăng nhập Google thành công");
           setTimeout(() => {
             navigate(response.role === "Admin" ? "/AdminPage/Dashboard" : "/profile");
           }, 100);
@@ -52,20 +52,20 @@ const LoginPage = ({accountAction}) => {
 
       }
     } catch (error) {
-      console.error("Google Login Failed:", error);
-      updateToast(toastId, "error", "Google Login Failed. Please try again.");
-      setError("Failed to login. Please try again.");
+      console.error("Đăng nhập bằng Google thất bại:", error);
+      updateToast(toastId, "error", "Đăng nhập bằng Google thất bại. Hãy thử lại.");
+      setError("Đăng nhập thất bại. Hãy thử lại.");
     }
   };
 
   const handleNormalLogin = async (e) => {
     e.preventDefault();
-    const toastId = showLoading("Logging in...");
+    const toastId = showLoading("Đang đăng nhập...");
     try {
       setError("");
       const response = await login(email, password, rememberMe);
       if (response.role) {
-        updateToast(toastId, "success", "Login Successful");
+        updateToast(toastId, "success", "Đăng nhập thành công");
         setTimeout(() => {
           navigate(response.role === "Admin" ? "/AdminPage/Dashboard" : "/profile");
         }, 100);
@@ -80,7 +80,7 @@ const LoginPage = ({accountAction}) => {
     } catch (error) {
       console.error("Login error:", error);
       updateToast(toastId, "error", "Network Error. Please try again.");
-      setError("Failed to login. Please try again.");
+      setError("Đăng nhập thất bại. Hãy thử lại.");
     }
   };
 
@@ -93,27 +93,27 @@ const LoginPage = ({accountAction}) => {
         
       <Box className={switched ? "usernamePassLoginBox away" : "usernamePassLoginBox"}>
         <div className='loginLable'>
-          Log in to your account
+          Đăng nhập vào tài khoản của bạn
         </div>
         <form onSubmit={handleNormalLogin}>
           <div className="input-field">
-            <label><Mail/> Email address</label>
+            <label><Mail/> Địa chỉ email</label>
             <input
               className="input"
               type="email"
-              placeholder="Enter your email"
+              placeholder="Nhập email của bạn"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
           <div className="input-field">
-            <label><Lock /> Password</label>
+            <label><Lock /> Mật khẩu</label>
             <div className="passInput">
               <input
                   className="input"
                   type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
+                  placeholder="Nhập mật khẩu của bạn"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -127,19 +127,19 @@ const LoginPage = ({accountAction}) => {
           <Box width="500px" height="20px" padding="0" display="flex" flexDirection="row" justifyContent="center" gap="200px" alignItems="center">
             <FormControlLabel 
               control={<Checkbox size="small" color="primary" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />}
-              label="Remember me"
+              label="Ghi nhớ đăng nhập"
             />
             <span className="forgot-password" onClick={() => setShowForgotOtpModal(true)}>
-              Forgot password?
+              Quên mật khẩu?
             </span>
           </Box>
           <button className='loginButton' type="submit">
-            Continue <ArrowForward />
+            Đăng nhập <ArrowForward />
           </button>
         </form>
       </Box>
       <div className="account-seperation" style={{userSelect: 'none' }} >
-        <div className='line' />Or continue with<div className='line' />
+        <div className='line' />Hoặc đăng nhập bằng<div className='line' />
       </div>
       <div className='loginMethods' >
         <button onClick={handleGoogleLogin} className='GoogleLoginButton'>
@@ -149,13 +149,11 @@ const LoginPage = ({accountAction}) => {
           <img src={FaceIcon} alt='Face Icon' className='GGIcon' /> Facebook
         </button>
       </div>
-      
-
       <div className="account-toggle" style={{userSelect: 'none' }} >
         {switched ?
-          (<><div className='line' />Already have an account? <span onClick={handleClick} style={{cursor: 'pointer'}}>Login here</span><div className='line' /> </> )
+          (<><div className='line' />Đã có tài khoản? <span onClick={handleClick} style={{cursor: 'pointer'}}>Đăng nhập tại đây</span><div className='line' /> </> )
             :
-          (<><div className='line' />Don't have an account? <span onClick={handleClick} style={{cursor: 'pointer'}}>Sign in</span><div className='line' /> </> )
+          (<><div className='line' />Không có tài khoản? <span onClick={handleClick} style={{cursor: 'pointer'}}>Đăng kí</span><div className='line' /> </> )
         }
       </div>
 
@@ -163,7 +161,6 @@ const LoginPage = ({accountAction}) => {
         <ArrowBack />
       </button>
     </div>
-
     {showForgotOtpModal && (
       <OtpModal
         email={""}

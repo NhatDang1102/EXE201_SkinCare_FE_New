@@ -35,7 +35,7 @@ const Intro = () => {
     <div className="Intro" id="Intro">
       <div className="i-left">
         <div className="i-background">
-          <motion.img 
+          <motion.img
             initial={{ left: "0%" }}
             whileInView={{ left: "10%" }}
             transition={transition}
@@ -137,23 +137,23 @@ const Intro = () => {
       </div>
       <div className="i-right">
         <motion.div
-        initial={{ left: "40%" }}
-        whileInView={{ top: "0%", left: "30%" }}
-        transition={transition}
-        className="i-name">
-          <span>Your Personal</span>
-          <span>AI-Powered</span>
-          <span>Skincare</span>
-          <span>Journey</span>
+          initial={{ left: "40%" }}
+          whileInView={{ top: "0%", left: "30%" }}
+          transition={transition}
+          className="i-name">
+          <span>Hành trình</span>
+          <span>chăm sóc da</span>
+          <span>cá nhân hóa</span>
+          <span>bằng trí tuệ nhân tạo</span>
           <span>
-            Join our community of skincare enthusiasts and get personalized recommendations powered by AI
+            Tham gia cộng đồng yêu thích chăm sóc da và nhận gợi ý riêng dành cho bạn, được hỗ trợ bởi AI.
           </span>
         </motion.div>
         <motion.div
           initial={{ left: "20%" }}
           whileInView={{ left: "5%" }}
-          transition={transition} style={{position: 'relative'}}>
-          <button className="frontPageButton i-button" onClick={() => handleDirect()}>Start Free Analysis</button>
+          transition={transition} style={{ position: 'relative' }}>
+          <button className="frontPageButton i-button" onClick={() => handleDirect()}>Bắt đầu phân tích miễn phí</button>
         </motion.div>
         {/* animation */}
         {/* <motion.img

@@ -30,40 +30,40 @@ const SwipeList = () => {
             initial={{ top: "10%" }}
             whileInView={{ top: "0%" }}
             transition={transition} src={ImageList1} alt="" />
-          <span>Community</span>
-          <span>Share experience and connect with skincare enthusiasts</span>
+          <span>Cộng đồng</span>
+          <span>Chia sẻ kinh nghiệm và kết nối với người yêu chăm sóc da</span>
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
             initial={{ top: "10%" }}
             whileInView={{ top: "0%" }}
             transition={transition2} src={ImageList2} alt="" />
-          <span>AI Consultation</span>
-          <span>Get personalized skincare recommendations</span>
+          <span>Tư vấn AI</span>
+          <span>Nhận gợi ý chăm sóc da cá nhân hóa</span>
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
             initial={{ top: "10%" }}
             whileInView={{ top: "0%" }}
             transition={transition3} src={ImageList3} alt="" />
-          <span>Product Hub</span>
-          <span>Explore verified product reviews and information</span>
+          <span>Kho sản phẩm</span>
+          <span>Khám phá đánh giá và thông tin sản phẩm đã kiểm duyệt</span>
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
             initial={{ top: "10%" }}
             whileInView={{ top: "0%" }}
             transition={transition4} src={ImageList4} alt="" />
-          <span>Personalization</span>
-          <span>Track your progress and skin health journey</span>
+          <span>Cá nhân hóa</span>
+          <span>Theo dõi tiến trình và hành trình làn da của bạn</span>
         </SwiperSlide>
         <SwiperSlide>
           <motion.img 
             initial={{ top: "10%" }}
             whileInView={{ top: "0%" }}
             transition={transition} src={ImageList1} alt="" />
-          <span>Community</span>
-          <span>Share experience and connect with skincare enthusiasts</span>
+          <span>Cộng đồng</span>
+          <span>Chia sẻ kinh nghiệm và kết nối với người yêu chăm sóc da</span>
         </SwiperSlide>
       </Swiper>
     </div>
