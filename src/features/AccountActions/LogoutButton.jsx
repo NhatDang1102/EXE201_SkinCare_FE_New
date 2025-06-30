@@ -41,7 +41,7 @@ export default function LogoutButton() {
 
         setTimeout(() => {
           navigate("/");
-        }, 20);
+        }, 10);
         updateToast(toastId, "success", "Logout successfully.");
       }
     } catch (error) {

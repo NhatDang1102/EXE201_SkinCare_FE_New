@@ -15,12 +15,10 @@ body:has(.homePageApp.Dark ) .n-wrapper {
   top: 0;
 }
 
-.n-wrapper > div:first-child {
-  border-left: 1px solid #ccc;
-}
-
 .n-left {
-  flex: 0.55;
+  width: 18%;
+  min-width: 140px;
+  margin-right: 2%;
   align-items: center;
   justify-content: left;
   display: flex;
@@ -32,34 +30,41 @@ body:has(.homePageApp.Dark ) .n-wrapper {
 
 .n-name {
   position: absolute;
-  padding-left: 50px;
-  font-size: 18px;
-  color: black;
+  text-align: right;
+  margin-top: 20px;
+  margin-left: 75px;
+  font-size: 36px;
+  font-weight: 800;
+  font-style: italic;
+  font-family: "Apple Chancery, cursive";
+  color: #777777;
 }
 .n-right {
-  flex: 2;
+  flex: 1;
   display: flex;
-  align-items: center;
-  font-weight: 400;
+  align-items: center;;
   padding-right: 20px;
   gap: 10px;
 }
 
 .n-list {
   flex: 1;
+  font-size: larger;
+  font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
 
 .n-list .selected {
   position: relative;
-  z-index: 10;
-  color: var(--bg-color);
-  border-radius: 0 8px 8px 0;
+  z-index: 2;
+  color: var(--bg-color); background-color: transparent;
+  border-radius: 8px;
   pointer-events: none; user-select: none;
 }
 .n-list > ul {
   display: flex;
   gap: 4rem;
-  padding: 0;
+  padding: 0 0 0 20px;
+  border-right: 2px outset #33333327;
 }
 .n-list > ul li a{
   color: var(--primary-text-color);
@@ -67,13 +72,13 @@ body:has(.homePageApp.Dark ) .n-wrapper {
   min-width: 50px;
   padding: 0 10px 0 0;
   gap: 5px;
-  justify-content: space-around;
+  justify-content: left;
   align-items: center;
   border-radius: 4px;
   transition: all 0.6s ease;
 }
-.n-list > ul li a svg { color: transparent; padding:12px; border-radius: 8px; background-color: transparent; transition: all 0.6s ease; }
-.n-list > ul li a.selected svg { color: var(--bg-color); background-color: var(--primary-text-color); transition: all 0.5s ease; }
+.n-list > ul li a svg { position: relative; color: transparent; padding:12px; border-radius: 8px; background-color: transparent; transition: all 0.6s ease; }
+.n-list > ul li a.selected svg { color: var(--bg-color); background-color:transparent; transition: all 0.6s ease; }
 
 .n-list > ul li a:hover {
   color: rgb(108, 193, 246);
@@ -90,9 +95,9 @@ body:has(.homePageApp.Dark ) .n-wrapper {
 #marker::before {
     content: '';
     position: absolute;
-    left: 60%;
+    left: 50%;
     transform: translateX(-50%);
-    width: 140px;
+    width: 180px;
     height: 48px;
     border-radius: 8px;
     background: #000000;
@@ -117,7 +122,112 @@ body:has(.homePageApp.Dark ) .n-wrapper {
 }
 
 @media screen and (max-width: 1480px) { 
-  #marker {
+  #marker,
+  #marker .sparkle {
     display: none;
   }
+
+  .n-list .selected {
+    color: var(--bg-color); background-color: var(--primary-text-color);
+  }
+
+  .n-list > ul li a svg { color: transparent; background-color: transparent; }
+  .n-list > ul li a.selected svg { color: var(--bg-color); background-color: var(--primary-text-color); }
+}
+
+#marker .sparkle {
+	position: absolute;
+	z-index: 10;
+	width: 50px;
+  opacity: 0;
+	aspect-ratio: 1;
+  --delay-step: 0.15;
+  display: inline;
+	animation: sparkle 0.75s calc((var(--delay-step) * var(--d)) * 1s) infinite;
+}
+
+#marker::after {
+  position: absolute;
+  z-index: 10;
+  content: '';
+  height: 100px;
+  width: 20px;
+  left: 0;
+  top: -30px;
+  opacity: 0;
+  mix-blend-mode:difference;
+  transform: rotate(40deg);
+  background-color: rgba(211, 211, 211, 0.8);
+  filter: blur(20px);
+  animation: shinny 2s infinite;
+}
+/* #marker:hover::after {
+  animation: shinny 2s infinite;
+}
+
+#marker:hover .sparkle {
+  display:inline;
+	animation: sparkle 0.75s calc((var(--delay-step) * var(--d)) * 1s) infinite;
+  animation-iteration-count: 2;
+} */
+
+#marker .sparkle path {
+	fill: hsla(0, 0%, 84%, 0.75);
+}
+
+/* Animation for sparkles */
+
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+  	transform: translate(calc(var(--x, 0) * 1%), calc(var(--y, 50) * 1%)) scale(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+	100% {
+    opacity: 0;
+		transform: translate(calc(var(--x, 0) * 1%), calc(var(--y, 50) * 1%)) scale(var(--s, 1));
+	}
+}
+
+@keyframes shinny { 
+  0% {
+    opacity: 0;
+    left: -100%;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: 200%;
+  }
+}
+
+#marker .sparkle:nth-of-type(1) {
+	--x: -210;
+	--y: -30;
+	--s: 0.2;
+	--d: 1;
+}
+
+#marker .sparkle:nth-of-type(2) {
+	--x: -70;
+	--y: 30;
+	--s: 0.3;
+	--d: 3;
+}
+
+#marker .sparkle:nth-of-type(3) {
+	--x: 110;
+	--y: -15;
+	--s: 0.3;
+	--d: 2;
 }

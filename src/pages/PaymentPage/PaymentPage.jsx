@@ -7,17 +7,36 @@ import { useNavigate } from 'react-router-dom';
 import PaymentPopup from '../../components/PaymentPopup/PaymentPopup';
 import PayOSLogo from '../../assets/PayOSimage.png'
 import { showLoading, updateToast } from '../../utils/toastUtils';
+import axios from 'axios';
 
 export default function PaymentPage() {
   const [paymentPopup, setPaymentPopup] = useState(false);
   const navigate = useNavigate();
 
   const handlePayOS = async () => {
-    const toastId = showLoading("Directing To PayOS...");
-    setTimeout(() => {
-      updateToast(toastId, "error", "PayOS not available");
-    }, 100);
-  }
+    const toastId = showLoading("Directing to PayOS...");
+
+    try {
+      const response = await axios.post(
+        'https://skincareapp.somee.com/SkinCare/vippayment/create-link',
+        {},
+        { withCredentials: true }
+      );
+
+      const checkoutUrl = response.data?.checkoutUrl;
+
+      if (checkoutUrl) {
+        updateToast(toastId, "success", "Redirecting to PayOS...");
+        window.location.href = checkoutUrl; // Redirect to the payment URL
+      } else {
+        updateToast(toastId, "error", "No checkout URL received.");
+      }
+    } catch (error) {
+      console.error("Error during PayOS redirect:", error);
+      updateToast(toastId, "error", "Failed to get PayOS link.");
+    }
+  };
+
   return (
     <div className='paymentPage'>
       <button className="back-btn" onClick={() => { navigate("/VIP-purchase"); } }>

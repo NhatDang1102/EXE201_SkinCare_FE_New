@@ -25,7 +25,7 @@ export default function VIPPurchasePage() {
   return (
     <div className='purchasePage'>
       <motion.img style={{top: ParalaxBg, opacity: ParalaxBgFade}} transition={transition} className='waterSurfaceImg' src={WaterSurface} alt='' />
-      <motion.ul class="light-rays" style={{opacity: ParalaxRays}} transition={transition}>
+      <motion.ul className="light-rays" style={{opacity: ParalaxRays}} transition={transition}>
         <li></li>
         <li></li>
         <li></li>
@@ -87,57 +87,57 @@ export default function VIPPurchasePage() {
           <button className='joinServiceBtn' onClick={() => navigate('/payment-page')}>Join Now</button>
         </div>
       </motion.div>
-      <div class='canvas'>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
-        <div class='bubble'></div>
+      <div className='canvas'>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
+        <div className='bubble'></div>
       </div>
     </div>
   )

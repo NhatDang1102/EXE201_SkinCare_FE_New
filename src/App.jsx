@@ -26,6 +26,9 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import AIConsultation from "./pages/Consultation/AIConsultation";
 import SkincareSchedule from "./pages/Schedule/SkincareSchedule";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
+import PaymentCancel from "./pages/PaymentPage/PaymentCancel/PaymentCancel";
+import PaymentSuccess from "./pages/PaymentPage/PaymentSuccess/PaymentSuccess";
+
 function App() {
   return (
     <AuthProvider>
@@ -198,6 +201,22 @@ function AppRoutes() {
             element={
               <ThemeProvider>
                 <PaymentPage />
+              </ThemeProvider>
+            }
+          />
+          <Route
+            path="/payment-page/cancel"
+            element={
+              <ThemeProvider>
+                <PaymentCancel />
+              </ThemeProvider>
+            }
+          />
+          <Route
+            path="/payment-page/success"
+            element={
+              <ThemeProvider>
+                <PaymentSuccess />
               </ThemeProvider>
             }
           />
