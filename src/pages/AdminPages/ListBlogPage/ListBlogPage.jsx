@@ -95,10 +95,10 @@ const [editBlog, setEditBlog] = useState(null);
           }
         );
         if (resp.ok) {
-          toast.success("Deleted Blog Successfully!");
+          toast.success("Xóa Blog thành công!!");
           fetchBlogs();
         } else {
-          toast.error("Delete Blog Failed!");
+          toast.error("Xóa Blog thất bại!");
         }
       } catch (err) {
         toast.error("Somthing went wrong!");
@@ -127,11 +127,11 @@ const handleEdit = (id) => {
         className="adminBlogListContainer"
         style={{ y: position, scale, opacity }}
       >
-        <h2 className="adminBlogTitle">Blog Management</h2>
+        <h2 className="adminBlogTitle">Quản lí Blog</h2>
         {loading ? (
-          <div className="adminBlogLoading">Loading...</div>
+          <div className="adminBlogLoading">Đanm tải...</div>
         ) : blogs.length === 0 ? (
-          <div className="adminBlogNoData">No blogs yet.</div>
+          <div className="adminBlogNoData">Không có Blog.</div>
         ) : (
           <div className="adminBlogList">
             {blogs.map((blog) => (
@@ -175,13 +175,13 @@ const handleEdit = (id) => {
                       className="adminBlogListBtn adminBlogListEdit"
                       onClick={() => handleEdit(blog.id)}
                     >
-                      Edit
+                      Chỉnh sửa
                     </button>
                     <button
                       className="adminBlogListBtn adminBlogListDelete"
                       onClick={() => handleDelete(blog.id)}
                     >
-                      Delete
+                      Xóa
                     </button>
                   </div>
                 </div>
@@ -193,25 +193,25 @@ const handleEdit = (id) => {
       {editBlog && (
  <div className="adminBlogModal">
   <div className="adminBlogModalContent">
-    <h3>Eidt Blog</h3>
+    <h3>Cập nhật Blog</h3>
 
     <div className="form-group">
-      <label className="form-label" htmlFor="edit-title">Title</label>
+      <label className="form-label" htmlFor="edit-title">Tiêu dề</label>
       <input
         id="edit-title"
         value={editBlog.title}
         onChange={(e) => setEditBlog({ ...editBlog, title: e.target.value })}
-        placeholder="Title..."
+        placeholder="Nhập tiêu đề..."
       />
     </div>
 
     <div className="form-group">
-      <label className="form-label" htmlFor="edit-content">Content</label>
+      <label className="form-label" htmlFor="edit-content">Nội dung</label>
       <textarea
         id="edit-content"
         value={editBlog.content}
         onChange={(e) => setEditBlog({ ...editBlog, content: e.target.value })}
-        placeholder="Content..."
+        placeholder="Nhập nội dung..."
       />
     </div>
 
@@ -223,7 +223,7 @@ const handleEdit = (id) => {
         onChange={(e) =>
           setEditBlog({ ...editBlog, externalProductLink: e.target.value })
         }
-        placeholder="Product Link..."
+        placeholder="Link sản phẩm..."
       />
     </div>
 
@@ -265,7 +265,7 @@ const handleEdit = (id) => {
           }
         }}
       >
-        Save
+        Lưu
       </button>
       <button
         style={{
@@ -278,7 +278,7 @@ const handleEdit = (id) => {
         }}
         onClick={() => setEditBlog(null)}
       >
-        Cancel
+        Hủy
       </button>
     </div>
   </div>
