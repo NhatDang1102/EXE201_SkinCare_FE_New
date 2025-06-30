@@ -49,7 +49,7 @@ body:has(.homePageApp.Dark ) .n-wrapper {
 
 .n-list {
   flex: 1;
-  font-size: larger;
+  font-size: 15px;
   font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
 }
 
@@ -63,21 +63,21 @@ body:has(.homePageApp.Dark ) .n-wrapper {
 .n-list > ul {
   display: flex;
   gap: 4rem;
-  padding: 0 0 0 20px;
+  padding: 0px;
   border-right: 2px outset #33333327;
 }
 .n-list > ul li a{
   color: var(--primary-text-color);
   display: flex;
   min-width: 50px;
-  padding: 0 10px 0 0;
+  padding: 5px 10px 0 5px;
   gap: 5px;
   justify-content: left;
   align-items: center;
   border-radius: 4px;
   transition: all 0.6s ease;
 }
-.n-list > ul li a svg { position: relative; color: transparent; padding:12px; border-radius: 8px; background-color: transparent; transition: all 0.6s ease; }
+.n-list > ul li a svg { position: relative; color: transparent; padding:6px; border-radius: 8px; background-color: transparent; transition: all 0.6s ease; }
 .n-list > ul li a.selected svg { color: var(--bg-color); background-color:transparent; transition: all 0.6s ease; }
 
 .n-list > ul li a:hover {

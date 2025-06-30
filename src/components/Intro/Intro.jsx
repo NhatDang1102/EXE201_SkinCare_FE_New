@@ -153,7 +153,7 @@ const Intro = () => {
           initial={{ left: "20%" }}
           whileInView={{ left: "5%" }}
           transition={transition} style={{ position: 'relative' }}>
-          <button className="frontPageButton i-button" onClick={() => handleDirect()}>Bắt đầu phân tích miễn phí</button>
+          <button className="frontPageButton i-button" onClick={() => handleDirect()}>Phân tích miễn phí</button>
         </motion.div>
         {/* animation */}
         {/* <motion.img
