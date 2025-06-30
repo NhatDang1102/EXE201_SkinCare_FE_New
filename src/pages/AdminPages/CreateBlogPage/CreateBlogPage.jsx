@@ -53,7 +53,7 @@ export default function CreateBlogPage() {
   const handleSubmit = async e => {
     e.preventDefault();
     if (!title.trim() || !content.trim() || !productId) {
-      toast.warning("Please fill all fields and select a product.");
+      toast.warning("Vui lòng điền đầy đủ thông tin và chọn sản phẩm.");
       return;
     }
     setLoading(true);
@@ -71,7 +71,7 @@ export default function CreateBlogPage() {
     });
     setLoading(false);
     if (resp.ok) {
-      toast.success("Create Blog Successfully!");
+      toast.success("Tạo Blog thành công");
       setTitle("");
       setContent("");
       setLink("");
@@ -79,7 +79,7 @@ export default function CreateBlogPage() {
       setAutoImage("");
       setSelectedCategory("");
     } else {
-      toast.error("Create blog failed!");
+      toast.error("Tạo blog thất bại!");
     }
   };
 
@@ -129,13 +129,13 @@ export default function CreateBlogPage() {
         <input
           className="adminBlogInput"
           type="text"
-          placeholder="Title..."
+          placeholder="Tiêu đề bài viết..."
           value={title}
           onChange={e => setTitle(e.target.value)}
         />
         <textarea
           className="adminBlogTextarea"
-          placeholder="Content here..."
+          placeholder="Nội dung..."
           rows={5}
           value={content}
           onChange={e => setContent(e.target.value)}
@@ -148,7 +148,7 @@ export default function CreateBlogPage() {
           onChange={e => setLink(e.target.value)}
         />
         <button className="adminBlogSubmit" type="submit" disabled={loading}>
-          {loading ? "Submitting..." : "Submit"}
+          {loading ? "Submitting..." : "Xác nhận"}
         </button>
       </motion.form>
 
