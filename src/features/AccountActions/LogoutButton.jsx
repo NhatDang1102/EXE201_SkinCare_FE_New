@@ -22,7 +22,7 @@ export default function LogoutButton() {
     }, []);
   
   const handleLogout = async () => {
-    const toastId = showLoading("Logging out...");
+    const toastId = showLoading("Đang đăng xuất...");
     try {
       if (userType === 'AccountIndex'){
         await logout();
@@ -43,9 +43,6 @@ export default function LogoutButton() {
           navigate("/");
         }, 20);
         updateToast(toastId, "success", "Đăng xuất thành công.");
-
-        }, 10);
-        updateToast(toastId, "success", "Logout successfully.");
       }
     } catch (error) {
       updateToast(toastId, "error", "Something went wrong while logging out.");
