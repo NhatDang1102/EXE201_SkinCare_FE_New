@@ -105,7 +105,6 @@ export default function ProfilePage() {
             <button className="actionButton primaryButton" onClick={() => navigate("/editprofile")}>
               Cập nhật hồ sơ
             </button>
-            <button className="actionButton secondaryButton">Cài đặt</button>
           </div>
         </div>
       </div>

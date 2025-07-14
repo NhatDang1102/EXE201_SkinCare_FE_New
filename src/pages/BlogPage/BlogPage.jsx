@@ -73,7 +73,7 @@ export default function BlogPage() {
                                         {blog.content}
                                     </div>
                                     <div className="skinBlog-meta">
-                                        {getVietnamDate(blog.createdAt)} | By Team 202
+                                        {getVietnamDate(blog.createdAt)} | By SkinSense
                                     </div>
                                 </div>
                             </div>
