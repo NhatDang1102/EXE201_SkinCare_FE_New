@@ -28,6 +28,7 @@ export default function DashboardPage() {
   const [pendingCount, setPendingCount] = useState(0);
   const [completedCount, setCompletedCount] = useState(0);
   const [progressPercent, setProgressPercent] = useState(0);
+  const [routineFeedback, setRoutineFeedback] = useState([]);
 
   const [revenuePeriod, setRevenuePeriod] = useState("monthly");
   const [revenuePeriodLabel, setRevenuePeriodLabel] = useState("tháng");
@@ -186,6 +187,26 @@ export default function DashboardPage() {
     return () => clearInterval(interval);
   }, [revenuePeriod]);
 
+  useEffect(() => {
+    const fetchRoutineFeedback = async () => {
+      try {
+        const response = await axios.get("https://skincareapp.somee.com/SkinCare/Admin/routine-feedbacks", {
+          withCredentials: true
+        });
+        console.log("Routine", response.data)
+        if (response.data) {
+          setRoutineFeedback(response.data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch Routine Feedback", error);
+      }
+    };
+
+    fetchRoutineFeedback();
+    const interval = setInterval(fetchRoutineFeedback, 100000);
+    return () => clearInterval(interval);
+  }, []);
+
   const position1 = useTransform(
       scrollYProgress,
       [0, 0.5],
@@ -272,9 +293,9 @@ export default function DashboardPage() {
           <Header title="Trang quản trị" subtitle="Chào mừng bạn đến với bảng điều khiển" />
           
           <div className="counterContainer" >
-            <Tracker icon={<AccountBox />} title="Đăng ký hàng ngày" number={dailyRegister} />
-            <Tracker icon={<AssignmentInd />} title="Đăng ký hàng tuần" number={weeklyRegister} />
-            <Tracker icon={<PermContactCalendar />} title="Đăng ký hàng tháng" number={monthlyRegister} />
+            <Tracker icon={<AccountBox />} title="Đăng ký trong 24h qua" number={dailyRegister} />
+            <Tracker icon={<AssignmentInd />} title="Đăng ký trong tuần này" number={weeklyRegister} />
+            <Tracker icon={<PermContactCalendar />} title="Đăng ký trong tháng này" number={monthlyRegister} />
           </div>
           
         </motion.div >
@@ -288,7 +309,106 @@ export default function DashboardPage() {
                 <div className="countTrackerContainer">
                   <div className="routine-feedbackContainer">
                     <h2>Phản hồi về AI Routine</h2>
-                    <div style={{color: 'white', fontSize: '3rem', backgroundColor: 'darkgray'}}>Đang làm, sắp hoàn thành</div>
+                    <div className="routine-feedback-message-container">
+                      {routineFeedback.length === 0 ? (
+                        <div className="no-feedback-message">Chưa có phản hồi nào.</div>
+                      ) : (
+                        routineFeedback.map((feedback, index) => (
+                          <>
+                            <div key={feedback.id || index} className="feedback-card">
+                            <div className="feedback-header">
+                              <span className="feedback-username">{feedback.userName}</span>
+                              <span className="feedback-email">{feedback.userEmail}</span>
+                              <span className="feedback-message">{feedback.message}</span>
+                            </div>
+                            <div className="feedback-date">
+                                {new Date(feedback.createdAt).toLocaleString('vi-VN')}
+                            </div>
+                          </div>
+                          <div key={feedback.id || index} className="feedback-card">
+                            <div className="feedback-header">
+                              <span className="feedback-username">Nguyen Van A</span>
+                              <span className="feedback-email">NguyenVanA@gmail.com</span>
+                              <span className="feedback-message">Thông báo ở đâu, việc theo dõi thời gian biểu có nghiêm ngặt không, tôi có thể hủy hoặc trì hoãn nếu không thể tuân thủ không? Ví dụ như chuyện gì sẽ xảy ra nếu tôi không tuân thủ trong vài ngày liên tục? Kiểu như... tôi không hiểu rõ lắm.</span>
+                            </div>
+                            <div className="feedback-date">
+                                {new Date(feedback.createdAt).toLocaleString('vi-VN')}
+                            </div>
+                          </div>
+                          <div key={feedback.id || index} className="feedback-card">
+                            <div className="feedback-header">
+                              <span className="feedback-username">Nguyen Van B</span>
+                              <span className="feedback-email">NguyenVanB@gmail.com</span>
+                              <span className="feedback-message">Có thể cần cải thiện một chút. Như là cung cấp một số lời động viên khi tôi đạt được khoảng 60% tiến độ chẳng hạn :))</span>
+                            </div>
+                            <div className="feedback-date">
+                                {new Date(feedback.createdAt).toLocaleString('vi-VN')}
+                            </div>
+                          </div>
+                          <div key={feedback.id || index} className="feedback-card">
+                            <div className="feedback-header">
+                              <span className="feedback-username">Nguyen Van C</span>
+                              <span className="feedback-email">NguyenVanC@gmail.com</span>
+                              <span className="feedback-message">Đủ tốt rồi.</span>
+                            </div>
+                            <div className="feedback-date">
+                                {new Date(feedback.createdAt).toLocaleString('vi-VN')}
+                            </div>
+                          </div>
+                          <div key={feedback.id || index} className="feedback-card">
+                            <div className="feedback-header">
+                              <span className="feedback-username">Nguyen Van D</span>
+                              <span className="feedback-email">NguyenVanD@gmail.com</span>
+                              <span className="feedback-message">Rất tốt. Sẽ giới thiệu cho bạn bè của tôi</span>
+                            </div>
+                            <div className="feedback-date">
+                                {new Date(feedback.createdAt).toLocaleString('vi-VN')}
+                            </div>
+                          </div>
+                          <div key={feedback.id || index} className="feedback-card">
+                            <div className="feedback-header">
+                              <span className="feedback-username">Nguyen Van E</span>
+                              <span className="feedback-email">NguyenVanE@gmail.com</span>
+                              <span className="feedback-message">Ngày xửa ngày xưa, ở một vùng đất xa xôi, rất xa, có một cô gái trẻ xinh đẹp bị lạc đường trong chuyến hành trình. Khi mặt trời lặn và mặt trăng mọc, cô tình cờ gặp một lâu đài nguy nga. Sau khi gõ những cánh cửa đồ sộ và được dẫn vào bên trong, cô phát hiện ra đây chính là lâu đài của nhà vua của đất nước mà cô đã đi qua. Nhà vua đến gặp vị khách. Sau khi chào hỏi, cô gái tự xưng là công chúa của một nước láng giềng và xin được đối xử như hoàng gia.</span>
+                            </div>
+                            <div className="feedback-date">
+                                {new Date(feedback.createdAt).toLocaleString('vi-VN')}
+                            </div>
+                          </div>
+                          <div key={feedback.id || index} className="feedback-card">
+                            <div className="feedback-header">
+                              <span className="feedback-username">Nguyen Van B</span>
+                              <span className="feedback-email">NguyenVanB@gmail.com</span>
+                              <span className="feedback-message">Có thể cần cải thiện một chút. Như là cung cấp một số lời động viên khi tôi đạt được khoảng 60% tiến độ chẳng hạn :))</span>
+                            </div>
+                            <div className="feedback-date">
+                                {new Date(feedback.createdAt).toLocaleString('vi-VN')}
+                            </div>
+                          </div>
+                          <div key={feedback.id || index} className="feedback-card">
+                            <div className="feedback-header">
+                              <span className="feedback-username">Nguyen Van A</span>
+                              <span className="feedback-email">NguyenVanA@gmail.com</span>
+                              <span className="feedback-message">Thông báo ở đâu, việc theo dõi thời gian biểu có nghiêm ngặt không, tôi có thể hủy hoặc trì hoãn nếu không thể tuân thủ không? Ví dụ như chuyện gì sẽ xảy ra nếu tôi không tuân thủ trong vài ngày liên tục? Kiểu như... tôi không hiểu rõ lắm.</span>
+                            </div>
+                            <div className="feedback-date">
+                                {new Date(feedback.createdAt).toLocaleString('vi-VN')}
+                            </div>
+                          </div>
+                          <div key={feedback.id || index} className="feedback-card">
+                            <div className="feedback-header">
+                              <span className="feedback-username">Nguyen Van B</span>
+                              <span className="feedback-email">NguyenVanB@gmail.com</span>
+                              <span className="feedback-message">Có thể cần cải thiện một chút. Như là cung cấp một số lời động viên khi tôi đạt được khoảng 60% tiến độ chẳng hạn :))</span>
+                            </div>
+                            <div className="feedback-date">
+                                {new Date(feedback.createdAt).toLocaleString('vi-VN')}
+                            </div>
+                          </div>
+                          </>
+                        ))
+                      )}
+                    </div>
                   </div>
                   <div className="trackerContainer" >
                     <SalesTracker icon={<BarChart />} number={profitMargin} title="Tổng doanh thu" profit="Lợi nhuận tháng này" available={true} currency={true}/>
@@ -314,7 +434,7 @@ export default function DashboardPage() {
           
         </motion.div >
 
-        <motion.div  className="dashBoardContainer"
+        <motion.div  className="dashBoardContainer revenue"
             style={{y: position4, scale: size4, opacity: blurFilter4}}>
           <div className="revenue-title">
             <div className="revenue-title-header">Doanh thu hàng {revenuePeriodLabel}</div>

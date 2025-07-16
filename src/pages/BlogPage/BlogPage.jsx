@@ -49,7 +49,7 @@ export default function BlogPage() {
 
     return (
         <div className="skinBlog-root">
-            <div class="blog-background-image"  ref={bgRef} />
+            <div className="blog-background-image"  ref={bgRef} />
             <div className="skinBlog-container">
                 <h1 className="skinBlog-title">Skin Care Blogs</h1>
                 {loading ? (

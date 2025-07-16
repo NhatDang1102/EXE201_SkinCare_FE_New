@@ -41,6 +41,7 @@ const LoginPage = ({accountAction}) => {
       const result = await signInWithPopup(auth, provider);
 
       if (result) {
+        console.log("Login res", result);
         const response = await googleLogin(result.user.email, result.user.accessToken, rememberMe); 
       
         if(response.role) {
