@@ -147,9 +147,9 @@ const LoginPage = ({accountAction}) => {
         <button onClick={handleGoogleLogin} className='GoogleLoginButton'>
           <img src={GoogleIcon} alt='Google Icon' className='GGIcon' /> Google
         </button>
-        <button className='FaceLoginButton'>
+        {/* <button className='FaceLoginButton'>
           <img src={FaceIcon} alt='Face Icon' className='GGIcon' disabled={true} /> Facebook
-        </button>
+        </button> */}
       </div>
       <div className="account-toggle" style={{userSelect: 'none' }} >
         {switched ?

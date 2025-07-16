@@ -333,8 +333,8 @@ export default function DashboardPage() {
                   <div className="trackerContainer" >
                     <SalesTracker icon={<BarChart />} number={profitMargin} title="Tổng doanh thu" profit="Lợi nhuận tháng này" available={true} currency={true}/>
                     <SalesTracker icon={<ListAlt />} number={weeklyRegister} title="Đăng ký hàng tuần" profit={`${dailyLogin} đăng nhập trong 24h qua`} available={true} />
-                    <SalesTracker icon={<LocalMall />} number="00" title="Sản phẩm đã bán" profit="Currently No Data" available={false} />
-                    <SalesTracker icon={<PersonOutline />} number={monthlyRegister} title="Người dùng mới" profit="+30% so với tháng trước" available={true} />
+                    <SalesTracker icon={<LocalMall />} number={completedCount} title="Gói VIP đã mua" profit="Hoàn tất giao dịch tháng này" available={true} />
+                    <SalesTracker icon={<PersonOutline />} number={monthlyRegister} title="Người dùng mới" profit="+10% so với tháng trước" available={true} />
                   </div>
                 </div>
             </div>
@@ -444,7 +444,7 @@ export default function DashboardPage() {
                 
                 <div className="progressGaugeContainer" >
                     <CompositionExample />
-                    <div className='valuePercentage'>47%</div>
+                    <div className='valuePercentage'>86%</div>
                 </div>
             </div>
 
@@ -455,8 +455,8 @@ export default function DashboardPage() {
                     <LineChart className="lineChart"
                         
                         series={[
-                            { curve: "linear", data: [1, 5, 2, 6, 3, 9.3] },
-                            { curve: "linear", data: [6, 3, 7, 9.5, 4, 2] },
+                            { curve: "linear", data: [1, 5, 4, 6, 7, 9.3] },
+                            { curve: "linear", data: [9.3,9.3,9.3,9.3,9.3,9.3] },
                         ]}
                     />
                 </div>
